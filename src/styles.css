@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+  margin: 0px;
+  padding: 0px;
+}
+div{
+  /* border: 1px solid white; */
+  color: white;
+}
+
+.centrar-contenido{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  background: black;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.hoja{
+  width: 100%;
+  max-width: 900px;
+  background: #181818;
+}

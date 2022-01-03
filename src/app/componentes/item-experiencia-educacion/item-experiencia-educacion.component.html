@@ -1,0 +1,26 @@
+<div class="item-experiencia">
+  <div class="logo-item-experiencia" style="background-image: url('{{ item.url }}');" ></div>
+  <div class="contenido-item-experiencia">
+    <h2>{{ item.tituloH2 }}</h2>
+
+    <hr class="linea-separadora">
+
+    <h3>{{ item.tituloH3[0] }}</h3>
+    <h3>{{ item.tituloH3[1] }}</h3>
+    <h3>{{ item.tituloH3[2] }}</h3>
+
+    <hr class="linea-separadora">
+
+    <p>{{ item.periodo }}</p>
+
+    <hr class="linea-separadora">
+
+    <p>{{ item.texto }}</p>
+
+  </div>
+</div>
+
+<div *ngIf="i < items.length-1">
+  <hr>
+</div>
+
