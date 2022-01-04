@@ -1,7 +1,7 @@
 /* --------------HEADER------------------- */
-div{
+/*div{
   border: 1px solid white;
-}
+}*/
 header{
   display: flex;
   flex-wrap: wrap;
@@ -48,13 +48,28 @@ header{
   background-position: 50% 50%;
   background-size: cover;
 }
+
+/* ------------------ Perfil -------------------- */
+.contenedor-perfil-y-nombre{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contenedor-perfil{
+  width: 200px;
+  height: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+  position: relative;
+}
 .perfil{
   margin-top: -100px;
-  margin-left: 25px;
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background: black;
+  flex-grow: 1;
 }
 .foto-perfil{
   width: 180px;
@@ -65,17 +80,22 @@ header{
   background-position: 50% 50%;
   background-size: cover;
 }
+
+/*  ------------------ Acerca de -------------------- */
 .contenedor-acerca-de{
-  display: flex;
-  justify-content: right;
+  flex-grow: 3;
 }
 .acerca-de{
   padding: 15px;
-  width: 639px;
+  /* width: 639px; */
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 600px){
   .header-arriba-derecha{
     display: none;
+  }
+
+  .contenedor-acerca-de{
+    text-align: center;
   }
 }
