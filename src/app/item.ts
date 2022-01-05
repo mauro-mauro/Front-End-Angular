@@ -23,3 +23,19 @@ export const ITEMS = [
     texto: "Colaborador en emprendimiento de modding de gabinetes y accesorios. Diseño y posterior materialización con tecnicas mixtas (aerografo, masilla epoxi, etc)"
   }
 ];
+export const ITEMS_EDUCACION = [
+  {
+    tituloH2: "Licenciado en Bellas Artes",
+    tituloH3: ["Universidad Nacional de Rosario"],
+    url:"../../../assets/imgEducacion/UNR.svg",
+    periodo: "1999 - 2012",
+    texto: ""
+  },
+  {
+    tituloH2: "Técnico en Diseño Grafico y Comunicación Visual",
+    tituloH3: ["Ministerio de Educación y Cultura"],
+    url:"../../../assets/imgEducacion/Diseño.svg",
+    periodo: "2001 - 2010",
+    texto: ""
+  }
+]

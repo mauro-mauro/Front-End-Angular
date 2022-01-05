@@ -1,7 +1,16 @@
 <div class="hoja">
 
   <app-cabecera></app-cabecera>
-  <app-experiencia-educacion></app-experiencia-educacion>
+
+  <app-experiencia-educacion
+        [tituloBarra]="tituloBarraExperiencia"
+        [lista]="items"
+  ></app-experiencia-educacion>
+
+  <app-experiencia-educacion
+        [tituloBarra]="tituloBarraEducacion"
+        [lista]="itemsEducacion"
+  ></app-experiencia-educacion>
 
 
 </div>

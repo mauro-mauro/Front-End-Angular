@@ -4,15 +4,12 @@
       <div class="circulo"></div>
       <div class="circulo"></div>
       <div class="circulo"></div>
-      <h2 class="titulos">Experiencia</h2>
+      <h2 class="titulos">{{ tituloBarra }}</h2>
     </div>
 
   </div>
 
-  <app-item-experiencia-educacion
-    *ngFor="let item of items; let i = index"
-    [item]="item"
-    [i]="i"
-  ></app-item-experiencia-educacion>
+  <app-item-experiencia-educacion *ngFor="let itemLista of lista; let i = index" [item]="itemLista" [i]="i" [lista]="lista">
+  </app-item-experiencia-educacion>
 
 </div>

@@ -31,6 +31,7 @@ header{
 }
 .botonLogin:hover{
   background: #554e4e;
+  transition: 1s;
 }
 .contenedorBotonFace{
   margin-right: 8px;

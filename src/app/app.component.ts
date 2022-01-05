@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
+import { ITEMS, ITEMS_EDUCACION } from './item';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'porfolio';
+  items = ITEMS;
+  itemsEducacion = ITEMS_EDUCACION;
+  tituloBarraExperiencia:String = 'Experiencia';
+  tituloBarraEducacion:String = 'Educacion';
+
 }

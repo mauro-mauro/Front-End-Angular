@@ -7,9 +7,10 @@ import { ITEMS } from '../../item';
   styleUrls: ['./item-experiencia-educacion.component.css']
 })
 export class ItemExperienciaEducacionComponent implements OnInit {
-  @Input() item = ITEMS[0];
+  @Input() lista:any;
+  @Input() item:any;
   @Input() i = 0;
-  items = ITEMS;
+  //items = ITEMS;
 
   constructor() { }
 

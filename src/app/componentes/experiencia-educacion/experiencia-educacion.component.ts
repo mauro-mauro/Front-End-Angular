@@ -7,8 +7,12 @@ import { ITEMS } from 'src/app/item';
   styleUrls: ['./experiencia-educacion.component.css']
 })
 export class ExperienciaEducacionComponent implements OnInit {
-  items = ITEMS;
+  @Input() tituloBarra:any;
+  @Input() lista:any;
+  //items = ITEMS;
   i = 0;
+
+
   constructor() { }
 
   ngOnInit(): void {
