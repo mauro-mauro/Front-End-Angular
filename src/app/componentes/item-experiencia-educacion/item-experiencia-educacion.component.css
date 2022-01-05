@@ -1,22 +1,39 @@
+/* div{
+  border: 1px solid gray;
+} */
 .item-experiencia{
   width: 100%;
   display: flex;
-  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
+}
+.contenedor-logo-item-experiencia{
+  min-width: 150px;
+  max-width: 200px;
+  height: 150px;
+  flex-grow: 1;
 }
 .logo-item-experiencia{
   margin: 20px;
   margin-left: 50px;
   margin-right: 50px;
-  width: 150px;
+  min-width: 150px;
+  max-width: 200px;
   height: 150px;
   background-position: 50%;
   background-size: cover;
+
 }
 .contenido-item-experiencia{
+  display: block;
+  padding: 20px;
+  min-width: 300px;
   margin-top: 20px;
   margin-bottom: 20px;
-  width: 630px;
+  flex-grow: 3;
+  /* width: 630px; */
 }
 
 .linea-separadora{
@@ -31,4 +48,11 @@ h2{
 h3{
   color: rgb(212, 212, 212);
   margin: 4px 0 4px 0;
+}
+
+@media screen and (max-width: 600px) {
+  .item-experiencia{
+    flex-wrap: wrap;
+  }
+
 }

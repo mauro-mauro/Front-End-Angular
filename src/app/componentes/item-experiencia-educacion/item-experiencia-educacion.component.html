@@ -1,5 +1,10 @@
 <div class="item-experiencia">
-  <div class="logo-item-experiencia" style="background-image: url('{{ item.url }}');" ></div>
+  <div *ngIf="item.url !==''">
+    <div class="logo-item-experiencia" style="background-image: url('{{ item.url }}');"></div>
+  </div>
+
+
+
   <div class="contenido-item-experiencia">
     <h2>{{ item.tituloH2 }}</h2>
 
@@ -17,10 +22,10 @@
 
     <p>{{ item.texto }}</p>
 
+
   </div>
 </div>
 
 <div *ngIf="i < items.length-1">
   <hr>
 </div>
-
