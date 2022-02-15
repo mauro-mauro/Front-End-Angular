@@ -1,15 +1,13 @@
 <div class="contenedor-experiencia">
-  <div class="barra-titulos">
-    <div class="contenedor-titulos">
-      <div class="circulo"></div>
-      <div class="circulo"></div>
-      <div class="circulo"></div>
-      <h2 class="titulos">{{ tituloBarra }}</h2>
-    </div>
 
-  </div>
+  <app-barra-titulos
+      [tituloBarra]="tituloBarra"
+      [urlIcono]="urlIcono"
+  ></app-barra-titulos>
 
-  <app-item-experiencia-educacion *ngFor="let itemLista of lista; let i = index" [item]="itemLista" [i]="i" [lista]="lista">
+  <app-item-experiencia-educacion
+    *ngFor="let itemLista of lista; let i = index"
+    [item]="itemLista" [i]="i" [lista]="lista">
   </app-item-experiencia-educacion>
 
 </div>

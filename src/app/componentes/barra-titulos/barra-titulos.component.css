@@ -1,0 +1,17 @@
+.barra-titulos{
+  padding-left: 8px;
+  border-radius: 15px 15px 0 0;
+  background: rgb(134, 134, 134);
+}
+
+.contenedor-titulos{
+  padding-left: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.titulos{
+  margin: 10px;
+  display: inline-block;
+}

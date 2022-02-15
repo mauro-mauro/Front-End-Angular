@@ -1,17 +1,31 @@
 <div class="hoja">
-
+  <!---------------- Cabecera -------------------->
   <app-cabecera></app-cabecera>
 
+  <!---------------- Experiencia -------------------->
   <app-experiencia-educacion
-        [tituloBarra]="tituloBarraExperiencia"
-        [lista]="items"
+      [lista]="items"
+      [tituloBarra]="tituloBarraExperiencia"
+      [urlIcono]="urlIconoExperiencia"
   ></app-experiencia-educacion>
 
+  <!---------------- Educacion -------------------->
   <app-experiencia-educacion
-        [tituloBarra]="tituloBarraEducacion"
-        [lista]="itemsEducacion"
+      [lista]="itemsEducacion"
+      [tituloBarra]="tituloBarraEducacion"
+      [urlIcono]="urlIconoEducacion"
   ></app-experiencia-educacion>
 
+  <app-proyectos
+      [tituloBarra]="tituloBarraProyectos"
+      [urlIcono]="urlIconoProyectos"
+  ></app-proyectos>
+
+  <!---------------- Habilidades -------------------->
+  <app-habilidades
+    [tituloBarra]="tituloBarraHabilidades"
+    [urlIcono]="urlIconoHabilidades"
+  ></app-habilidades>
 
 </div>
 

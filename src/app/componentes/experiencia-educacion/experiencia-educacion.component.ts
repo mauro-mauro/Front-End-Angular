@@ -7,8 +7,10 @@ import { ITEMS } from 'src/app/item';
   styleUrls: ['./experiencia-educacion.component.css']
 })
 export class ExperienciaEducacionComponent implements OnInit {
-  @Input() tituloBarra:any;
   @Input() lista:any;
+  @Input() tituloBarra:any;
+  @Input() urlIcono:any;
+
   //items = ITEMS;
   i = 0;
 
