@@ -1,57 +1,10 @@
-<div>
-  <app-barra-titulos
-      [tituloBarra]="tituloBarra"
-      [urlIcono]="urlIcono"
-  ></app-barra-titulos>
+<div class="contenedor-habilidades">
+  <app-barra-titulos [tituloBarra]="tituloBarra" [urlIcono]="urlIcono"></app-barra-titulos>
 
-  <div>
-    <label>HTML 5</label>
-    <progress min="0" max="100" value="75"></progress>
-  </div>
-  <div>
-    <label>Angular</label>
-    <progress min="0" max="100" value="75"></progress>
-  </div>
+  <app-item-habilidades
+  *ngFor="let temp of items"
+  [item]="temp">
+</app-item-habilidades>
 
-  <div>
-    <label>Type Script</label>
-    <progress min="0" max="100" value="75"></progress>
-  </div>
-
-  <div>
-    <label>Spring</label>
-    <progress min="0" max="100" value="75"></progress>
-  </div>
-
-  <div>
-    <label>Java</label>
-    <progress min="0" max="100" value="75"></progress>
-  </div>
-
-  <div>
-    <label>PHP</label>
-    <progress min="0" max="100" value="75"></progress>
-  </div>
-
-  <div>
-    <label>VBA</label>
-    <progress min="0" max="100" value="75"></progress>
-  </div>
-
-  <div>
-    <label>Python</label>
-    <progress min="0" max="100" value="75"></progress>
-  </div>
-
-  <div>
-    <label>Android</label>
-    <progress min="0" max="100" value="75"></progress>
-  </div>
-
-  <div>
-    <label>Visual Studio .NET</label>
-    <progress min="0" max="100" value="75"></progress>
-  </div>
 
 </div>
-

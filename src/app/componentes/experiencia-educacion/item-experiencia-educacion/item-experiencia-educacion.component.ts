@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ITEMS } from '../../item';
 
 @Component({
   selector: 'app-item-experiencia-educacion',
@@ -10,7 +9,6 @@ export class ItemExperienciaEducacionComponent implements OnInit {
   @Input() lista:any;
   @Input() item:any;
   @Input() i = 0;
-  //items = ITEMS;
 
   constructor() { }
 

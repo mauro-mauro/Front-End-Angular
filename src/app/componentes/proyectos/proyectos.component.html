@@ -3,4 +3,9 @@
       [urlIcono]="urlIcono"
   ></app-barra-titulos>
 
-  <div>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut esse odit minima magnam vero quidem quo numquam dignissimos accusamus accusantium, eveniet commodi animi reprehenderit recusandae vel cum. Culpa, veritatis eius!</div>
+  <app-item-proyecto
+    *ngFor="let item of items; let i = index"
+    [item]="item"
+    [i]="i"
+    [lista]="items"
+  ></app-item-proyecto>

@@ -1,0 +1,21 @@
+  <div class="contendor-habilidades">
+
+    <div class="plataforma">
+      <h4>{{ item.plataforma}}</h4>
+    </div>
+
+    <div class="items-habilidad">
+      <hr class="linea-separadora">
+      <div *ngFor="let itemTemp of item.items">
+        <div>
+          <h5 class="habilidad">{{ itemTemp.habilidad }}</h5>
+        </div>
+        <div >
+          <progress class="porcentaje" min="0" max="100" value="{{itemTemp.porcentaje}}"></progress>
+        </div>
+        <hr class="linea-separadora">
+      </div>
+    </div>
+  </div>
+  <hr>
+<!-- Fin contenedor -->

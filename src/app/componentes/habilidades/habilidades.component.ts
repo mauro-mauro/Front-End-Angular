@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ITEMS_HABILIDADES } from 'src/app/item';
 
 @Component({
   selector: 'app-habilidades',
@@ -9,7 +10,11 @@ export class HabilidadesComponent implements OnInit {
   @Input() tituloBarra:any;
   @Input() urlIcono:any;
 
-  constructor() { }
+  items:any;
+
+  constructor() {
+    this.items = ITEMS_HABILIDADES;
+   }
 
   ngOnInit(): void {
   }
