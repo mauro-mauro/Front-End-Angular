@@ -36,9 +36,31 @@
   margin-bottom: 10px;
 }
 
+/* For Firefox */
+progress::-moz-progress-bar {
+  background: blue;
+}
+
+/* For Chrome or Safari */
+progress::-webkit-progress-value {
+  background: blue;
+}
+
+/* For IE10 */
+progress {
+  background: blue;
+}
+
 .linea-separadora{
   color: rgb(75, 74, 74);
   width: 98%;
+}
+
+@media screen and (max-width: 600px) {
+  .contendor-habilidades{
+    flex-wrap: wrap;
+  }
+
 }
 /* div{
   border: 1px solid white;

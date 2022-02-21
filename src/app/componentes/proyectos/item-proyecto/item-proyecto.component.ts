@@ -10,9 +10,21 @@ export class ItemProyectoComponent implements OnInit {
   @Input() lista:any;
   @Input() i :any;
 
+  verModal:boolean=false;
+  urlImagenModal:String="";
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  activarModal(url:String){
+    this.verModal = true;
+    this.urlImagenModal = url;
+  }
+
+  desactivarModal(){
+    this.verModal = false;
   }
 
 }
