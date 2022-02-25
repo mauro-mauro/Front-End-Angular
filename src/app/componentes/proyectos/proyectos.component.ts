@@ -7,10 +7,11 @@ import { ITEMS_PROYECTOS } from 'src/app/item';
   styleUrls: ['./proyectos.component.css']
 })
 export class ProyectosComponent implements OnInit {
+  @Input() lista:any;
   @Input() tituloBarra:any;
   @Input() urlIcono:any;
 
-  items:any = ITEMS_PROYECTOS;
+  //items:any = ITEMS_PROYECTOS;
 
   constructor() { }
 

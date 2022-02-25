@@ -7,14 +7,43 @@ import { Observable } from 'rxjs';
 })
 export class ConsultaDBService {
 
-  private apiUrl = "http://localhost:8080";
+  private apiUrl: String = "http://localhost:8080";
+  private apiUrlDatoPersonal: String = `${this.apiUrl}/dato-personal`;
+  private apiUrlExperiencia: String = `${this.apiUrl}/experiencia`;
+  private apiUrlEducacion: String = `${this.apiUrl}/educacion`;
+  private apiUrlProyecto: String = `${this.apiUrl}/proyecto`;
+  private apiUrlHabilidad: String = `${this.apiUrl}/habilidad`;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  obtenerExperiencia(): Observable<any[]>{
-    let header = new HttpHeaders()
-    .set('Type-content', 'aplication/json')
-    return this.http.get<any[]>(this.apiUrl + '/listar/experiencia', {headers:header});
+  //-------------------------------Datos Personales---------------------------------------------
+
+  //-------------------------------Experiencia---------------------------------------------
+  obtenerExperiencia(): Observable<any[]> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json')
+
+    return this.http.get<any[]>(`${this.apiUrlExperiencia}/listar`, { headers: header });
+  }
+
+  //-------------------------------Educacion---------------------------------------------
+  obtenerEducacion(): Observable<any[]> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json')
+
+    return this.http.get<any[]>(`${this.apiUrlEducacion}/listar`, { headers: header });
+  }
+
+  //-------------------------------Proyectos---------------------------------------------
+  obtenerProyecto(): Observable<any[]> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json')
+
+    return this.http.get<any[]>(`${this.apiUrlProyecto}/listar`, { headers: header });
+  }
+
+  //-------------------------------Habilidades---------------------------------------------
+  obtenerHabilidad(): Observable<any[]> {
+    let header = new HttpHeaders().set('Type-content', 'aplication/json')
+
+    return this.http.get<any[]>(`${this.apiUrlHabilidad}/listar`, { headers: header });
   }
 
 }

@@ -4,7 +4,7 @@
 
   <!---------------- Experiencia -------------------->
   <app-experiencia-educacion
-      [lista]="items"
+      [lista]="itemsExperiencia"
       [tituloBarra]="tituloBarraExperiencia"
       [urlIcono]="urlIconoExperiencia"
   ></app-experiencia-educacion>
@@ -17,12 +17,14 @@
   ></app-experiencia-educacion>
 
   <app-proyectos
+      [lista]="itemsProyecto"
       [tituloBarra]="tituloBarraProyectos"
       [urlIcono]="urlIconoProyectos"
   ></app-proyectos>
 
   <!---------------- Habilidades -------------------->
   <app-habilidades
+    [lista]="itemsHabilidad"
     [tituloBarra]="tituloBarraHabilidades"
     [urlIcono]="urlIconoHabilidades"
   ></app-habilidades>

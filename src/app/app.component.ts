@@ -9,8 +9,12 @@ import { ConsultaDBService } from './servicios/consulta-db.service';
 })
 export class AppComponent implements OnInit{
   title = 'porfolio';
-  items = ITEMS;
-  itemsEducacion = ITEMS_EDUCACION;
+  //items = ITEMS;
+  //itemsEducacion = ITEMS_EDUCACION;
+  itemsExperiencia:Array<any>=[];
+  itemsEducacion:Array<any>=[];
+  itemsProyecto:Array<any>=[];
+  itemsHabilidad:Array<any>=[];
 
   tituloBarraExperiencia:String = 'Experiencia';
   tituloBarraEducacion:String = 'Educacion';
@@ -22,15 +26,34 @@ export class AppComponent implements OnInit{
   urlIconoProyectos:String = 'assets/imgEducacion/iconoProyectos.svg';
   urlIconoHabilidades:String = 'assets/imgEducacion/iconoHabilidades.svg';
 
-  itemsExperiencia:Array<any>=[];
 
   constructor(private servicioConsultaDB:ConsultaDBService) { }
 
   ngOnInit(): void {
-    this.servicioConsultaDB.obtenerExperiencia().subscribe( (itemsExperiencia:any) => {
-      this.itemsExperiencia = itemsExperiencia
-      console.log(itemsExperiencia);
-    } );
-
+    this.initItemsExperiencia();
+    this.initItemsEducacion();
+    this.initItemsProyecto();
+    this.initItemsHabilidad();
   }
+
+  initItemsExperiencia(){
+    this.servicioConsultaDB.obtenerExperiencia()
+          .subscribe((itemsExperiencia:any) => this.itemsExperiencia = itemsExperiencia);
+  }
+
+  initItemsEducacion(){
+    this.servicioConsultaDB.obtenerEducacion()
+          .subscribe((itemsEducacion:any) => this.itemsEducacion = itemsEducacion);
+  }
+
+  initItemsProyecto(){
+    this.servicioConsultaDB.obtenerProyecto()
+          .subscribe((itemsProyecto:any) => this.itemsProyecto = itemsProyecto);
+  }
+
+  initItemsHabilidad(){
+    this.servicioConsultaDB.obtenerHabilidad()
+          .subscribe((itemsHabilidad:any) => this.itemsHabilidad = itemsHabilidad);
+  }
+
 }

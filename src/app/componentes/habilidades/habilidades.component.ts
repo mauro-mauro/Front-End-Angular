@@ -7,14 +7,15 @@ import { ITEMS_HABILIDADES } from 'src/app/item';
   styleUrls: ['./habilidades.component.css']
 })
 export class HabilidadesComponent implements OnInit {
-  @Input() tituloBarra:any;
-  @Input() urlIcono:any;
+  @Input() lista: any;
+  @Input() tituloBarra: any;
+  @Input() urlIcono: any;
 
-  items:any;
+  //items: any;
 
   constructor() {
-    this.items = ITEMS_HABILIDADES;
-   }
+    //this.items = ITEMS_HABILIDADES;
+  }
 
   ngOnInit(): void {
   }
