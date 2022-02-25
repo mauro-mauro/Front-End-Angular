@@ -1,16 +1,14 @@
 <div class="item-experiencia">
-  <div *ngIf="item.url !==''">
+  <div *ngIf="item.url !== ''">
     <div class="logo-item-experiencia" style="background-image: url('{{ item.url }}');"></div>
   </div>
 
   <div class="contenido-item-experiencia">
-    <h2>{{ item.tituloH2 }}</h2>
+    <h2>{{ item.titulo }}</h2>
 
     <hr class="linea-separadora">
 
-    <h3>{{ item.tituloH3[0] }}</h3>
-    <h3>{{ item.tituloH3[1] }}</h3>
-    <h3>{{ item.tituloH3[2] }}</h3>
+    <h3>{{ item.lugar }}</h3>
 
     <hr class="linea-separadora">
 

@@ -11,6 +11,7 @@ import { BarraTitulosComponent } from './componentes/barra-titulos/barra-titulos
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
 import { ItemHabilidadesComponent } from './componentes/habilidades/item-habilidades/item-habilidades.component';
 import { ItemProyectoComponent } from './componentes/proyectos/item-proyecto/item-proyecto.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ItemProyectoComponent } from './componentes/proyectos/item-proyecto/ite
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
