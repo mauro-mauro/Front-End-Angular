@@ -38,17 +38,17 @@
 
 /* For Firefox */
 progress::-moz-progress-bar {
-  background: blue;
+  background: 304784;
 }
 
 /* For Chrome or Safari */
 progress::-webkit-progress-value {
-  background: blue;
+  background: 304784;
 }
 
 /* For IE10 */
 progress {
-  background: blue;
+  background: 304784;
 }
 
 .linea-separadora{

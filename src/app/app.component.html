@@ -1,34 +1,5 @@
 <div class="hoja">
-  <!---------------- Cabecera -------------------->
-  <app-cabecera></app-cabecera>
-
-  <!---------------- Experiencia -------------------->
-  <app-experiencia-educacion
-      [lista]="itemsExperiencia"
-      [tituloBarra]="tituloBarraExperiencia"
-      [urlIcono]="urlIconoExperiencia"
-  ></app-experiencia-educacion>
-
-  <!---------------- Educacion -------------------->
-  <app-experiencia-educacion
-      [lista]="itemsEducacion"
-      [tituloBarra]="tituloBarraEducacion"
-      [urlIcono]="urlIconoEducacion"
-  ></app-experiencia-educacion>
-
-  <app-proyectos
-      [lista]="itemsProyecto"
-      [tituloBarra]="tituloBarraProyectos"
-      [urlIcono]="urlIconoProyectos"
-  ></app-proyectos>
-
-  <!---------------- Habilidades -------------------->
-  <app-habilidades
-    [lista]="itemsHabilidad"
-    [tituloBarra]="tituloBarraHabilidades"
-    [urlIcono]="urlIconoHabilidades"
-  ></app-habilidades>
-
+  <router-outlet></router-outlet>
 </div>
 
-<router-outlet></router-outlet>
+
