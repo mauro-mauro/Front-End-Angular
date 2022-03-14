@@ -3,13 +3,12 @@
 } */
 
 .contenedor-login{
-  min-width: 600px;
+  width: 100%;
   background:#343434;
   padding-bottom: 10px;
 }
 
 .contenedor-cabecera-login{
-  width: 100%;
   display: flex;
 }
 
@@ -49,3 +48,9 @@ button{
 .btn-cancelar{
   background: darkgray;
 }
+
+/* @media screen and (max-width: 600px) {
+  .contenedor-login{
+    width: 100%;
+  }
+} */

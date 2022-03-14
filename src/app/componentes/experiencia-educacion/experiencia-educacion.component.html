@@ -6,8 +6,13 @@
   ></app-barra-titulos>
 
   <app-item-experiencia-educacion
+    [IsLogin]="IsLogin"
     *ngFor="let itemLista of lista; let i = index"
     [item]="itemLista" [i]="i" [lista]="lista">
   </app-item-experiencia-educacion>
+
+  <div class="boton-edicion" *ngIf="IsLogin">
+    <img src="../../../../assets/imgPagina/icono-agregar.svg" class="icono-agregar">
+  </div>
 
 </div>

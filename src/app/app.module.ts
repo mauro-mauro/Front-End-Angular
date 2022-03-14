@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Output } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { ItemProyectoComponent } from './componentes/proyectos/item-proyecto/ite
 import { HttpClientModule } from '@angular/common/http';
 import { BannerLoginComponent } from './componentes/banner-login/banner-login.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,8 +33,10 @@ import { HomeComponent } from './componentes/home/home.component';
   ],
   imports: [
     BrowserModule,
+    ToastrModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,6 +11,8 @@ export class ExperienciaEducacionComponent implements OnInit {
   @Input() tituloBarra:any;
   @Input() urlIcono:any;
 
+  @Input() IsLogin;
+
   //items = ITEMS;
   i = 0;
 

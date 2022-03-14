@@ -1,8 +1,10 @@
 <!---------------- Cabecera -------------------->
-<app-cabecera></app-cabecera>
-
+<app-cabecera
+    (IsLogin)="IsLogin($event)"
+></app-cabecera>
 <!---------------- Experiencia -------------------->
 <app-experiencia-educacion
+    [IsLogin]="isLogin"
     [lista]="itemsExperiencia"
     [tituloBarra]="tituloBarraExperiencia"
     [urlIcono]="urlIconoExperiencia"

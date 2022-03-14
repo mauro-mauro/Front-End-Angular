@@ -6,12 +6,17 @@
       </div>
     </div>
     <nav class="header-arriba-derecha">
-      <div class="botonLogin" routerLink="/login">Loguin</div>
-      <div class="contenedorBotonFace">
-        <img width="30px" height="30px" src="../../../assets/imgCabecera/logoFace.png" alt="">
+      <div class="botones-menu" #botonesMenu>
+        <button class="botonLogin" (click)="onLogin()" #botonLogin>{{ logInLogOut }}</button> <!-- routerLink="/login"  -->
+        <div class="contenedor-boton-face">
+          <img width="30px" height="30px" src="../../../assets/imgCabecera/logoFace.png" alt="">
+        </div>
+        <div class="contenedor-boton-gitHub">
+          <img height="30px" src="../../../assets/imgCabecera/logoGitHub.svg" alt="">
+        </div>
       </div>
-      <div class="contenedor-boton-gitHub">
-        <img height="30px" src="../../../assets/imgCabecera/logoGitHub.svg" alt="">
+      <div class="contenedor-boton-menu" (click)="accionMenu()">
+        <img src="../../../assets/imgCabecera/icono-menu.svg" alt="">
       </div>
     </nav>
   </div>

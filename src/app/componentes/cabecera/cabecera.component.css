@@ -13,31 +13,48 @@ header{
   display: flex;
   justify-content: space-between;
 }
-.contenedorArgProg{
 
-}
 .header-arriba-derecha{
-  height: 50px;
-
   display: flex;
   flex-flow: row;
   align-items: center;
   flex-direction: row-reverse;
 }
+
+.contenedor-boton-menu{
+  display: none;
+}
+
 .botonLogin{
-  padding: 8px;
-  margin-right: 20px;
+  height: 50px;
+  width: 90px;
+  border: 0;
+  background: transparent;
+  color: rgb(199, 199, 199);
+  font-weight: bold;
+  font-size: large;
+
+  text-align: center;
+  vertical-align: middle;
+
   cursor: pointer;
 }
 .botonLogin:hover{
   background: #554e4e;
   transition: 1s;
 }
-.contenedorBotonFace{
+.contenedor-boton-face,
+.contenedor-boton-gitHub{
   margin-right: 8px;
-  padding: 5px;
   cursor: pointer;
 }
+
+.botones-menu{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
 .contenedor-portada{
   width: 100%;
 }
@@ -93,7 +110,36 @@ header{
 
 @media screen and (max-width: 600px){
   .header-arriba-derecha{
+    right: 0;
+    flex-flow: column-reverse;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .contenedor-boton-menu{
+    display: block;
+    height: 50px;
+    width: 90px;
+
+    cursor: pointer;
+  }
+
+  .contenedor-boton-gitHub,
+  .contenedor-boton-face,
+  .botonLogin{
+    height: 50px;
+    width: 90px;
+    background: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .botones-menu{
     display: none;
+    flex-direction: column-reverse;
   }
 
   .contenedor-acerca-de{

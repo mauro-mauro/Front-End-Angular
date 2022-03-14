@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ConsultaDBService {
 
-  private apiUrl: String = "http://localhost:8080";
+  private apiUrl: String = "http://192.168.1.3:8080";
   private apiUrlDatoPersonal: String = `${this.apiUrl}/dato-personal`;
   private apiUrlExperiencia: String = `${this.apiUrl}/experiencia`;
   private apiUrlEducacion: String = `${this.apiUrl}/educacion`;
