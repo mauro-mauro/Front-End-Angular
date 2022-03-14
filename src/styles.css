@@ -35,6 +35,7 @@ body{
 .botones-edicion{
   position: absolute;
   display: flex;
+  flex-direction: row;
   top: 0;
   right: 0;
 }
@@ -45,14 +46,35 @@ body{
   cursor: pointer;
   opacity: 0.8;
   width: 60px;
+  height: 60px;
   right: 20px;
+  background-size: 60px;
 }
 
 .icono-editar{
+  background-image: url("assets/imgPagina/icono-editar.svg");
   top: 20px;
+}
+
+.icono-editar:hover{
+  background-image: url("assets/imgPagina/icono-editar-hover.svg");
+}
+
+.icono-cerrar{
+  top: 20px;
+  background-image: url("assets/imgPagina/icono-cerrar.svg");
+}
+
+.icono-cerrar:hover{
+  background-image: url("assets/imgPagina/icono-cerrar-hover.svg");
 }
 
 .icono-agregar{
   position: absolute;
+  background-image: url("assets/imgPagina/icono-agregar.svg");
   bottom: 5px;
+}
+
+.icono-agregar:hover{
+  background-image: url("assets/imgPagina/icono-agregar-hover.svg");
 }

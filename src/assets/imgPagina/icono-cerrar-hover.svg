@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 31.749999 31.750001"
+   height="120"
+   width="120">
+  <defs
+     id="defs2" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="translate(0,-265.24998)"
+     id="layer1">
+    <circle
+       transform="rotate(-45)"
+       r="15.554277"
+       cy="210.0107"
+       cx="-187.56006"
+       id="path957"
+       style="fill:#212121;fill-opacity:1;stroke:none;stroke-width:1.37828708;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <path
+       d="m 79.484375,31.341797 c -0.96475,-0.0011 -1.928899,0.355907 -2.648437,1.076172 L 59.996094,49.255859 43.162109,32.421875 c -1.439021,-1.439017 -3.853921,-1.439055 -5.292968,0 l -5.44336,5.445313 c -1.43905,1.439055 -1.444867,3.857857 -0.0059,5.296874 L 49.253906,59.998047 32.419922,76.832031 c -1.439077,1.439055 -1.439077,3.865595 0,5.304688 l 5.445312,5.443359 c 1.439048,1.439055 3.863657,1.439093 5.302735,0 L 60.001953,70.746094 76.835938,87.580078 c 1.439051,1.439055 3.857823,1.433713 5.296874,-0.0039 l 5.445313,-5.44336 c 1.439051,-1.439055 1.439051,-3.853913 0,-5.292968 L 70.742188,60.003906 87.582031,43.164062 c 1.439078,-1.439092 1.435225,-3.857819 -0.0039,-5.296874 L 82.132812,32.421875 C 81.413274,31.702329 80.449125,31.342921 79.484375,31.341797 Z M 23.577751,23.580359 c -20.0904206,20.09042 -20.0903938,52.746483 2.7e-5,72.836902 20.090393,20.090379 52.746433,20.090419 72.836853,0 20.090419,-20.090419 20.090419,-52.746482 3e-5,-72.836902 -20.090423,-20.0904188 -52.74649,-20.0904188 -72.83691,0 z m 3.862634,3.86264 c 18.002962,-18.0029485 47.108654,-18.0029107 65.111614,3.8e-5 18.002931,18.002948 18.002961,47.108636 0,65.111585 -18.002933,18.002948 -47.108652,18.002948 -65.111588,0 C 9.4374502,74.551673 9.437477,45.445985 27.440385,27.442999 Z"
+       style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:normal;word-spacing:normal;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#fd8678;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:4.64923573;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+       transform="matrix(0.26458333,0,0,0.26458333,0,265.24998)"
+       id="rect940" />
+  </g>
+</svg>

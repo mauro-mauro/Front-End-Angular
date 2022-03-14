@@ -16,6 +16,7 @@
   flex-grow: 1;
 }
 .logo-item-experiencia{
+  cursor: pointer;
   margin: 20px;
   margin-left: 50px;
   margin-right: 50px;
@@ -70,6 +71,7 @@ h3{
   width: 100%;
 }
 .imagen{
+  cursor: pointer;
   display: block;
   background: rgba(0,0,0,0.4);
   padding: 20px;
