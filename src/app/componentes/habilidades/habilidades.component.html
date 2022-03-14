@@ -1,10 +1,20 @@
 <div class="contenedor-habilidades">
-  <app-barra-titulos [tituloBarra]="tituloBarra" [urlIcono]="urlIcono"></app-barra-titulos>
+
+  <app-barra-titulos
+      [tituloBarra]="tituloBarra"
+      [urlIcono]="urlIcono"
+  ></app-barra-titulos>
 
   <app-item-habilidades
-  *ngFor="let temp of lista"
-  [item]="temp">
-</app-item-habilidades>
+    *ngFor="let temp of lista"
+    [item]="temp"
+    [IsLogin]="IsLogin"
+  ></app-item-habilidades>
 
+  <!-- -------------------------------- Boton Edicion ------------------------------------- -->
+  <div class="contenedor-botones-edicion" *ngIf="IsLogin">
+    <img src="../../../../assets/imgPagina/icono-agregar.svg" class="icono-agregar">
+  </div>
+  <!-- ------------------------------ Fin Boton Edicion ------------------------------------- -->
 
 </div>

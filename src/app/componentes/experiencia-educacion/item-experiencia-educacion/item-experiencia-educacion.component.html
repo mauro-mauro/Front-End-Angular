@@ -1,6 +1,11 @@
-<div class="boton-edicion">
+<!-- --------------------------------------------Botones Edicion------------------------------------------------ -->
+<div class="contenedor-botones-edicion" *ngIf="IsLogin">
+  <div class="botones-edicion">
     <img src="../../../../assets/imgPagina/icono-editar.svg" (click)="onEditar()" class="icono-editar">
+    <img src="../../../../assets/imgPagina/icono-cerrar.svg" class="icono-cerrar">
+  </div>
 </div>
+<!-- -----------------------------------------Fin Botones Edicion------------------------------------------------ -->
 
 <div class="item-experiencia">
   <div *ngIf="item.url !== null">
@@ -28,4 +33,3 @@
 <div *ngIf="i < lista.length-1">
   <hr>
 </div>
-

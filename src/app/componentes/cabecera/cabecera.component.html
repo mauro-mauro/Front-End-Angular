@@ -1,4 +1,6 @@
 <header>
+
+
   <div class="header-arriba">
     <div class="header-arriba-izquierda">
       <div class="contenedorArgProg">
@@ -7,7 +9,8 @@
     </div>
     <nav class="header-arriba-derecha">
       <div class="botones-menu" #botonesMenu>
-        <button class="botonLogin" (click)="onLogin()" #botonLogin>{{ logInLogOut }}</button> <!-- routerLink="/login"  -->
+        <button class="botonLogin" (click)="onLogin()" #botonLogin>{{ logInLogOut }}</button>
+        <!-- routerLink="/login"  -->
         <div class="contenedor-boton-face">
           <img width="30px" height="30px" src="../../../assets/imgCabecera/logoFace.png" alt="">
         </div>
@@ -19,6 +22,13 @@
         <img src="../../../assets/imgCabecera/icono-menu.svg" alt="">
       </div>
     </nav>
+  </div>
+
+  <!-- ----------------------------------Boton Edicion----------------------------------------- -->
+  <div class="contenedor-botones-edicion" *ngIf="isLogin">
+    <div class="botones-edicion">
+      <img src="../../../../assets/imgPagina/icono-editar.svg" class="icono-editar">
+    </div>
   </div>
 
   <div class="contenedor-portada centrar-contenido">

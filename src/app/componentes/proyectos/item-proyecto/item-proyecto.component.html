@@ -1,3 +1,12 @@
+<!-- --------------------------------------------Botones Edicion------------------------------------------------ -->
+<div class="contenedor-botones-edicion" *ngIf="IsLogin">
+  <div class="botones-edicion">
+    <img src="../../../../assets/imgPagina/icono-editar.svg" class="icono-editar">
+    <img src="../../../../assets/imgPagina/icono-cerrar.svg" class="icono-cerrar">
+  </div>
+</div>
+<!-- -----------------------------------------Fin Botones Edicion------------------------------------------------ -->
+
 <div class="item-experiencia">
   <div *ngIf="item.url !==''">
     <div (click)="activarModal(item.url)" class="logo-item-experiencia"

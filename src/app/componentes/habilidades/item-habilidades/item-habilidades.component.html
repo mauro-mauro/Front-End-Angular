@@ -1,20 +1,28 @@
-  <div class="contendor-habilidades">
+<!-- --------------------------------------------Botones Edicion------------------------------------------------ -->
+<div class="contenedor-botones-edicion" *ngIf="IsLogin">
+  <div class="botones-edicion">
+    <img src="../../../../assets/imgPagina/icono-editar.svg" class="icono-editar">
+    <img src="../../../../assets/imgPagina/icono-cerrar.svg" class="icono-cerrar">
+  </div>
+</div>
+<!-- -----------------------------------------Fin Botones Edicion------------------------------------------------ -->
 
-    <div class="plataforma">
-      <h4>{{ item.plataforma}}</h4>
-    </div>
+<div class="contendor-habilidades">
+  <div class="plataforma">
+    <h4>{{ item.plataforma}}</h4>
+  </div>
 
-    <div class="items-habilidad">
-      <hr class="linea-separadora">
-      <div *ngFor="let itemTemp of item.listaHabilidad">
-        <div>
-          <h5 class="habilidad">{{ itemTemp.habilidad }}</h5>
-        </div>
-        <div >
-          <progress class="porcentaje" min="0" max="100" value="{{itemTemp.porcentaje}}"></progress>
-        </div>
-        <hr class="linea-separadora">
+  <div class="items-habilidad">
+    <hr class="linea-separadora">
+    <div *ngFor="let itemTemp of item.listaHabilidad">
+      <div>
+        <h5 class="habilidad">{{ itemTemp.habilidad }}</h5>
       </div>
+      <div>
+        <progress class="porcentaje" min="0" max="100" value="{{itemTemp.porcentaje}}"></progress>
+      </div>
+      <hr class="linea-separadora">
     </div>
   </div>
-  <hr>
+</div>
+<hr>

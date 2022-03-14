@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-cabecera',
@@ -11,7 +11,7 @@ export class CabeceraComponent implements OnInit {
   @ViewChild("botonLogin") botonLogin: ElementRef | undefined;
   @ViewChild("botonesMenu") botonesMenu: ElementRef | undefined;
 
-  private isLogin: boolean = false;
+  isLogin: boolean = false;
   logInLogOut: string = this.isLogin ? "Log Out" : "Login";
 
   private esVisibleBotonMenu: boolean = true;

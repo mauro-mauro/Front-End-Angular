@@ -12,12 +12,14 @@
 
 <!---------------- Educacion -------------------->
 <app-experiencia-educacion
+    [IsLogin]="isLogin"
     [lista]="itemsEducacion"
     [tituloBarra]="tituloBarraEducacion"
     [urlIcono]="urlIconoEducacion"
 ></app-experiencia-educacion>
 
 <app-proyectos
+    [IsLogin]="isLogin"
     [lista]="itemsProyecto"
     [tituloBarra]="tituloBarraProyectos"
     [urlIcono]="urlIconoProyectos"
@@ -25,7 +27,8 @@
 
 <!---------------- Habilidades -------------------->
 <app-habilidades
-  [lista]="itemsHabilidad"
-  [tituloBarra]="tituloBarraHabilidades"
-  [urlIcono]="urlIconoHabilidades"
+    [IsLogin]="isLogin"
+    [lista]="itemsHabilidad"
+    [tituloBarra]="tituloBarraHabilidades"
+    [urlIcono]="urlIconoHabilidades"
 ></app-habilidades>
