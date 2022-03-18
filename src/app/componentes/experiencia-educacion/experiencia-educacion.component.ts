@@ -19,7 +19,8 @@ export class ExperienciaEducacionComponent implements OnInit {
   i = 0;
 
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit(): void {
   }

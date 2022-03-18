@@ -20,14 +20,18 @@ export class ConsultaDBService {
   //-------------------------------Datos Personales---------------------------------------------
 
   //-------------------------------Experiencia---------------------------------------------
-  obtenerExperiencia(): Observable<any[]> {
+  public obtenerExperiencia(): Observable<any[]> {
     let header = new HttpHeaders().set('Type-content', 'aplication/json')
 
     return this.http.get<any[]>(`${this.apiUrlExperiencia}/listar`, { headers: header });
   }
 
-  guardarExperiencia(experienciaEducacion: ExperienciaEducacion):Observable<any>{
+  public guardarExperiencia(experienciaEducacion: ExperienciaEducacion):Observable<any>{
     return this.http.post<any>(`${this.apiUrlExperiencia}/nuevo`,experienciaEducacion);
+  }
+
+  public borrarExperiencia(id: number): Observable<any> {
+    return this.http.delete<any>(this.apiUrlExperiencia + `/borrar/${id}`);
   }
 
   //-------------------------------Educacion---------------------------------------------

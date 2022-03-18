@@ -7,6 +7,7 @@
   ></app-barra-titulos>
 
   <app-item-experiencia-educacion
+    [tituloBarra]="tituloBarra"
     [IsLogged]="IsLogged"
     *ngFor="let itemLista of lista; let i = index"
     [item]="itemLista" [i]="i" [lista]="lista">
@@ -15,7 +16,7 @@
   <!-- -------------------------------- Boton Edicion ------------------------------------- -->
   <div class="contenedor-botones-edicion" *ngIf="IsLogged">
     <button>
-      <a [routerLink]="['/editar-experiencia-educacion','Agregar experiencia']">
+      <a [routerLink]="['/editar-experiencia-educacion', 'Agregar ' + tituloBarra]">
       <div class="icono-agregar" ></div>
     </a>
     </button>

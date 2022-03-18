@@ -42,7 +42,7 @@ body{
 
 .icono-editar,
 .icono-agregar,
-.icono-cerrar{
+.icono-eliminar{
   cursor: pointer;
   opacity: 0.8;
   width: 60px;
@@ -60,13 +60,13 @@ body{
   background-image: url("assets/imgPagina/icono-editar-hover.svg");
 }
 
-.icono-cerrar{
+.icono-eliminar{
   top: 20px;
-  background-image: url("assets/imgPagina/icono-cerrar.svg");
+  background-image: url("assets/imgPagina/icono-eliminar.svg");
 }
 
-.icono-cerrar:hover{
-  background-image: url("assets/imgPagina/icono-cerrar-hover.svg");
+.icono-eliminar:hover{
+  background-image: url("assets/imgPagina/icono-eliminar-hover.svg");
 }
 
 .icono-agregar{

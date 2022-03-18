@@ -35,6 +35,14 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   onSubmit(){
     const experienciaEducacion = new ExperienciaEducacion(this.ocupacion, this.lugar,
                                               this.periodo, this.descripcion, this.url);
+    if(this.accion==='Agregar Experiencia'){
+      this.guardarExperiencia(experienciaEducacion);
+    }
+
+    console.log(this.accion);
+  }
+
+  guardarExperiencia(experienciaEducacion:ExperienciaEducacion){
     this.servicioDBConsulta.guardarExperiencia(experienciaEducacion).subscribe(
       data => {
         this.toastr.success('Experiencia Creada', 'OK', {
@@ -43,7 +51,7 @@ export class EditarExperienciaEducacionComponent implements OnInit {
         this.router.navigate(['/']);
       },
       err => {
-        this.toastr.error("err.error.mensaje", 'Fail', {
+        this.toastr.error(err.error.mensaje, 'Fail', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
         // this.router.navigate(['/']);

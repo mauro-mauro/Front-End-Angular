@@ -1,8 +1,14 @@
 <!-- --------------------------------------------Botones Edicion------------------------------------------------ -->
 <div class="contenedor-botones-edicion" *ngIf="IsLogged">
   <div class="botones-edicion">
-    <div (click)="onEditar()" class="icono-editar"></div>
-    <div class="icono-cerrar"></div>
+
+    <button (click)="onEditar()">
+      <div class="icono-editar"></div>
+    </button>
+
+    <button (click)="onEliminar(tituloBarra, item.id)">
+      <div class="icono-eliminar"></div>
+    </button>
   </div>
 </div>
 <!-- -----------------------------------------Fin Botones Edicion------------------------------------------------ -->
