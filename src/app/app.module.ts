@@ -16,6 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BannerLoginComponent } from './componentes/banner-login/banner-login.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { FormsModule } from '@angular/forms';
+import { EditarExperienciaEducacionComponent } from './componentes/experiencia-educacion/editar-experiencia-educacion/editar-experiencia-educacion.component';
+import { interceptorProvider } from './interceptors/interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,16 +32,18 @@ import { FormsModule } from '@angular/forms';
     ItemHabilidadesComponent,
     ItemProyectoComponent,
     BannerLoginComponent,
-    HomeComponent
+    HomeComponent,
+    EditarExperienciaEducacionComponent
   ],
   imports: [
     BrowserModule,
     ToastrModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

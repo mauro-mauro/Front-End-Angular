@@ -10,7 +10,7 @@ export class ItemProyectoComponent implements OnInit {
   @Input() lista:any;
   @Input() i :any;
 
-  @Input() IsLogin;
+  @Input() IsLogged;
 
   verModal:boolean=false;
   urlImagenModal:String="";

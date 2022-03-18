@@ -11,7 +11,7 @@ export class HabilidadesComponent implements OnInit {
   @Input() tituloBarra: any;
   @Input() urlIcono: any;
 
-  @Input() IsLogin;
+  @Input() IsLogged;
 
   //items: any;
 

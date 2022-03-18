@@ -7,11 +7,13 @@ import { ITEMS } from 'src/app/item';
   styleUrls: ['./experiencia-educacion.component.css']
 })
 export class ExperienciaEducacionComponent implements OnInit {
-  @Input() lista:any;
-  @Input() tituloBarra:any;
-  @Input() urlIcono:any;
+  @Input() lista: any;
+  @Input() tituloBarra: any;
+  @Input() urlIcono: any;
 
-  @Input() IsLogin;
+  @Input() IsLogged;
+
+  modoAgregar: boolean = false;
 
   //items = ITEMS;
   i = 0;
@@ -21,5 +23,7 @@ export class ExperienciaEducacionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  onAdd() {
+    this.modoAgregar = true;
+  }
 }

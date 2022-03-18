@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
+import { ExperienciaEducacion } from '../modelos/experiencia-educacion';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class ConsultaDBService {
     let header = new HttpHeaders().set('Type-content', 'aplication/json')
 
     return this.http.get<any[]>(`${this.apiUrlExperiencia}/listar`, { headers: header });
+  }
+
+  guardarExperiencia(experienciaEducacion: ExperienciaEducacion):Observable<any>{
+    return this.http.post<any>(`${this.apiUrlExperiencia}/nuevo`,experienciaEducacion);
   }
 
   //-------------------------------Educacion---------------------------------------------

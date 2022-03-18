@@ -9,7 +9,7 @@ export class ItemExperienciaEducacionComponent implements OnInit {
   @Input() lista:any;
   @Input() item:any;
   @Input() i = 0;
-  @Input() IsLogin;
+  @Input() IsLogged;
 
   constructor() { }
 
@@ -17,7 +17,6 @@ export class ItemExperienciaEducacionComponent implements OnInit {
   }
 
   onEditar(){
-    console.log(this.lista[this.i]);
   }
 
 }

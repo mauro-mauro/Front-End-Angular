@@ -11,7 +11,7 @@ export class ProyectosComponent implements OnInit {
   @Input() tituloBarra:any;
   @Input() urlIcono:any;
 
-  @Input() IsLogin;
+  @Input() IsLogged;
 
   //items:any = ITEMS_PROYECTOS;
 

@@ -1,5 +1,5 @@
 <!-- --------------------------------------------Botones Edicion------------------------------------------------ -->
-<div class="contenedor-botones-edicion" *ngIf="IsLogin">
+<div class="contenedor-botones-edicion" *ngIf="IsLogged">
   <div class="botones-edicion">
     <div class="icono-editar"></div>
     <div class="icono-cerrar"></div>
@@ -34,15 +34,11 @@
   <hr>
 </div>
 
-<div *ngIf="verModal">
-  <!-- The Modal -->
-  <div class="modal" (click)="desactivarModal()">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-      <!-- <span class="close">&times;</span> -->
-        <img src="{{ urlImagenModal }}" class="imagen" height="80%">
-    </div>
-
+<!------------------------ Modal -------------------------------->
+<div class="modal" (click)="desactivarModal()" *ngIf="verModal">
+  <div class="modal-content">
+    <!-- <span class="close">&times;</span> -->
+    <img src="{{ urlImagenModal }}" class="imagen" height="80%">
   </div>
 </div>
+<!---------------------- Fin modal -------------------------------->

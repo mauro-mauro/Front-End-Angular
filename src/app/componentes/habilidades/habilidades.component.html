@@ -8,11 +8,11 @@
   <app-item-habilidades
     *ngFor="let temp of lista"
     [item]="temp"
-    [IsLogin]="IsLogin"
+    [IsLogged]="IsLogged"
   ></app-item-habilidades>
 
   <!-- -------------------------------- Boton Edicion ------------------------------------- -->
-  <div class="contenedor-botones-edicion" *ngIf="IsLogin">
+  <div class="contenedor-botones-edicion" *ngIf="IsLogged">
     <div class="icono-agregar"></div>
   </div>
   <!-- ------------------------------ Fin Boton Edicion ------------------------------------- -->

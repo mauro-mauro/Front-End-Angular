@@ -1,10 +1,10 @@
 <!---------------- Cabecera -------------------->
 <app-cabecera
-    (IsLogin)="IsLogin($event)"
+    (IsLogged)="IsLogged($event)"
 ></app-cabecera>
 <!---------------- Experiencia -------------------->
 <app-experiencia-educacion
-    [IsLogin]="isLogin"
+    [IsLogged]="isLogged"
     [lista]="itemsExperiencia"
     [tituloBarra]="tituloBarraExperiencia"
     [urlIcono]="urlIconoExperiencia"
@@ -12,14 +12,14 @@
 
 <!---------------- Educacion -------------------->
 <app-experiencia-educacion
-    [IsLogin]="isLogin"
+    [IsLogged]="isLogged"
     [lista]="itemsEducacion"
     [tituloBarra]="tituloBarraEducacion"
     [urlIcono]="urlIconoEducacion"
 ></app-experiencia-educacion>
 
 <app-proyectos
-    [IsLogin]="isLogin"
+    [IsLogged]="isLogged"
     [lista]="itemsProyecto"
     [tituloBarra]="tituloBarraProyectos"
     [urlIcono]="urlIconoProyectos"
@@ -27,7 +27,7 @@
 
 <!---------------- Habilidades -------------------->
 <app-habilidades
-    [IsLogin]="isLogin"
+    [IsLogged]="isLogged"
     [lista]="itemsHabilidad"
     [tituloBarra]="tituloBarraHabilidades"
     [urlIcono]="urlIconoHabilidades"

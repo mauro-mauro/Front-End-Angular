@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ItemHabilidadesComponent implements OnInit {
   @Input() item:any;
 
-  @Input() IsLogin;
+  @Input() IsLogged;
 
   constructor() { }
 

@@ -9,26 +9,42 @@
     </div>
     <nav class="header-arriba-derecha">
       <div class="botones-menu" #botonesMenu>
-        <button class="botonLogin" (click)="onLogin()" #botonLogin>{{ logInLogOut }}</button>
-        <!-- routerLink="/login"  -->
-        <div class="contenedor-boton-face">
-          <img width="30px" height="30px" src="../../../assets/imgCabecera/logoFace.png" alt="">
-        </div>
-        <div class="contenedor-boton-gitHub">
-          <img height="30px" src="../../../assets/imgCabecera/logoGitHub.svg" alt="">
-        </div>
+
+        <button class="botonLogin" (click)="onLoginPress()" #botonLogin>
+          {{ logInLogOut }}
+        </button>
+
+        <button>
+          <div class="contenedor-boton-face">
+            <img width="30px" height="30px" src="../../../assets/imgCabecera/logoFace.png" alt="">
+          </div>
+        </button>
+
+        <button>
+          <div class="contenedor-boton-gitHub">
+            <img height="30px" src="../../../assets/imgCabecera/logoGitHub.svg" alt="">
+          </div>
+        </button>
+
       </div>
-      <div class="contenedor-boton-menu" (click)="accionMenu()">
-        <img src="../../../assets/imgCabecera/icono-menu.svg" alt="">
-      </div>
+
+      <button>
+        <div class="contenedor-boton-menu" (click)="accionMenu()">
+          <img src="../../../assets/imgCabecera/icono-menu.svg" alt="">
+        </div>
+      </button>
+
     </nav>
   </div>
 
   <!-- ----------------------------------Boton Edicion----------------------------------------- -->
-  <div class="contenedor-botones-edicion" *ngIf="isLogin">
-    <div class="botones-edicion">
-      <div class="icono-editar"></div>
-    </div>
+  <div class="contenedor-botones-edicion" *ngIf="isLogged">
+    <button>
+      <div class="botones-edicion">
+        <div class="icono-editar"></div>
+      </div>
+    </button>
+
   </div>
   <!-- --------------------------------Fin Boton Edicion----------------------------------------- -->
 

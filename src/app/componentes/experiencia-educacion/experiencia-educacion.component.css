@@ -1,5 +1,41 @@
-
-
 .contenedor-experiencia{
   width: 100%;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.imagen{
+  cursor: pointer;
+  display: block;
+  background: rgba(0,0,0,0.4);
+  padding: 20px;
+  margin: 20px auto auto auto;
+  height: 90%;
+}
+
+/* quitar estilo a botones */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  background: none;
+  border: 0;
+  color: inherit;
+  /* cursor: default; */
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  -webkit-user-select: none; /* for button */
+   -webkit-appearance: button; /* for input */
+     -moz-user-select: none;
+      -ms-user-select: none;
 }

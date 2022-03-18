@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   urlIconoProyectos: String = 'assets/imgEducacion/iconoProyectos.svg';
   urlIconoHabilidades: String = 'assets/imgEducacion/iconoHabilidades.svg';
 
-  isLogin: boolean;
+  isLogged: boolean;
 
   constructor(private servicioConsultaDB: ConsultaDBService) { }
 
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
       .subscribe((itemsHabilidad: any) => this.itemsHabilidad = itemsHabilidad);
   }
 
-  IsLogin(e) {
-    this.isLogin = e;
+  IsLogged(e) {
+    this.isLogged = e;
   }
 }
