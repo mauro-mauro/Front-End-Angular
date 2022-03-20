@@ -38,22 +38,22 @@ export class HomeComponent implements OnInit {
   }
 
   initItemsExperiencia() {
-    this.servicioConsultaDB.obtenerExperiencia()
+    this.servicioConsultaDB.listar("experiencia")
       .subscribe((itemsExperiencia: any) => this.itemsExperiencia = itemsExperiencia);
   }
 
   initItemsEducacion() {
-    this.servicioConsultaDB.obtenerEducacion()
+    this.servicioConsultaDB.listar("educacion")
       .subscribe((itemsEducacion: any) => this.itemsEducacion = itemsEducacion);
   }
 
   initItemsProyecto() {
-    this.servicioConsultaDB.obtenerProyecto()
+    this.servicioConsultaDB.listar("proyecto")
       .subscribe((itemsProyecto: any) => this.itemsProyecto = itemsProyecto);
   }
 
   initItemsHabilidad() {
-    this.servicioConsultaDB.obtenerHabilidad()
+    this.servicioConsultaDB.listar("habilidad")
       .subscribe((itemsHabilidad: any) => this.itemsHabilidad = itemsHabilidad);
   }
 

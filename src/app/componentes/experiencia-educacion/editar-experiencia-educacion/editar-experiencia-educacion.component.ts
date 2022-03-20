@@ -12,40 +12,67 @@ import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 export class EditarExperienciaEducacionComponent implements OnInit {
 
   //parametros
-  accion:string;
+  //accion: Agregar || Editar && Experiencia || Educacion
+  accion: string;
+  id: number
 
   //propiedades
-  ocupacion:string;
-  lugar:string;
-  periodo:string;
-  descripcion:string;
-  url:string;
+  titulo: string = "";
+  lugar: string = "";
+  periodo: string = "";
+  texto: string = "";
+  url: string = "";
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private servicioDBConsulta: ConsultaDBService,
     private toastr: ToastrService,
-    private router:Router
-    ) { }
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.accion= this.activatedRoute.snapshot.params.accion;
+    this.accion = this.activatedRoute.snapshot.params.accion;
+    this.id = this.activatedRoute.snapshot.params.id;
+    if (this.accion.split(' ')[0] === 'Editar')
+      this.cargarDatos();
   }
 
-  onSubmit(){
-    const experienciaEducacion = new ExperienciaEducacion(this.ocupacion, this.lugar,
-                                              this.periodo, this.descripcion, this.url);
-    if(this.accion==='Agregar Experiencia'){
-      this.guardarExperiencia(experienciaEducacion);
+  onSubmit() {
+    const agregarEditar = this.accion.split(' ')[1].toLowerCase();
+    const experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar,
+      this.periodo, this.texto, this.url);
+    if (this.accion.split(' ')[0] === 'Agregar') {
+      this.nuevo(agregarEditar, experienciaEducacion);
+    } else if (this.accion.split(' ')[0] === 'Editar') {
+      //console.log(this.activatedRoute.snapshot.params.id)
+      this.editar(agregarEditar, experienciaEducacion, this.id);
     }
 
-    console.log(this.accion);
   }
 
-  guardarExperiencia(experienciaEducacion:ExperienciaEducacion){
-    this.servicioDBConsulta.guardarExperiencia(experienciaEducacion).subscribe(
+  nuevo(item, experienciaEducacion: ExperienciaEducacion) {
+    this.servicioDBConsulta.nuevo(item, experienciaEducacion).subscribe(
       data => {
-        this.toastr.success('Experiencia Creada', 'OK', {
+        this.toastr.success(`${item} creada`, 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        this.router.navigate(['/']);
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
+        // this.router.navigate(['/']);
+      }
+    );
+  }
+
+  editar(item, experienciaEducacion: ExperienciaEducacion, id: number) {
+    // console.log(item);
+    // console.log(experienciaEducacion);
+    this.servicioDBConsulta.editar(item, experienciaEducacion, id).subscribe(
+      data => {
+        this.toastr.success(`${item} actualizado`, 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         this.router.navigate(['/']);
@@ -54,7 +81,24 @@ export class EditarExperienciaEducacionComponent implements OnInit {
         this.toastr.error(err.error.mensaje, 'Fail', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
-        // this.router.navigate(['/']);
+      }
+    );
+
+  }
+
+  cargarDatos() {
+    this.servicioDBConsulta.buscarPorId(this.accion.split(' ')[1].toLowerCase(), this.id).subscribe(
+      datos => {
+        this.titulo = datos.titulo;
+        this.lugar = datos.lugar;
+        this.periodo = datos.periodo;
+        this.texto = datos.texto;
+        this.url = datos.url;
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
       }
     );
   }

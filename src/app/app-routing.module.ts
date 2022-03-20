@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: BannerLoginComponent },
-  { path: 'editar-experiencia-educacion/:accion', component: EditarExperienciaEducacionComponent }
+  { path: 'editar-experiencia-educacion/:accion/:id', component: EditarExperienciaEducacionComponent }, //editar
+  { path: 'editar-experiencia-educacion/:accion', component: EditarExperienciaEducacionComponent } //agregar
 ];
 
 @NgModule({

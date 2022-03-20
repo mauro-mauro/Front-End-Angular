@@ -22,11 +22,8 @@ export class ItemExperienciaEducacionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onEditar(){
-  }
-
   onEliminar(tituloBarra:string, id){
-    this.consultaDBService.borrarExperiencia(id).subscribe(
+    this.consultaDBService.borrar(tituloBarra.toLowerCase(), id).subscribe(
       data => {
         this.toastr.success('Producto Eliminado', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
@@ -40,8 +37,5 @@ export class ItemExperienciaEducacionComponent implements OnInit {
       }
     );
   }
-  // initItemsExperiencia() {
-  //   this.consultaDBService.obtenerExperiencia()
-  //     .subscribe((itemsExperiencia: any) => this.itemsExperiencia = itemsExperiencia);
-  // }
+
 }
