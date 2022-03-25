@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
 
   initItemsEducacion() {
     this.servicioConsultaDB.listar("educacion")
-      .subscribe((itemsEducacion: any) => this.itemsEducacion = itemsEducacion);
+      .subscribe((itemsEducacion: any) => this.itemsEducacion = itemsEducacion);      
   }
 
   initItemsProyecto() {

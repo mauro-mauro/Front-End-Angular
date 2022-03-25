@@ -29,6 +29,7 @@ export class BannerLoginComponent implements OnInit {
 
   onLogin(): void {
     this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
+    console.log(this.loginUsuario);
     this.authService.login(this.loginUsuario).subscribe(
       data => {
         this.tokenService.setToken(data.token);

@@ -4,6 +4,11 @@ import { ToastrService } from 'ngx-toastr';
 import { ExperienciaEducacion } from 'src/app/modelos/experiencia-educacion';
 import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 
+
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { SubirArchivoService } from 'src/app/servicios/subir-archivo.service';
+
 @Component({
   selector: 'app-editar-experiencia-educacion',
   templateUrl: './editar-experiencia-educacion.component.html',
@@ -21,13 +26,21 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   lugar: string = "";
   periodo: string = "";
   texto: string = "";
-  url: string = "";
+  url: string;
+
+  //File Input
+  selectedFiles: FileList;
+  currentFile: File;
+  progress = 0;
+  message = '';
+  fileInfos: Observable<any>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private servicioDBConsulta: ConsultaDBService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private subirArchivoService: SubirArchivoService
   ) { }
 
   ngOnInit(): void {
@@ -37,7 +50,15 @@ export class EditarExperienciaEducacionComponent implements OnInit {
       this.cargarDatos();
   }
 
-  onSubmit() {
+  onSubmit(urlArchivo: string) {
+    let nombreArchivo: string = urlArchivo.split("\\")[2];
+
+    console.log("nombreArchivo: " + nombreArchivo);
+    if (nombreArchivo !== undefined) {
+      this.url = "http://127.0.0.1:8080/imagen/ver?nombre=" + nombreArchivo;
+    }
+
+
     const agregarEditar = this.accion.split(' ')[1].toLowerCase();
     const experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar,
       this.periodo, this.texto, this.url);
@@ -79,7 +100,7 @@ export class EditarExperienciaEducacionComponent implements OnInit {
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
+          timeOut: 3000, positionClass: 'toast-top-center',
         });
       }
     );
@@ -102,5 +123,37 @@ export class EditarExperienciaEducacionComponent implements OnInit {
       }
     );
   }
+
+
+  selectFile(event: any) {
+    this.selectedFiles = event.target.files;
+  }
+
+  upload(urlArchivo: string) {
+
+    // let nombreArchivo: string = urlArchivo.split("\\")[2];
+    // this.url = "http://127.0.0.1:8080/imagen/ver?nombre=" + nombreArchivo;
+    // console.log(this.url);
+
+    this.progress = 0;
+    this.currentFile = this.selectedFiles.item(0) as File;
+    this.subirArchivoService.upload(this.currentFile).subscribe(
+      event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.progress = Math.round(100 * event.loaded / event.total!);
+
+        } else if (event instanceof HttpResponse) {
+          this.message = event.body.message;
+          //this.fileInfos = this.subirArchivoService.getFiles();
+        }
+      },
+      err => {
+        this.progress = 0;
+        this.message = 'Could not upload the file!';
+        this.currentFile = undefined!;
+      });
+    this.selectedFiles = undefined!;
+  }
+
 
 }
