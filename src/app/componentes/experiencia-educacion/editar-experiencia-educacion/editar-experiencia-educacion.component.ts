@@ -6,7 +6,7 @@ import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 
 
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { SubirArchivoService } from 'src/app/servicios/subir-archivo.service';
 
 @Component({
@@ -27,6 +27,9 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   periodo: string = "";
   texto: string = "";
   url: string;
+  errorCampo: boolean = false;
+  // sinImagen:string="../../../assets/imgPagina/sin-imagen.svg";
+  // miniaturaProvisoria:string;
 
   //File Input
   selectedFiles: FileList;
@@ -41,7 +44,13 @@ export class EditarExperienciaEducacionComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private subirArchivoService: SubirArchivoService
-  ) { }
+  ) {
+    // if(this.url==null){
+    //   this.miniaturaProvisoria=this.sinImagen
+    // } else{
+    //   this.miniaturaProvisoria=this.url;
+    // }
+  }
 
   ngOnInit(): void {
     this.accion = this.activatedRoute.snapshot.params.accion;
@@ -125,8 +134,11 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   }
 
 
-  selectFile(event: any) {
+  selectFile(event: any, inputUrl: string) {
     this.selectedFiles = event.target.files;
+    // this.miniaturaProvisoria=`http://192.168.1.3:8080/imagen/ver?nombre=${event.target.files[0].name}`;
+    //console.log(event.target.files[0].name)
+    this.upload(inputUrl);
   }
 
   upload(urlArchivo: string) {
@@ -155,5 +167,16 @@ export class EditarExperienciaEducacionComponent implements OnInit {
     this.selectedFiles = undefined!;
   }
 
+  onPressPeriodo(evento: any) {
+    if (evento.target.value.length > 1) {
+      this.errorCampo = false;
+    } else {
+      this.errorCampo = true;
+    }
+  }
+
+  quitarImagen() {
+    this.url = null;
+  }
 
 }

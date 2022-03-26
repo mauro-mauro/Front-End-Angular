@@ -23,24 +23,42 @@
       </div>
 
       <!--------------------- Agregar Imagen ---------------------->
-      <div>
-        <label for="url">Agregar imagen</label>
-        <input type="file" class="boton-url" name="boton-url" id="" placeholder="Url imagen" (change)="selectFile($event)" #inputUrl/>
+      <div class="contenedor-agregar-imagen">
+
+        <div>
+          <label for="url" *ngIf="url==null; else cambiarImagen">Agregar imagen</label>
+          <ng-template #cambiarImagen>
+            <label for="url">Cambiar imagen</label>
+          </ng-template>
+        </div>
+
+        <input type="file" class="boton-url" name="boton-url" id="" placeholder="Url imagen"
+          (change)="selectFile($event,inputUrl.value)" #inputUrl />
+        <p class="texto-input-file">(Tamaño maximo imagen: 1 MB)</p>
+
+        <div *ngIf="url!==null">
+          <button class="btn-cancelar" style="margin-top: -20px;margin-bottom: 20px;" (click)="quitarImagen()">Quitar
+            imagen</button>
+        </div>
       </div>
-      <button class="btn btn-success" (click)="upload(inputUrl.value)">
-        Upload
-      </button>
 
       <!--------------------- Periodo ---------------------->
       <div>
         <label for="periodo">Periodo</label>
-        <input type="text" name="periodo" id=""  placeholder="Periodo" [(ngModel)]="periodo" required />
+        <input type="text" name="periodo" id="" placeholder="Periodo" (change)="onPressPeriodo($event)"
+          [(ngModel)]="periodo" #period required />
+
+        <!--------- Error? ----------->
+        <div style="margin-top: -20px; margin-bottom: 20px;" *ngIf="errorCampo">
+          <p class="campoObligatorio">*Campo obligatorio</p>
+        </div>
       </div>
+
 
       <!--------------------- Descripcion ---------------------->
       <div>
         <label for="texto">Descripcion</label>
-        <input type="text" name="texto" id="" placeholder="Descripcion" [(ngModel)]="texto"/>
+        <input type="text" name="texto" id="" placeholder="Descripcion" [(ngModel)]="texto" />
       </div>
 
       <!--------------------- Botones ---------------------->

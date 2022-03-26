@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 export class SubirArchivoService {
 
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://192.168.1.3:8080';
 
   constructor(private http: HttpClient) { }
 
