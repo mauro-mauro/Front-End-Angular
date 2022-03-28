@@ -14,33 +14,35 @@ export class CabeceraComponent implements OnInit {
   @ViewChild("botonesMenu") botonesMenu: ElementRef | undefined;
 
   isLogged: boolean = this.tokenService.isLogged();
-  logInLogOut: string = this.isLogged ? "Log Out" : "Login";
+  logInLogOut: string;
 
   private esVisibleBotonMenu: boolean = true;
   private visibleBotonMenu(): string {
     return this.esVisibleBotonMenu ? 'flex' : "none";
   }
 
-  constructor(private tokenService: TokenService, private router:Router) { }
+  constructor(private tokenService: TokenService, private router: Router) { }
 
   ngOnInit(): void {
     this.IsLogged.emit(this.isLogged);
+    this.logInLogOut = this.isLogged ? "Log Out" : "Login";
   }
 
   onLoginPress() {
-    if (this.tokenService.isLogged) {
-      this.logInLogOut = "Log Out";
+    if (this.tokenService.isLogged()) {
+      this.logInLogOut = "Login";
+      this.isLogged = false;
+      this.IsLogged.emit(this.isLogged);
       this.tokenService.logOut();
     } else {
-      this.logInLogOut = "Login";
-      this.router.navigate(['login']);
+      this.router.navigate(['/login']);
     }
   }
 
   accionMenu() {
     this.botonesMenu?.nativeElement.setAttribute("style", `display:${this.visibleBotonMenu()}`);
     this.esVisibleBotonMenu = !this.esVisibleBotonMenu;
-    console.log(`display:${this.visibleBotonMenu()}`);
+    //console.log(`display:${this.visibleBotonMenu()}`);
   }
 
 

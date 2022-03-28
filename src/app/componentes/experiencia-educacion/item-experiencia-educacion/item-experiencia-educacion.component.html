@@ -2,12 +2,15 @@
 <div class="contenedor-botones-edicion" *ngIf="IsLogged">
   <div class="botones-edicion">
 
+    <!---------- Boton Editar ----------->
+    <!---------- path: 'editar-experiencia-educacion/:accion/:id' -------------->
     <button>
       <a [routerLink]="['/editar-experiencia-educacion', 'Editar ' + tituloBarra, item.id]">
         <div class="icono-editar"></div>
       </a>
     </button>
 
+    <!---------- Boton Eliminar ----------->
     <button (click)="onEliminar(tituloBarra, item.id)">
       <div class="icono-eliminar"></div>
     </button>

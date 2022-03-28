@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpHeaders, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 
 export class SubirArchivoService {
 
-  private baseUrl = 'http://192.168.1.3:8080';
+  private apiUrl:string = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +17,7 @@ export class SubirArchivoService {
     const formData: FormData = new FormData();
     formData.append('file', file);
 
-    const req = new HttpRequest('POST', `${this.baseUrl}/imagen/subir`, formData, {
+    const req = new HttpRequest('POST', `${this.apiUrl}/imagen/subir`, formData, {
       reportProgress: true,
       responseType: 'json'
     });

@@ -1,33 +1,47 @@
 <header>
 
-
   <div class="header-arriba">
+
+    <!------------------------- Cabecera arriba izquierda --------------------------------->
+    <!------------------------- Logo Argentina Programa --------------------------------->
     <div class="header-arriba-izquierda">
-      <div class="contenedorArgProg">
-        <img height="50px" src="../../../assets/imgCabecera/argProg.svg" alt="">
-      </div>
+      <a href="https://www.argentina.gob.ar/produccion/argentina-programa/segunda-etapa">
+        <div class="contenedorArgProg">
+          <img height="50px" src="../../../assets/imgCabecera/argProg.svg" alt="">
+        </div>
+      </a>
     </div>
+
+    <!------------------------- Cabecera arriba derecha --------------------------------->
     <nav class="header-arriba-derecha">
       <div class="botones-menu" #botonesMenu>
 
-        <button class="botonLogin" (click)="onLoginPress()" #botonLogin>
-          <a>{{ logInLogOut }}</a>
+        <!------------------------- Boton Login --------------------------------->
+        <button class="botonLogin">
+          <a (click)="onLoginPress()">{{ logInLogOut }}</a>
         </button>
 
+        <!------------------------- Boton Facebook --------------------------------->
         <button>
-          <div class="contenedor-boton-face">
-            <img width="30px" height="30px" src="../../../assets/imgCabecera/logoFace.png" alt="">
-          </div>
+          <a href="https://www.facebook.com/Mauro-L-Peralta-209077402807305/" target="_blank">
+            <div class="contenedor-boton-face">
+              <img width="30px" height="30px" src="../../../assets/imgCabecera/logoFace.png" alt="">
+            </div>
+          </a>
         </button>
 
+        <!------------------------- Boton Github --------------------------------->
         <button>
-          <div class="contenedor-boton-gitHub">
-            <img height="30px" src="../../../assets/imgCabecera/logoGitHub.svg" alt="">
-          </div>
+          <a href="https://github.com/mauro-mauro" target="_blank">
+            <div class="contenedor-boton-gitHub">
+              <img height="30px" src="../../../assets/imgCabecera/logoGitHub.svg" alt="">
+            </div>
+          </a>
         </button>
 
       </div>
 
+      <!------------------------- Boton navbar --------------------------------->
       <button>
         <div class="contenedor-boton-menu" (click)="accionMenu()">
           <img src="../../../assets/imgCabecera/icono-menu.svg" alt="">
@@ -37,7 +51,7 @@
     </nav>
   </div>
 
-  <!-- ----------------------------------Boton Edicion----------------------------------------- -->
+  <!-- --------------------------- Boton Edicion----------------------------------------- -->
   <div class="contenedor-botones-edicion" *ngIf="isLogged">
     <button>
       <div class="botones-edicion">
@@ -46,12 +60,14 @@
     </button>
 
   </div>
-  <!-- --------------------------------Fin Boton Edicion----------------------------------------- -->
+  <!-- --------------------------- Fin Boton Edicion----------------------------------------- -->
 
+  <!------------------------------ Foto Portada --------------------------------->
   <div class="contenedor-portada centrar-contenido">
     <div class="portada"></div>
   </div>
 
+  <!------------------------------ Foto Perfil --------------------------------->
   <div class="contenedor-perfil-y-nombre centrar-contenido">
     <div class="contenedor-perfil">
       <div class="perfil centrar-contenido">
@@ -59,6 +75,7 @@
       </div>
     </div>
 
+    <!------------------------------ Acerca de --------------------------------->
     <div class="contenedor-acerca-de">
       <div class="acerca-de">
         <h2>Mauro Luis Peralta</h2>

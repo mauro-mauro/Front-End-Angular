@@ -61,16 +61,16 @@ export class EditarExperienciaEducacionComponent implements OnInit {
 
   onSubmit(urlArchivo: string) {
     let nombreArchivo: string = urlArchivo.split("\\")[2];
-
-    console.log("nombreArchivo: " + nombreArchivo);
-    if (nombreArchivo !== undefined) {
-      this.url = "http://127.0.0.1:8080/imagen/ver?nombre=" + nombreArchivo;
-    }
-
-
     const agregarEditar = this.accion.split(' ')[1].toLowerCase();
-    const experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar,
+    let experienciaEducacion: ExperienciaEducacion;
+
+    //console.log("nombreArchivo: " + nombreArchivo);
+    if (nombreArchivo !== undefined)
+      this.url = "http://127.0.0.1:8080/imagen/ver?nombre=" + nombreArchivo;
+
+    experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar,
       this.periodo, this.texto, this.url);
+
     if (this.accion.split(' ')[0] === 'Agregar') {
       this.nuevo(agregarEditar, experienciaEducacion);
     } else if (this.accion.split(' ')[0] === 'Editar') {

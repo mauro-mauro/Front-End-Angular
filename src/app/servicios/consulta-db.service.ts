@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { ExperienciaEducacion } from '../modelos/experiencia-educacion';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConsultaDBService {
 
-  private apiUrl: String = "http://192.168.1.3:8080";
+  private apiUrl: String = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
