@@ -14,6 +14,9 @@ export class ItemExperienciaEducacionComponent implements OnInit {
   @Input() i = 0;
   @Input() IsLogged;
 
+  verModal:boolean=false;
+  urlImagenModal:String="";
+
   constructor(
     private consultaDBService: ConsultaDBService,
     private toastr:ToastrService
@@ -36,6 +39,15 @@ export class ItemExperienciaEducacionComponent implements OnInit {
         });
       }
     );
+  }
+
+  activarModal(url:String){
+    this.verModal = true;
+    this.urlImagenModal = url;
+  }
+
+  desactivarModal(){
+    this.verModal = false;
   }
 
 }

@@ -1,0 +1,26 @@
+<div class="contenedor-login">
+  <!--------------------- Cabecera ---------------------->
+  <div class="contenedor-cabecera-login">
+    <img height="50px" src="../../../assets/imgCabecera/argProg.svg" alt="">
+  </div>
+
+  <div>
+    <form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <!--------------------- Titulo ---------------------->
+      <h2>{{accion}}</h2>
+      <!--------------------- Ocupacion / Titulo Educacion ---------------------->
+      <div>
+        <label for="titulo">Ocupacion</label>
+        <input type="text" name="titulo" id="" placeholder="Ocupacion" required />
+        <!-- [(ngModel)]="titulo"  -->
+      </div>
+
+      <!--------------------- Botones ---------------------->
+      <button [disabled]="!f.valid">Enviar</button>
+      <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>
+
+    </form>
+
+  </div>
+

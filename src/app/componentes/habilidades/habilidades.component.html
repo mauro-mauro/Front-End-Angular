@@ -13,7 +13,9 @@
 
   <!-- -------------------------------- Boton Edicion ------------------------------------- -->
   <div class="contenedor-botones-edicion" *ngIf="IsLogged">
-    <div class="icono-agregar"></div>
+    <a [routerLink]="['/nueva-habilidad', 'Agregar Habilidad']">
+      <div class="icono-agregar"></div>
+    </a>
   </div>
   <!-- ------------------------------ Fin Boton Edicion ------------------------------------- -->
 

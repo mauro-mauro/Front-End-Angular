@@ -1,0 +1,46 @@
+<div class="contenedor-login">
+  <!--------------------- Cabecera ---------------------->
+  <div class="contenedor-cabecera-login">
+    <img height="50px" src="../../../assets/imgCabecera/argProg.svg" alt="">
+  </div>
+
+  <div>
+    <form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <!--------------------- Titulo ---------------------->
+      <h2>{{accion}}</h2>
+
+      <!--------------------- Plataforma ---------------------->
+      <div>
+        <label for="plataforma">Plataforma</label>
+        <select id="plataforma-combo-box" class="plataforma-combo-box" [(ngModel)]="item.hab.id" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let temp of plataformas" value="{{temp.id}}">{{temp.plataforma}}</option>
+        </select>
+        <!-- <input type="text" name="plataforma" id="" placeholder="Plataforma" required /> -->
+      </div>
+
+      <!--------------------- Habilidad ---------------------->
+      <div>
+        <label for="habilidad">Habilidad</label>
+        <input type="text" name="habilidad" id="" placeholder="Habilidad" [(ngModel)]="item.habilidad" required />
+      </div>
+
+      <!--------------------- Porcentaje habilidad ---------------------->
+      <div>
+        <label for="porcentaje">Porcentaje Habilidad: {{item.porcentaje}}</label>
+        <input type="range" name="porcentaje" id="" placeholder="Porcentaje Habilidad" [(ngModel)]="item.porcentaje" required />
+
+        <!--------- Error? ----------->
+        <div style="margin-top: -20px; margin-bottom: 20px;" *ngIf="false">
+          <p class="campoObligatorio">*Campo obligatorio</p>
+        </div>
+      </div>
+
+      <!--------------------- Botones ---------------------->
+      <button [disabled]="!f.valid">Enviar</button>
+      <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>
+
+    </form>
+
+  </div>
+

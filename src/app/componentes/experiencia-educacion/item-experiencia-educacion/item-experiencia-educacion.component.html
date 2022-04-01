@@ -20,7 +20,7 @@
 
 <div class="item-experiencia">
   <div *ngIf="item.url !== null">
-    <div class="logo-item-experiencia" style="background-image: url('{{ item.url }}');"></div>
+    <div (click)="activarModal(item.url)" class="logo-item-experiencia" style="background-image: url('{{ item.url }}');"></div>
   </div>
 
   <div class="contenido-item-experiencia">
@@ -44,3 +44,13 @@
 <div *ngIf="i < lista.length-1">
   <hr>
 </div>
+
+<!------------------------ Modal -------------------------------->
+<div class="modal" (click)="desactivarModal()" *ngIf="verModal">
+  <div class="modal-content">
+    <div class="boton-cerrar"></div>
+    <!-- <span class="close">&times;</span> -->
+    <img src="{{ urlImagenModal }}" class="imagen" height="80%">
+  </div>
+</div>
+<!---------------------- Fin modal -------------------------------->

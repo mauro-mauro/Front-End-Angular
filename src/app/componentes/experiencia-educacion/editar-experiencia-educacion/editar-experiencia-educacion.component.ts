@@ -8,6 +8,7 @@ import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { EMPTY, Observable } from 'rxjs';
 import { SubirArchivoService } from 'src/app/servicios/subir-archivo.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-editar-experiencia-educacion',
@@ -26,7 +27,7 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   lugar: string = "";
   periodo: string = "";
   texto: string = "";
-  url: string;
+  url: string = null;
   errorCampo: boolean = false;
   // sinImagen:string="../../../assets/imgPagina/sin-imagen.svg";
   // miniaturaProvisoria:string;
@@ -66,7 +67,7 @@ export class EditarExperienciaEducacionComponent implements OnInit {
 
     //console.log("nombreArchivo: " + nombreArchivo);
     if (nombreArchivo !== undefined)
-      this.url = "http://127.0.0.1:8080/imagen/ver?nombre=" + nombreArchivo;
+      this.url = `${environment.apiUrl}/imagen/ver?nombre=` + nombreArchivo;
 
     experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar,
       this.periodo, this.texto, this.url);

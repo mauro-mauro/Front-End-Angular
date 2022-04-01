@@ -1,8 +1,11 @@
 <!-- --------------------------------------------Botones Edicion------------------------------------------------ -->
 <div class="contenedor-botones-edicion" *ngIf="IsLogged">
   <div class="botones-edicion">
-    <div class="icono-editar"></div>
-    <div class="icono-eliminar"></div>
+    <a routerLink="/editar-item-habilidad/Editar {{item.plataforma}}" >
+      <div class="icono-editar"></div>
+    <!-- <div class="icono-eliminar"></div> -->
+    </a>
+
   </div>
 </div>
 <!-- -----------------------------------------Fin Botones Edicion------------------------------------------------ -->

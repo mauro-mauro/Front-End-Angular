@@ -14,16 +14,16 @@ export class ConsultaDBService {
   constructor(private http: HttpClient) { }
 
   public listar(item:string): Observable<any[]> {
-    let header = new HttpHeaders().set('Type-content', 'aplication/json')
+    //let header = new HttpHeaders().set('Type-content', 'aplication/json')
 
-    return this.http.get<any[]>(`${this.apiUrl}/${item}/listar`, { headers: header });
+    return this.http.get<any[]>(`${this.apiUrl}/${item}/listar`); //, { headers: header }
   }
 
   public buscarPorId(item:string, id:number):Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/${item}/buscar/${id}`);
   }
 
-  public nuevo(item:string, experienciaEducacion: ExperienciaEducacion):Observable<any>{
+  public nuevo(item:string, experienciaEducacion: any):Observable<any>{
     return this.http.post<any>(`${this.apiUrl}/${item}/nuevo`,experienciaEducacion);
   }
 
