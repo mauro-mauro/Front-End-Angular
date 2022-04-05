@@ -9,9 +9,10 @@ import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 })
 export class EditarItemHabilidadComponent implements OnInit {
   //parametros
-  //accion:
-  accion: string;
   id: number
+  accion:string;
+
+  habilidad: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,10 +21,26 @@ export class EditarItemHabilidadComponent implements OnInit {
 
   ngOnInit(): void {
     this.accion = this.activatedRoute.snapshot.params.accion;
+    this.id = this.activatedRoute.snapshot.params.id;
+    this.getHabilidades();
   }
 
-  onSubmit(){
+  onSubmit() {
+    console.log(this.habilidad);
+  }
 
+  getHabilidades():void {
+    this.servicioDBConsulta.buscarPorId('habilidad', this.id)
+      .subscribe((habilidad: any) => this.habilidad = habilidad);
+  }
+
+  onEliminar(id:number){
+    this.servicioDBConsulta.borrar('item-habilidad',id).subscribe(
+      data=>{
+        this.getHabilidades();
+      }
+
+    );
   }
 
 }

@@ -4,23 +4,42 @@
     <img height="50px" src="../../../assets/imgCabecera/argProg.svg" alt="">
   </div>
 
-  <div>
-    <form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
+  <div class="contenedor-habilidades">
+    <!--------------------- Titulo ---------------------->
+    <h2>{{accion}}</h2>
+    <!---------------------  ---------------------->
+    <div class="items-habilidad">
 
-      <!--------------------- Titulo ---------------------->
-      <h2>{{accion}}</h2>
-      <!--------------------- Ocupacion / Titulo Educacion ---------------------->
-      <div>
-        <label for="titulo">Ocupacion</label>
-        <input type="text" name="titulo" id="" placeholder="Ocupacion" required />
-        <!-- [(ngModel)]="titulo"  -->
+
+      <div *ngFor="let itemTemp of habilidad.listaHabilidad" class="contenedor-items">
+        <div class="items">
+          <h5 class="habilidad">{{ itemTemp.habilidad }}</h5>
+          <progress class="porcentaje" min="0" max="100" value="{{itemTemp.porcentaje}}"></progress>
+          <hr class="linea-separadora">
+        </div>
+
+        <div class="contenedor-botones-edicion">
+          <!---------- Boton Editar ----------->
+          <!---------- path: 'editar-experiencia-educacion/:accion/:id' -------------->
+          <button>
+            <a>
+              <!-- [routerLink]="['/editar-experiencia-educacion', 'Editar ' + tituloBarra, item.id]" -->
+              <div class="icono-editar"></div>
+            </a>
+          </button>
+
+          <!---------- Boton Eliminar ----------->
+          <button>
+            <!-- (click)="onEliminar(tituloBarra, item.id)" -->
+            <div class="icono-eliminar" (click)="onEliminar(itemTemp.id)"></div>
+          </button>
+        </div>
+
       </div>
 
-      <!--------------------- Botones ---------------------->
-      <button [disabled]="!f.valid">Enviar</button>
-      <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>
+    </div>
 
-    </form>
+    <!--------------------- Botones ---------------------->
+    <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>
 
   </div>
-
