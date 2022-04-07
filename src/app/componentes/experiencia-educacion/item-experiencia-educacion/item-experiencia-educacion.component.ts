@@ -28,7 +28,7 @@ export class ItemExperienciaEducacionComponent implements OnInit {
   onEliminar(tituloBarra:string, id){
     this.consultaDBService.borrar(tituloBarra.toLowerCase(), id).subscribe(
       data => {
-        this.toastr.success('Producto Eliminado', 'OK', {
+        this.toastr.success('Item Eliminado', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         //this.cargarProductos();

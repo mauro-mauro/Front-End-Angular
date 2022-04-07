@@ -24,7 +24,7 @@
           <button>
             <a>
               <!-- [routerLink]="['/editar-experiencia-educacion', 'Editar ' + tituloBarra, item.id]" -->
-              <div class="icono-editar"></div>
+              <div class="icono-editar" (click)="onEditar(itemTemp.id,itemTemp.habilidad, itemTemp.porcentaje)"></div>
             </a>
           </button>
 
@@ -40,6 +40,37 @@
     </div>
 
     <!--------------------- Botones ---------------------->
+    <button type="button" class="boton-aceptar" routerLink="/">Aceptar</button>
     <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>
 
   </div>
+
+</div>
+
+<!-------------------------------- Modal ----------------------------------------->
+<div class="modal" *ngIf="bannerActivo">
+  <div class="contenedor-editar-item">
+    <div class="editar-item">
+      <div>
+        <label for="habilidad">Habilidad:</label>
+        <input type="text" name="habilidad" id="habilidad" placeholder="Habilidad"
+          [(ngModel)]="datosEditar.habilidad" />
+      </div>
+
+      <!-- <h4 class="habilidad">{{datosEditar.habilidad}}</h4> -->
+
+      <div>
+        <label for="porcentaje">Porcentaje Habilidad: {{datosEditar.porcentaje}}</label>
+        <input type="range" name="porcentaje" id="" placeholder="Porcentaje Habilidad"
+          [(ngModel)]="datosEditar.porcentaje" required />
+      </div>
+
+      <hr class="linea-separadora">
+
+      <!--------------------- Botones ---------------------->
+      <button type="button" class="boton-aceptar" (click)="onAceptarEdicion(datosEditar.id)">Enviar</button>
+      <button type="button" name="cancelar" class="btn-cancelar" (click)="bannerActivo=false">Cancelar</button>
+
+    </div>
+  </div>
+</div>

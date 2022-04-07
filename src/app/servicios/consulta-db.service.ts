@@ -27,8 +27,8 @@ export class ConsultaDBService {
     return this.http.post<any>(`${this.apiUrl}/${item}/nuevo`,experienciaEducacion);
   }
 
-  public editar(item:string, experienciaEducacion: ExperienciaEducacion, id: number):Observable<any>{
-    return this.http.put<any>(`${this.apiUrl}/${item}/editar/${id}`,experienciaEducacion);
+  public editar(item:string, objetoEditado: any, id: number):Observable<any>{
+    return this.http.put<any>(`${this.apiUrl}/${item}/editar/${id}`,objetoEditado);
   }
 
   public borrar(item:string, id: number): Observable<any> {

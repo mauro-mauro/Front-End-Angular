@@ -10,9 +10,17 @@ import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 export class EditarItemHabilidadComponent implements OnInit {
   //parametros
   id: number
-  accion:string;
+  accion: string;
 
   habilidad: any;
+
+  bannerActivo: boolean = false;
+
+  datosEditar: any = {
+    id: null,
+    habilidad: null,
+    porcentaje: null
+  }
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -29,18 +37,33 @@ export class EditarItemHabilidadComponent implements OnInit {
     console.log(this.habilidad);
   }
 
-  getHabilidades():void {
+  getHabilidades(): void {
     this.servicioDBConsulta.buscarPorId('habilidad', this.id)
       .subscribe((habilidad: any) => this.habilidad = habilidad);
   }
 
-  onEliminar(id:number){
-    this.servicioDBConsulta.borrar('item-habilidad',id).subscribe(
-      data=>{
+  onEliminar(id: number) {
+    this.servicioDBConsulta.borrar('item-habilidad', id).subscribe(
+      data => {
         this.getHabilidades();
       }
 
     );
   }
 
+  onEditar(id: number, habilidad: string, porcentaje: number) {
+    this.datosEditar.id = id;
+    this.datosEditar.habilidad = habilidad;
+    this.datosEditar.porcentaje = porcentaje;
+    this.bannerActivo = true;
+  }
+
+  onAceptarEdicion(id: number) {
+    this.servicioDBConsulta.editar('item-habilidad', this.datosEditar, id).subscribe(
+      data => {
+        this.getHabilidades();
+      }
+    );
+    this.bannerActivo = false;
+  }
 }
