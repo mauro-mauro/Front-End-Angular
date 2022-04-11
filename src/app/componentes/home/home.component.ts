@@ -8,7 +8,7 @@ import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 })
 export class HomeComponent implements OnInit {
 
-  title = 'porfolio';
+  title = 'portfolio';
   //items = ITEMS;
   //itemsEducacion = ITEMS_EDUCACION;
   itemsExperiencia: Array<any> = [];
@@ -59,5 +59,13 @@ export class HomeComponent implements OnInit {
 
   IsLogged(e) {
     this.isLogged = e;
+  }
+
+  actualizarItem(event) {
+    if (event == 'experiencia') {
+      this.initItemsExperiencia();
+    } else if(event=='educacion'){
+      this.initItemsEducacion();
+    }
   }
 }

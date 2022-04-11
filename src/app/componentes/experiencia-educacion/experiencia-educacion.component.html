@@ -7,6 +7,7 @@
   ></app-barra-titulos>
 
   <app-item-experiencia-educacion
+    (actualizarItem)="emitirActualizarItem($event)"
     [tituloBarra]="tituloBarra"
     [IsLogged]="IsLogged"
     *ngFor="let itemLista of lista; let i = index"

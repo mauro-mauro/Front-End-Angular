@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ITEMS } from 'src/app/item';
 
 @Component({
@@ -13,6 +13,8 @@ export class ExperienciaEducacionComponent implements OnInit {
 
   @Input() IsLogged;
 
+  @Output() actualizarItem = new EventEmitter<string>();
+
   modoAgregar: boolean = false;
 
   //items = ITEMS;
@@ -26,5 +28,10 @@ export class ExperienciaEducacionComponent implements OnInit {
   }
   onAdd() {
     this.modoAgregar = true;
+  }
+
+
+  emitirActualizarItem(event){
+    this.actualizarItem.emit(event);
   }
 }

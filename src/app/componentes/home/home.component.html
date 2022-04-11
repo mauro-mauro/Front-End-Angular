@@ -4,6 +4,7 @@
 ></app-cabecera>
 <!---------------- Experiencia -------------------->
 <app-experiencia-educacion
+    (actualizarItem)="actualizarItem($event)"
     [IsLogged]="isLogged"
     [lista]="itemsExperiencia"
     [tituloBarra]="tituloBarraExperiencia"

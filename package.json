@@ -1,5 +1,5 @@
 {
-  "name": "porfolio",
+  "name": "portfolio",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,7 +19,6 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
-    "firebase": "^9.6.10",
     "ngx-toastr": "^14.2.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

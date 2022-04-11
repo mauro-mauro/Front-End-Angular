@@ -60,14 +60,10 @@ export class EditarExperienciaEducacionComponent implements OnInit {
       this.cargarDatos();
   }
 
-  onSubmit(urlArchivo: string) {
-    let nombreArchivo: string = urlArchivo.split("\\")[2];
+  onSubmit() {
     const agregarEditar = this.accion.split(' ')[1].toLowerCase();
     let experienciaEducacion: ExperienciaEducacion;
 
-    //console.log("nombreArchivo: " + nombreArchivo);
-    if (nombreArchivo !== undefined)
-      this.url = `${environment.apiUrl}/imagen/ver?nombre=` + nombreArchivo;
 
     experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar,
       this.periodo, this.texto, this.url);
@@ -99,8 +95,6 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   }
 
   editar(item, experienciaEducacion: ExperienciaEducacion, id: number) {
-    // console.log(item);
-    // console.log(experienciaEducacion);
     this.servicioDBConsulta.editar(item, experienciaEducacion, id).subscribe(
       data => {
         this.toastr.success(`${item} actualizado`, 'OK', {
@@ -137,28 +131,19 @@ export class EditarExperienciaEducacionComponent implements OnInit {
 
   selectFile(event: any, inputUrl: string) {
     this.selectedFiles = event.target.files;
-    // this.miniaturaProvisoria=`http://192.168.1.3:8080/imagen/ver?nombre=${event.target.files[0].name}`;
-    //console.log(event.target.files[0].name)
     this.upload(inputUrl);
   }
 
   upload(urlArchivo: string) {
 
-    // let nombreArchivo: string = urlArchivo.split("\\")[2];
-    // this.url = "http://127.0.0.1:8080/imagen/ver?nombre=" + nombreArchivo;
-    // console.log(this.url);
 
     this.progress = 0;
     this.currentFile = this.selectedFiles.item(0) as File;
     this.subirArchivoService.upload(this.currentFile).subscribe(
       event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.progress = Math.round(100 * event.loaded / event.total!);
-
-        } else if (event instanceof HttpResponse) {
-          this.message = event.body.message;
-          //this.fileInfos = this.subirArchivoService.getFiles();
-        }
+        let nombreArchivo: string = urlArchivo.split("\\")[2];
+        if (nombreArchivo !== undefined)
+          this.url = `${environment.apiUrl}/imagen/ver?nombre=` + nombreArchivo;
       },
       err => {
         this.progress = 0;

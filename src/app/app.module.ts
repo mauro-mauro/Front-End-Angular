@@ -21,6 +21,7 @@ import { interceptorProvider } from './interceptors/interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NuevaHabilidadComponent } from './componentes/habilidades/nueva-habilidad/nueva-habilidad.component';
 import { EditarItemHabilidadComponent } from './componentes/habilidades/item-habilidades/editar-item-habilidad/editar-item-habilidad.component';
+import { EditarCabeceraComponent } from './componentes/cabecera/editar-cabecera/editar-cabecera.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { EditarItemHabilidadComponent } from './componentes/habilidades/item-hab
     HomeComponent,
     EditarExperienciaEducacionComponent,
     NuevaHabilidadComponent,
-    EditarItemHabilidadComponent
+    EditarItemHabilidadComponent,
+    EditarCabeceraComponent
   ],
   imports: [
     BrowserModule,

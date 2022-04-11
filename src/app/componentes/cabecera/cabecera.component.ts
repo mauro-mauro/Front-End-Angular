@@ -1,5 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 import { TokenService } from 'src/app/servicios/token.service';
 
 @Component({
@@ -11,7 +12,16 @@ export class CabeceraComponent implements OnInit {
   @Output() IsLogged = new EventEmitter<boolean>();
 
   @ViewChild("botonLogin") botonLogin: ElementRef | undefined;
-  @ViewChild("botonesMenu") botonesMenu: ElementRef | undefined;
+  @ViewChild("botonesMenu") botonesMenu: ElementRef | undefined; 1
+
+  //propiedades
+  nombre: string = null;
+  profesion: string = null;
+  texto: string = null;
+  urlFacebook: string;
+  urlGitHub: string;
+  urlImagenPerfil: string = null;
+  urlImagenPortada: string = null;
 
   isLogged: boolean = this.tokenService.isLogged();
   logInLogOut: string;
@@ -21,12 +31,35 @@ export class CabeceraComponent implements OnInit {
     return this.esVisibleBotonMenu ? 'flex' : "none";
   }
 
-  constructor(private tokenService: TokenService, private router: Router) { }
+  constructor(
+    private tokenService: TokenService,
+    private servicioDBConsulta: ConsultaDBService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.IsLogged.emit(this.isLogged);
     this.logInLogOut = this.isLogged ? "Log Out" : "Login";
+
+    this.cargarDatos();
   }
+
+  cargarDatos() {
+    this.servicioDBConsulta.listar('dato-personal')
+      .subscribe(
+        datos => {
+          this.nombre = datos[0].nombre;
+          this.profesion = datos[0].profesion;
+          this.texto = datos[0].texto;
+          this.urlFacebook = datos[0].urlFacebook;
+          this.urlGitHub = datos[0].urlGitHub;
+          this.urlImagenPerfil = datos[0].urlImagenPerfil;
+          this.urlImagenPortada = datos[0].urlImagenPortada
+        }
+      );
+  }
+
+
 
   onLoginPress() {
     if (this.tokenService.isLogged()) {

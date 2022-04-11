@@ -1,0 +1,112 @@
+<div class="contenedor-login">
+  <!--------------------- Cabecera ---------------------->
+  <div class="contenedor-cabecera-login">
+    <img height="50px" src="../../../assets/imgCabecera/argProg.svg" alt="">
+  </div>
+
+  <div>
+    <form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <!--------------------- Titulo ---------------------->
+      <h2>Editar datos personales</h2>
+
+      <!--------------------- Nombre y Apellido ---------------------->
+      <div>
+        <label for="nombre">Nombre y apellido</label>
+        <input type="text" name="nombre" id="" placeholder="Nombre y apellido" [(ngModel)]="nombre" required />
+      </div>
+
+      <!--------------------- Profesion ---------------------->
+      <div>
+        <label for="profesion">Profesión</label>
+        <input type="text" name="profesion" id="" placeholder="Profesión" [(ngModel)]="profesion" required />
+      </div>
+
+      <hr class="linea-separadora">
+
+      <!--------------------- url facebook ---------------------->
+      <div>
+        <label style="display: flex; align-items: center;" for="urlFacebook">
+          <img width="25px" style="margin-right: 5px;" src="../../../assets/imgCabecera/logoFace.png" alt="">
+          <p> URL Facebook</p>
+        </label>
+        <input type="url" name="urlFacebook" id="" placeholder="URL Facebook" [(ngModel)]="urlFacebook" />
+      </div>
+
+      <!--------------------- url github ---------------------->
+      <div>
+        <label style="display: flex; align-items: center;" for="urlGitHub">
+          <img width="25px" style="margin-right: 5px;" src="../../../assets/imgCabecera/logoGitHub.svg" alt="">
+          <p>URL Github</p>
+        </label>
+        <input type="url" name="urlGitHub" id="" placeholder="URL Github" [(ngModel)]="urlGitHub" />
+      </div>
+
+      <hr class="linea-separadora">
+
+      <!--------------------- Agregar imagen portada ---------------------->
+      <h3 style="margin-bottom: 5px;">Imagen Portada</h3>
+
+      <div class="contenedor-input-file">
+        <div *ngIf="urlImagenPortada!=null" style="background-image: url({{urlImagenPortada}});"
+          class="miniatura-imagen"></div>
+        <div>
+          <div>
+            <label for="urlImagenPortada" *ngIf="urlImagenPortada==null; else cambiarImagen">Agregar imagen</label>
+            <ng-template #cambiarImagen>
+              <label for="urlImagenPortada">Cambiar imagen</label>
+            </ng-template>
+          </div>
+
+          <input type="file" class="boton-url" name="boton-url" id="" placeholder="Url imagen"
+            (change)="selectFile($event,'portada',inputUrlImgPortada.value)" #inputUrlImgPortada />
+
+          <p class="texto-input-file">(Tamaño maximo imagen: 1 MB)</p>
+        </div>
+      </div>
+      <!-- boton quitar imagen portada -->
+      <div *ngIf="urlImagenPortada!==null">
+        <button class="btn-cancelar" style="margin-top: -20px;margin-bottom: 20px;"
+          (click)="quitarImagenPortada()">Quitar
+          imagen</button>
+      </div>
+
+      <hr class="linea-separadora">
+
+      <!--------------------- Agregar imagen perfil ---------------------->
+      <h3 style="margin-bottom: 5px;">Imagen Perfil</h3>
+
+      <div class="contenedor-input-file">
+        <div *ngIf="urlImagenPerfil!=null" style="background-image: url({{urlImagenPerfil}});" class="miniatura-imagen">
+        </div>
+        <div>
+          <div>
+            <label for="urlImagenPerfil" *ngIf="urlImagenPerfil==null; else cambiarImagenPerfil">Agregar imagen</label>
+            <ng-template #cambiarImagenPerfil>
+              <label for="urlImagenPerfil">Cambiar imagen</label>
+            </ng-template>
+          </div>
+
+          <input type="file" class="boton-url" name="boton-url" id="" placeholder="Url imagen"
+            (change)="selectFile($event,'perfil',inputUrlImgPerfil.value)" #inputUrlImgPerfil />
+
+          <p class="texto-input-file">(Tamaño maximo imagen: 1 MB)</p>
+        </div>
+
+      </div>
+      <!-- boton quitar imagen portada -->
+      <div *ngIf="urlImagenPerfil!==null">
+        <button class="btn-cancelar" style="margin-top: -20px;margin-bottom: 20px;"
+          (click)="quitarImagenPerfil()">Quitar
+          imagen</button>
+      </div>
+
+      <hr class="linea-separadora">
+
+      <!--------------------- Botones ---------------------->
+      <button [disabled]="!f.valid">Enviar</button>
+      <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>
+
+    </form>
+
+  </div>

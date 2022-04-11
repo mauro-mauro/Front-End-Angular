@@ -23,7 +23,7 @@
 
         <!------------------------- Boton Facebook --------------------------------->
         <button>
-          <a href="https://www.facebook.com/Mauro-L-Peralta-209077402807305/" target="_blank">
+          <a href="{{urlFacebook}}" target="_blank">
             <div class="contenedor-boton-face">
               <img width="30px" height="30px" src="../../../assets/imgCabecera/logoFace.png" alt="">
             </div>
@@ -32,7 +32,7 @@
 
         <!------------------------- Boton Github --------------------------------->
         <button>
-          <a href="https://github.com/mauro-mauro" target="_blank">
+          <a href="{{urlGitHub}}" target="_blank">
             <div class="contenedor-boton-gitHub">
               <img height="30px" src="../../../assets/imgCabecera/logoGitHub.svg" alt="">
             </div>
@@ -53,7 +53,7 @@
 
   <!-- --------------------------- Boton Edicion----------------------------------------- -->
   <div class="contenedor-botones-edicion" *ngIf="isLogged">
-    <button>
+    <button routerLink="/editar-cabecera">
       <div class="botones-edicion">
         <div class="icono-editar"></div>
       </div>
@@ -64,22 +64,22 @@
 
   <!------------------------------ Foto Portada --------------------------------->
   <div class="contenedor-portada centrar-contenido">
-    <div class="portada"></div>
+    <div class="portada" style="background-image: url('{{urlImagenPortada}}');"></div>
   </div>
 
   <!------------------------------ Foto Perfil --------------------------------->
   <div class="contenedor-perfil-y-nombre centrar-contenido">
     <div class="contenedor-perfil">
       <div class="perfil centrar-contenido">
-        <div class="foto-perfil"></div>
+        <div class="foto-perfil" style="background-image: url('{{urlImagenPerfil}}');"></div>
       </div>
     </div>
 
     <!------------------------------ Acerca de --------------------------------->
     <div class="contenedor-acerca-de">
       <div class="acerca-de">
-        <h2>Mauro Luis Peralta</h2>
-        <h2>{{ '{' }}Full Stack Developer Jr.{{ '}' }}</h2>
+        <h2>{{ nombre }}</h2>
+        <h2>{{ profesion }}</h2>
       </div>
     </div>
   </div>

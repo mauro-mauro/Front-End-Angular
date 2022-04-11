@@ -61,8 +61,8 @@ header{
 .portada{
   width:100%;
   height: 270px;
+  border: 0;
 
-  background-image: url("../../../assets/imgCabecera/portada3.svg");
   background-position: 50% 50%;
   background-size: cover;
 }

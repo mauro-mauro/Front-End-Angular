@@ -13,13 +13,15 @@ h2{
   margin-bottom: 15px;
 }
 
-form{
-  margin: 30px;
+.linea-separadora {
+  color: rgb(75, 74, 74);
+  border: 1.5px solid rgb(75, 74, 74);
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
-.contenedor-agregar-imagen{
-  display: flex;
-  flex-direction: column;
+form{
+  margin: 30px;
 }
 
 .imagen-miniatura{
@@ -29,7 +31,7 @@ form{
 
 }
 
-label, input, button, textarea{
+label, input, button{
   font-size: 18px;
 }
 
@@ -63,6 +65,14 @@ button{
   font-weight: bold;
   border: 0;
   cursor: pointer;
+}
+
+button:disabled,
+button[disabled]{
+  cursor: auto;
+  border: 1px solid #999999;
+  background-color: #334168;
+  color: #666666;
 }
 
 .btn-cancelar{
@@ -111,12 +121,4 @@ button{
   height: 100%;
   display: flex;
   align-content: center;
-}
-
-textarea{
-  width: 100%;
-  resize:none;
-  padding: 5px;
-  margin-top: 10px;
-  margin-bottom: 20px;
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 
@@ -9,28 +9,31 @@ import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 })
 export class ItemExperienciaEducacionComponent implements OnInit {
   @Input() tituloBarra: any;
-  @Input() lista:any;
-  @Input() item:any;
+  @Input() lista: any;
+  @Input() item: any;
   @Input() i = 0;
   @Input() IsLogged;
 
-  verModal:boolean=false;
-  urlImagenModal:String="";
+  @Output() actualizarItem = new EventEmitter<string>();
+
+  verModal: boolean = false;
+  urlImagenModal: String = "";
 
   constructor(
     private consultaDBService: ConsultaDBService,
-    private toastr:ToastrService
-    ) { }
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  onEliminar(tituloBarra:string, id){
+  onEliminar(tituloBarra: string, id: number) {
     this.consultaDBService.borrar(tituloBarra.toLowerCase(), id).subscribe(
       data => {
         this.toastr.success('Item Eliminado', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
+        this.actualizarItem.emit(tituloBarra.toLowerCase());
         //this.cargarProductos();
       },
       err => {
@@ -41,12 +44,12 @@ export class ItemExperienciaEducacionComponent implements OnInit {
     );
   }
 
-  activarModal(url:String){
+  activarModal(url: String) {
     this.verModal = true;
     this.urlImagenModal = url;
   }
 
-  desactivarModal(){
+  desactivarModal() {
     this.verModal = false;
   }
 
