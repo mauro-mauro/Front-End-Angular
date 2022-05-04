@@ -19,8 +19,11 @@
 <!-- -----------------------------------------Fin Botones Edicion------------------------------------------------ -->
 
 <div class="item-experiencia">
-  <div *ngIf="item.url !== null">
-    <div (click)="activarModal(item.url)" class="logo-item-experiencia" style="background-image: url('{{ item.url }}');"></div>
+  <div *ngIf="item.imagen">
+    <div *ngIf=" item.imagen.imagenUrl !== ''">
+      <div (click)="activarModal(item.imagen.imagenUrl)" class="logo-item-experiencia"
+        style="background-image: url('{{ item.imagen.imagenUrl}}');"></div>
+    </div>
   </div>
 
   <div class="contenido-item-experiencia">

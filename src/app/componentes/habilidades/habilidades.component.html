@@ -11,12 +11,12 @@
     [IsLogged]="IsLogged"
   ></app-item-habilidades>
 
-  <!-- -------------------------------- Boton Edicion ------------------------------------- -->
+  <!-- -------------------------------- Boton Agregar ------------------------------------- -->
   <div class="contenedor-botones-edicion" *ngIf="IsLogged">
-    <a [routerLink]="['/nueva-habilidad', 'Agregar Habilidad']">
-      <div class="icono-agregar"></div>
+    <a [routerLink]="['/nueva-plataforma']">
+      <div class="icono-agregar" style="margin-right: 40px;" ></div>
     </a>
   </div>
-  <!-- ------------------------------ Fin Boton Edicion ------------------------------------- -->
+  <!-- ------------------------------ Fin Boton Agregar ------------------------------------- -->
 
 </div>

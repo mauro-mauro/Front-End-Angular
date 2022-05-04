@@ -4,11 +4,11 @@ import { ToastrService } from 'ngx-toastr';
 import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 
 @Component({
-  selector: 'app-nueva-habilidad',
-  templateUrl: './nueva-habilidad.component.html',
-  styleUrls: ['./nueva-habilidad.component.css']
+  selector: 'app-nueva-plataforma',
+  templateUrl: './nueva-plataforma.component.html',
+  styleUrls: ['./nueva-plataforma.component.css']
 })
-export class NuevaHabilidadComponent implements OnInit {
+export class NuevaPlataformaComponent implements OnInit {
 
   //parametros
   //accion: Agregar || Editar
@@ -18,13 +18,10 @@ export class NuevaHabilidadComponent implements OnInit {
   //Base Datos
   plataformas: any[] = []
 
-  item: any = {
-    habilidad:null,
-    porcentaje: 50,
-    hab:{
-      id: 1
-    }
+  nuevaPlataforma: any = {
+    plataforma: ""
   }
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -41,15 +38,18 @@ export class NuevaHabilidadComponent implements OnInit {
   }
 
   getPlataformas() {
-    this.consultaDBService.listar('habilidad-plataformas')
-      .subscribe(plataformas => this.plataformas = plataformas);
+    this.consultaDBService.listar('plataforma')
+      .subscribe(plataformas => {
+        this.plataformas = plataformas;
+        console.log(plataformas);
+      });
   }
 
   onSubmit() {
-    this.consultaDBService.nuevo('item-habilidad',this.item)
+    this.consultaDBService.nuevo('plataforma', this.nuevaPlataforma)
       .subscribe(
         data => {
-          this.toastr.success(`Habilidad creada`, 'OK', {
+          this.toastr.success(`Plataforma creada`, 'OK', {
             timeOut: 3000, positionClass: 'toast-top-center'
           });
           this.router.navigate(['/']);

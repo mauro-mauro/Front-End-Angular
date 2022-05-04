@@ -53,8 +53,11 @@ export class HomeComponent implements OnInit {
   }
 
   initItemsHabilidad() {
-    this.servicioConsultaDB.listar("habilidad")
-      .subscribe((itemsHabilidad: any) => this.itemsHabilidad = itemsHabilidad);
+    this.servicioConsultaDB.listar("plataforma")
+      .subscribe((itemsHabilidad: any) => {
+        this.itemsHabilidad = itemsHabilidad;
+        //console.log(itemsHabilidad);
+      });
   }
 
   IsLogged(e) {
@@ -67,5 +70,9 @@ export class HomeComponent implements OnInit {
     } else if(event=='educacion'){
       this.initItemsEducacion();
     }
+  }
+
+  actualizarItemProyecto(event) {
+      this.initItemsProyecto();
   }
 }

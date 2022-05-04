@@ -1,25 +1,48 @@
 <!-- --------------------------------------------Botones Edicion------------------------------------------------ -->
 <div class="contenedor-botones-edicion" *ngIf="IsLogged">
   <div class="botones-edicion">
-    <div class="icono-editar"></div>
-    <div class="icono-eliminar"></div>
+
+    <!---------- Boton Editar ----------->
+    <!---------- path: 'editar-experiencia-educacion/:accion/:id' -------------->
+    <button>
+      <a [routerLink]="['/editar-proyecto', 'Editar Proyecto', item.id]">
+        <div class="icono-editar"></div>
+      </a>
+    </button>
+
+    <!---------- Boton Eliminar ----------->
+    <button (click)="onEliminar(item.id)">
+      <div class="icono-eliminar"></div>
+    </button>
   </div>
 </div>
 <!-- -----------------------------------------Fin Botones Edicion------------------------------------------------ -->
 
 <div class="item-experiencia">
-  <div *ngIf="item.url !==''">
-    <div (click)="activarModal(item.url)" class="logo-item-experiencia"
-      style="background-image: url('{{ item.url }}');"></div>
+  <div *ngIf="item.imagen">
+    <div *ngIf="item.imagen.imagenUrl !==''">
+      <div (click)="activarModal(item.imagen.imagenUrl)" class="logo-item-experiencia"
+        style="background-image: url('{{ item.imagen.imagenUrl }}');"></div>
+    </div>
   </div>
+
   <div class="contenido-item-experiencia">
-    <h2>{{ item.titulo }}</h2>
+    <h2>{{ item.nombreProyecto }}</h2>
 
     <hr class="linea-separadora">
 
     <h3>{{ item.programa }}</h3>
 
     <hr class="linea-separadora">
+
+    <p>{{ item.anio }}</p>
+
+    <hr class="linea-separadora">
+
+    <div *ngIf="item.repositorioGit != ''">
+      <p> Link repositorio GitHub: <a target="_blank" href="{{item.repositorioGit}}">{{item.repositorioGit}}</a></p>
+      <hr class="linea-separadora">
+    </div>
 
     <p>{{ item.anio }}</p>
 

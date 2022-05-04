@@ -20,8 +20,16 @@ export class CabeceraComponent implements OnInit {
   texto: string = null;
   urlFacebook: string;
   urlGitHub: string;
-  urlImagenPerfil: string = null;
-  urlImagenPortada: string = null;
+  imagenPerfil: any = {
+    id: null,
+    imagenUrl: "",
+    imagenId: ""
+  }
+  imagenPortada: any = {
+    id: null,
+    imagenUrl: "",
+    imagenId: ""
+  }
 
   isLogged: boolean = this.tokenService.isLogged();
   logInLogOut: string;
@@ -48,13 +56,16 @@ export class CabeceraComponent implements OnInit {
     this.servicioDBConsulta.listar('dato-personal')
       .subscribe(
         datos => {
-          this.nombre = datos[0].nombre;
-          this.profesion = datos[0].profesion;
-          this.texto = datos[0].texto;
-          this.urlFacebook = datos[0].urlFacebook;
-          this.urlGitHub = datos[0].urlGitHub;
-          this.urlImagenPerfil = datos[0].urlImagenPerfil;
-          this.urlImagenPortada = datos[0].urlImagenPortada
+          if (datos.length > 0) {
+            this.nombre = datos[0].nombre;
+            this.profesion = datos[0].profesion;
+            this.texto = datos[0].texto;
+            this.urlFacebook = datos[0].urlFacebook;
+            this.urlGitHub = datos[0].urlGitHub;
+            this.imagenPerfil.imagenUrl = datos[0].imagenPerfil.imagenUrl;
+            this.imagenPortada.imagenUrl = datos[0].imagenPortada.imagenUrl;
+          }
+
         }
       );
   }

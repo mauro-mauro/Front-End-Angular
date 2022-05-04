@@ -11,66 +11,112 @@
     <div class="items-habilidad">
 
 
-      <div *ngFor="let itemTemp of habilidad.listaHabilidad" class="contenedor-items">
-        <div class="items">
-          <h5 class="habilidad">{{ itemTemp.habilidad }}</h5>
-          <progress class="porcentaje" min="0" max="100" value="{{itemTemp.porcentaje}}"></progress>
-          <hr class="linea-separadora">
+      <div *ngIf="habilidad">
+        <div *ngFor="let itemTemp of habilidad.listaHabilidad" class="contenedor-items">
+          <div class="items">
+            <h5 class="habilidad">{{ itemTemp.habilidad }}</h5>
+            <!-- barra porcentaje -->
+            <progress class="porcentaje" min="0" max="100" value="{{itemTemp.porcentaje}}"></progress>
+            <hr class="linea-separadora">
+          </div>
+
+          <div class="contenedor-botones-edicion">
+            <!---------- Boton Editar ----------->
+            <!---------- path: 'editar-experiencia-educacion/:accion/:id' -------------->
+            <button>
+              <a>
+                <!-- [routerLink]="['/editar-experiencia-educacion', 'Editar ' + tituloBarra, item.id]" -->
+                <div class="icono-editar" (click)="onEditar(itemTemp.id,itemTemp.habilidad, itemTemp.porcentaje)"></div>
+              </a>
+            </button>
+
+            <!---------- Boton Eliminar ----------->
+            <button>
+              <!-- (click)="onEliminar(tituloBarra, item.id)" -->
+              <div class="icono-eliminar" (click)="onEliminar(itemTemp.id)"></div>
+            </button>
+          </div>
+
         </div>
 
-        <div class="contenedor-botones-edicion">
-          <!---------- Boton Editar ----------->
-          <!---------- path: 'editar-experiencia-educacion/:accion/:id' -------------->
-          <button>
-            <a>
-              <!-- [routerLink]="['/editar-experiencia-educacion', 'Editar ' + tituloBarra, item.id]" -->
-              <div class="icono-editar" (click)="onEditar(itemTemp.id,itemTemp.habilidad, itemTemp.porcentaje)"></div>
-            </a>
-          </button>
+        <!-- ------------------------------  Agregar ------------------------------------- -->
+        <div style="width:100%; display: block;">
+          <h3 style="margin-top: 8px;margin-bottom: 8px;">Agregar</h3>
+          <div>
+            <label for="habilidad">Habilidad:</label>
+            <input type="text" name="habilidad" id="habilidad" placeholder="Habilidad"
+              [(ngModel)]="datosAgregar.habilidad" />
+          </div>
 
-          <!---------- Boton Eliminar ----------->
-          <button>
-            <!-- (click)="onEliminar(tituloBarra, item.id)" -->
-            <div class="icono-eliminar" (click)="onEliminar(itemTemp.id)"></div>
-          </button>
+          <!-- <h4 class="habilidad">{{datosEditar.habilidad}}</h4> -->
+
+          <div>
+            <label for="porcentaje">Porcentaje Habilidad: {{datosAgregar.porcentaje}}</label>
+            <input type="range" name="porcentaje" id="" placeholder="Porcentaje Habilidad"
+              [(ngModel)]="datosAgregar.porcentaje" required />
+          </div>
+
+          <!--------------------- Botones ---------------------->
+          <button type="button" class="boton-aceptar" style="background-color: #5a83a7; color:black;"
+            (click)="onAgregarHabilidad()">Agregar Habilidad</button>
+
+          <hr class="linea-separadora" style="margin-top: 15px;">
+
+          <!-- ------------------------------  Editar nombre ------------------------------------- -->
+          <div style="width:100%; display: block;">
+            <h3 style="margin-top: 8px;margin-bottom: 8px;">Editar plataforma</h3>
+            <div>
+              <label for="habilidad">Nombre:</label>
+              <input type="text" name="habilidad" id="habilidad" placeholder="Habilidad"
+                [(ngModel)]="habilidad.plataforma" />
+            </div>
+            <!--------------------- Botones ---------------------->
+            <button type="button" class="boton-aceptar" style="background-color: #5a83a7; color:black;"
+              (click)="onEditarPlataforma()">Cambiar nombre</button>
+            <button type="button" class="boton-aceptar" style="background-color: #ad6258; color:black;"
+              (click)="onEliminarPlataforma()">Eliminar plataforma</button>
+
+
+          </div>
+
         </div>
 
+        <hr class="linea-separadora" style="margin-top: 15px;">
+
+
       </div>
-
-    </div>
-
-    <!--------------------- Botones ---------------------->
-    <button type="button" class="boton-aceptar" routerLink="/">Aceptar</button>
-    <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>
-
-  </div>
-
-</div>
-
-<!-------------------------------- Modal ----------------------------------------->
-<div class="modal" *ngIf="bannerActivo">
-  <div class="contenedor-editar-item">
-    <div class="editar-item">
-      <div>
-        <label for="habilidad">Habilidad:</label>
-        <input type="text" name="habilidad" id="habilidad" placeholder="Habilidad"
-          [(ngModel)]="datosEditar.habilidad" />
-      </div>
-
-      <!-- <h4 class="habilidad">{{datosEditar.habilidad}}</h4> -->
-
-      <div>
-        <label for="porcentaje">Porcentaje Habilidad: {{datosEditar.porcentaje}}</label>
-        <input type="range" name="porcentaje" id="" placeholder="Porcentaje Habilidad"
-          [(ngModel)]="datosEditar.porcentaje" required />
-      </div>
-
-      <hr class="linea-separadora">
 
       <!--------------------- Botones ---------------------->
-      <button type="button" class="boton-aceptar" (click)="onAceptarEdicion(datosEditar.id)">Enviar</button>
-      <button type="button" name="cancelar" class="btn-cancelar" (click)="bannerActivo=false">Cancelar</button>
+      <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Salir</button>
 
     </div>
+
   </div>
-</div>
+
+  <!-------------------------------- Modal ----------------------------------------->
+  <div class="modal" *ngIf="bannerActivo">
+    <div class="contenedor-editar-item">
+      <div class="editar-item">
+        <div>
+          <label for="habilidad">Habilidad:</label>
+          <input type="text" name="habilidad" id="habilidad" placeholder="Habilidad"
+            [(ngModel)]="datosEditar.habilidad" />
+        </div>
+
+        <!-- <h4 class="habilidad">{{datosEditar.habilidad}}</h4> -->
+
+        <div>
+          <label for="porcentaje">Porcentaje Habilidad: {{datosEditar.porcentaje}}</label>
+          <input type="range" name="porcentaje" id="" placeholder="Porcentaje Habilidad"
+            [(ngModel)]="datosEditar.porcentaje" required />
+        </div>
+
+        <hr class="linea-separadora">
+
+        <!--------------------- Botones ---------------------->
+        <button type="button" class="boton-aceptar" (click)="onAceptarEdicion(datosEditar.id)">Enviar</button>
+        <button type="button" name="cancelar" class="btn-cancelar" (click)="bannerActivo=false">Cancelar</button>
+
+      </div>
+    </div>
+  </div>

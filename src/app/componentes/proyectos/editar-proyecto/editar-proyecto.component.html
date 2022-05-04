@@ -10,16 +10,28 @@
       <!--------------------- Titulo ---------------------->
       <h2>{{accion}}</h2>
 
-      <!--------------------- Ocupacion / Titulo Educacion ---------------------->
+      <!--------------------- Nombre Proyecto ---------------------->
       <div>
-        <label for="titulo">{{ocupacionTitulo}}*</label>
-        <input type="text" name="titulo" id="" placeholder="{{ocupacionTitulo}}" [(ngModel)]="titulo" required />
+        <label for="titulo">Nombre Proyecto*</label>
+        <input type="text" name="titulo" id="" placeholder="Nombre proyecto" [(ngModel)]="nombreProyecto" required />
       </div>
 
-      <!--------------------- Lugar ---------------------->
+      <!--------------------- Programa ---------------------->
       <div>
-        <label for="lugar">Lugar*</label>
-        <input type="text" name="lugar" id="" placeholder="Lugar" [(ngModel)]="lugar" required />
+        <label for="software">Software*</label>
+        <input type="text" name="software" id="" placeholder="Software" [(ngModel)]="programa" required />
+      </div>
+
+      <!--------------------- Año ---------------------->
+      <div>
+        <label for="anio">Año*</label>
+        <input type="text" name="anio" id="" placeholder="Año" [(ngModel)]="anio" required />
+      </div>
+
+      <!--------------------- Nombre Proyecto ---------------------->
+      <div>
+        <label for="repositorioGit">Repositorio Git</label>
+        <input type="text" name="repositorioGit" id="" placeholder="Repositorio Git" [(ngModel)]="repositorioGit" />
       </div>
 
       <!--------------------- Agregar Imagen ---------------------->
@@ -42,39 +54,25 @@
           </div>
         </div>
       </div>
-
-
+      <!------------ Boton quitar imagen ------------>
       <div *ngIf="imagenFile || imagen.imagenUrl !=''">
-        <button type="button" class="btn-cancelar" style="margin-top: -20px;margin-bottom: 20px;" (click)="quitarImagen()">Quitar
+        <button class="btn-cancelar" style="margin-top: -20px;margin-bottom: 20px;" (click)="quitarImagen()">Quitar
           imagen</button>
       </div>
-
-      <!--------------------- Periodo ---------------------->
-      <div>
-        <label for="periodo">Periodo*</label>
-        <input type="text" name="periodo" id="" placeholder="Periodo" (change)="onPressPeriodo($event)"
-          [(ngModel)]="periodo" #period required />
-
-        <!--------- Error? ----------->
-        <div style="margin-top: -20px; margin-bottom: 20px;" *ngIf="errorCampo">
-          <p class="campoObligatorio">*Campo obligatorio</p>
-        </div>
-      </div>
-
+      <!----------------------------- Fin Agregar Imagen ----------------------------->
 
       <!--------------------- Descripcion ---------------------->
       <div>
-        <label for="texto">
-          <p>Descripcion</p>
-        </label>
-        <textarea name="texto" rows="5" id="" placeholder="Descripcion" [(ngModel)]="texto"></textarea>
+        <label for="texto">Descripcion</label>
+        <input type="text" name="texto" id="" placeholder="Descripcion" [(ngModel)]="texto"/>
       </div>
 
       <!--------------------- Botones ---------------------->
-      <button [disabled]="!f.valid">Enviar</button>
+      <button type="submit" [disabled]="!f.valid">Enviar</button>
       <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>
 
     </form>
 
 
   </div>
+

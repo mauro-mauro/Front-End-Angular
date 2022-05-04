@@ -13,6 +13,7 @@
 
 <!---------------- Educacion -------------------->
 <app-experiencia-educacion
+    (actualizarItem)="actualizarItem($event)"
     [IsLogged]="isLogged"
     [lista]="itemsEducacion"
     [tituloBarra]="tituloBarraEducacion"
@@ -20,6 +21,7 @@
 ></app-experiencia-educacion>
 
 <app-proyectos
+    (actualizarItemProyecto)="actualizarItemProyecto($event)"
     [IsLogged]="isLogged"
     [lista]="itemsProyecto"
     [tituloBarra]="tituloBarraProyectos"

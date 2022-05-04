@@ -1,0 +1,122 @@
+.contenedor-login{
+  width: 100%;
+  background:#343434;
+  padding-bottom: 10px;
+}
+
+.contenedor-cabecera-login{
+  display: flex;
+}
+
+h2{
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+form{
+  margin: 30px;
+}
+
+.contenedor-agregar-imagen{
+  display: flex;
+  flex-direction: column;
+}
+
+.imagen-miniatura{
+  margin-right: 20px;
+  background-position: 50%;
+  background-size: cover;
+
+}
+
+label, input, button, textarea{
+  font-size: 18px;
+}
+
+label{
+  height: 40px;
+  vertical-align: middle;
+}
+
+input{
+  height: 40px;
+  width: 100%;
+
+  padding-left: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.texto-input-file{
+  font-style: italic;
+  color: gray;
+  margin-top: -20px;
+  margin-bottom: 20px;
+}
+
+button{
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  background: #304784;
+  color: white;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-cancelar{
+  background: darkgray;
+}
+
+.campoObligatorio{
+  display: inline-block;
+  padding: 5px;
+  color: black;
+  background: rgb(248, 186, 186);
+}
+
+
+/* .boton-url input[type="file"]{
+  color: rgb(199, 199, 199);
+  font-weight: bold;
+  font-size: large;
+
+  text-align: center;
+  vertical-align: middle;
+
+  cursor: pointer;
+}
+.boton-url:hover{
+  background: #554e4e;
+  transition: 1s;
+} */
+
+/* @media screen and (max-width: 600px) {
+  .contenedor-login{
+    width: 100%;
+  }
+} */
+
+.miniatura-imagen{
+  background-size: cover;
+  background-position: 50%;
+  margin-right: 8px;
+  width: 80px;
+  height: 80px;
+  /* border: 1px solid white; */
+}
+
+.contenedor-input-file{
+  height: 100%;
+  display: flex;
+  align-content: center;
+}
+
+textarea{
+  width: 100%;
+  resize:none;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

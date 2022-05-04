@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ITEMS_PROYECTOS } from 'src/app/item';
 
 @Component({
@@ -13,11 +13,17 @@ export class ProyectosComponent implements OnInit {
 
   @Input() IsLogged;
 
+  @Output() actualizarItemProyecto = new EventEmitter<string>();
+
   //items:any = ITEMS_PROYECTOS;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  emitirActualizarItemProyecto(event){
+    this.actualizarItemProyecto.emit(event);
   }
 
 }

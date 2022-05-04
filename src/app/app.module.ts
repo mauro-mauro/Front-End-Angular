@@ -19,9 +19,10 @@ import { FormsModule } from '@angular/forms';
 import { EditarExperienciaEducacionComponent } from './componentes/experiencia-educacion/editar-experiencia-educacion/editar-experiencia-educacion.component';
 import { interceptorProvider } from './interceptors/interceptor.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NuevaHabilidadComponent } from './componentes/habilidades/nueva-habilidad/nueva-habilidad.component';
 import { EditarItemHabilidadComponent } from './componentes/habilidades/item-habilidades/editar-item-habilidad/editar-item-habilidad.component';
 import { EditarCabeceraComponent } from './componentes/cabecera/editar-cabecera/editar-cabecera.component';
+import { NuevaPlataformaComponent } from './componentes/habilidades/nueva-plataforma/nueva-plataforma.component';
+import { EditarProyectoComponent } from './componentes/proyectos/editar-proyecto/editar-proyecto.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +38,10 @@ import { EditarCabeceraComponent } from './componentes/cabecera/editar-cabecera/
     BannerLoginComponent,
     HomeComponent,
     EditarExperienciaEducacionComponent,
-    NuevaHabilidadComponent,
     EditarItemHabilidadComponent,
-    EditarCabeceraComponent
+    EditarCabeceraComponent,
+    NuevaPlataformaComponent,
+    EditarProyectoComponent
   ],
   imports: [
     BrowserModule,

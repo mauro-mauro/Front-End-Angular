@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 
 @Component({
   selector: 'app-item-proyecto',
@@ -12,12 +14,34 @@ export class ItemProyectoComponent implements OnInit {
 
   @Input() IsLogged;
 
+  @Output() actualizarItemProyecto = new EventEmitter<any>();
+
   verModal:boolean=false;
   urlImagenModal:String="";
 
-  constructor() { }
+  constructor(
+    private consultaDBService: ConsultaDBService,
+    private toastr: ToastrService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onEliminar(id:number){
+    this.consultaDBService.borrar('proyecto', id).subscribe(
+      data => {
+        this.toastr.success('Item Eliminado', 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        this.actualizarItemProyecto.emit();
+        //this.cargarProductos();
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
+      }
+    );
   }
 
   activarModal(url:String){

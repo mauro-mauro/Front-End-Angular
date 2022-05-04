@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ExperienciaEducacion } from 'src/app/modelos/experiencia-educacion';
@@ -7,7 +7,7 @@ import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { EMPTY, Observable } from 'rxjs';
-import { SubirArchivoService } from 'src/app/servicios/subir-archivo.service';
+import { SubirImagenService } from 'src/app/servicios/consulta-db-imagen.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./editar-experiencia-educacion.component.css']
 })
 export class EditarExperienciaEducacionComponent implements OnInit {
+  @ViewChild("inputUrl") inputUrl: ElementRef | undefined;
 
   //parametros
   //accion: Agregar || Editar && Experiencia || Educacion
@@ -27,10 +28,16 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   lugar: string = "";
   periodo: string = "";
   texto: string = "";
-  url: string = null;
+  imagen: any = {
+    imagenUrl: "",
+    imagenId: ""
+  }
+
   errorCampo: boolean = false;
   // sinImagen:string="../../../assets/imgPagina/sin-imagen.svg";
   // miniaturaProvisoria:string;
+
+  uriExperienciaEducacion: string;
 
   //File Input
   selectedFiles: FileList;
@@ -39,76 +46,37 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   message = '';
   fileInfos: Observable<any>;
 
+  imagenFile: File;
+  imgMiniatura: File;
+
+  quitarImagenEnDB: boolean = false;
+
+  //edicion
+  modoEdicion: boolean = false;
+
+  experienciaEducacion: ExperienciaEducacion;
+
+  ocupacionTitulo: string = "";
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private servicioDBConsulta: ConsultaDBService,
     private toastr: ToastrService,
     private router: Router,
-    private subirArchivoService: SubirArchivoService
+    private subirImagenService: SubirImagenService
   ) {
-    // if(this.url==null){
-    //   this.miniaturaProvisoria=this.sinImagen
-    // } else{
-    //   this.miniaturaProvisoria=this.url;
-    // }
+
   }
 
   ngOnInit(): void {
     this.accion = this.activatedRoute.snapshot.params.accion;
+    this.uriExperienciaEducacion = this.accion.split(' ')[1].toLowerCase();
     this.id = this.activatedRoute.snapshot.params.id;
-    if (this.accion.split(' ')[0] === 'Editar')
+    if (this.uriExperienciaEducacion == "experiencia") this.ocupacionTitulo = "Ocupación"; else this.ocupacionTitulo = "Titulo";
+    if (this.accion.split(' ')[0] === 'Editar') {
+      this.modoEdicion = true;
       this.cargarDatos();
-  }
-
-  onSubmit() {
-    const agregarEditar = this.accion.split(' ')[1].toLowerCase();
-    let experienciaEducacion: ExperienciaEducacion;
-
-
-    experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar,
-      this.periodo, this.texto, this.url);
-
-    if (this.accion.split(' ')[0] === 'Agregar') {
-      this.nuevo(agregarEditar, experienciaEducacion);
-    } else if (this.accion.split(' ')[0] === 'Editar') {
-      //console.log(this.activatedRoute.snapshot.params.id)
-      this.editar(agregarEditar, experienciaEducacion, this.id);
     }
-
-  }
-
-  nuevo(item, experienciaEducacion: ExperienciaEducacion) {
-    this.servicioDBConsulta.nuevo(item, experienciaEducacion).subscribe(
-      data => {
-        this.toastr.success(`${item} creada`, 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.router.navigate(['/']);
-      },
-      err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
-        // this.router.navigate(['/']);
-      }
-    );
-  }
-
-  editar(item, experienciaEducacion: ExperienciaEducacion, id: number) {
-    this.servicioDBConsulta.editar(item, experienciaEducacion, id).subscribe(
-      data => {
-        this.toastr.success(`${item} actualizado`, 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.router.navigate(['/']);
-      },
-      err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
-      }
-    );
-
   }
 
   cargarDatos() {
@@ -118,7 +86,12 @@ export class EditarExperienciaEducacionComponent implements OnInit {
         this.lugar = datos.lugar;
         this.periodo = datos.periodo;
         this.texto = datos.texto;
-        this.url = datos.url;
+
+        if (datos.imagen.imagenId != null) {
+          this.imagen.id = datos.imagen.id;
+          this.imagen.imagenUrl = datos.imagen.imagenUrl;
+          this.imagen.imagenId = datos.imagen.imagenId;
+        }
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {
@@ -128,29 +101,76 @@ export class EditarExperienciaEducacionComponent implements OnInit {
     );
   }
 
+  onSubmit() {
+    const urlExperienciaEducacion = this.accion.split(' ')[1].toLowerCase();
+    // let experienciaEducacion: ExperienciaEducacion;
 
-  selectFile(event: any, inputUrl: string) {
-    this.selectedFiles = event.target.files;
-    this.upload(inputUrl);
+    // experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar,
+    //   this.periodo, this.texto, this.urlImagen, this.idImagen);
+
+    if (this.accion.split(' ')[0] === 'Agregar') {
+      //let objetoPasadoATexto = JSON.stringify(experienciaEducacion);
+      this.nuevo();
+
+      //console.log(JSON.stringify(experienciaEducacion));
+    } else if (this.accion.split(' ')[0] === 'Editar') {
+      //console.log(this.activatedRoute.snapshot.params.id)
+      this.editar();
+    }
   }
 
-  upload(urlArchivo: string) {
+  nuevo() {
+    this.experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar, this.periodo, this.texto);
+    this.subirImagenService.subir(this.uriExperienciaEducacion, this.experienciaEducacion, this.imagenFile)
+      .subscribe(
+        data => {
+          this.toastr.success(`${this.uriExperienciaEducacion} creada`, 'OK', {
+            timeOut: 3000, positionClass: 'toast-top-center'
+          });
+          this.router.navigate(['/']);
+        },
+        err => {
+          this.toastr.error(err.error.mensaje, 'Fail', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+        }
+      );
+  }
+
+  editar() {
+    this.experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar, this.periodo, this.texto);
+    this.experienciaEducacion.id = this.id;
+    this.experienciaEducacion.imagen.id = this.imagen.id;
+    this.subirImagenService.editar(this.uriExperienciaEducacion, this.experienciaEducacion, this.imagenFile,this.quitarImagenEnDB)
+      .subscribe(
+        data => {
+          this.toastr.success(`${this.uriExperienciaEducacion} actualizado`, 'OK', {
+            timeOut: 3000, positionClass: 'toast-top-center'
+          });
+          this.router.navigate(['/']);
+        },
+        err => {
+          this.toastr.error(err.error.mensaje, 'Fail', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+        }
+      );
+
+  }
 
 
-    this.progress = 0;
-    this.currentFile = this.selectedFiles.item(0) as File;
-    this.subirArchivoService.upload(this.currentFile).subscribe(
-      event => {
-        let nombreArchivo: string = urlArchivo.split("\\")[2];
-        if (nombreArchivo !== undefined)
-          this.url = `${environment.apiUrl}/imagen/ver?nombre=` + nombreArchivo;
-      },
-      err => {
-        this.progress = 0;
-        this.message = 'Could not upload the file!';
-        this.currentFile = undefined!;
-      });
-    this.selectedFiles = undefined!;
+
+
+  onFileChange(event: any, inputUrl: string) {
+    this.selectedFiles = event.target.files;
+    //this.subirImagen();
+    //-------setear imagen portada
+    this.imagenFile = event.target.files[0];
+    const fr = new FileReader();
+    fr.onload = (evento: any) => {
+      this.imgMiniatura = evento.target.result;
+    };
+    fr.readAsDataURL(this.imagenFile);
   }
 
   onPressPeriodo(evento: any) {
@@ -162,7 +182,31 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   }
 
   quitarImagen() {
-    this.url = null;
+    this.inputUrl.nativeElement.value = "";
+    this.imagenFile = undefined;
+
+    this.quitarImagenEnDB = true;
+    this.imagen.imagenUrl = "";
+    //this.imagen.imagenId = "";
   }
 
 }
+
+/*
+editar(experienciaEducacion: ExperienciaEducacion, id: number) {
+    this.servicioDBConsulta.editar(this.uriExperienciaEducacion, experienciaEducacion, id).subscribe(
+      data => {
+        this.toastr.success(`${this.uriExperienciaEducacion} actualizado`, 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        this.router.navigate(['/']);
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
+      }
+    );
+
+  }
+*/

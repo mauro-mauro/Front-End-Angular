@@ -3,6 +3,7 @@
       [urlIcono]="urlIcono"
   ></app-barra-titulos>
   <app-item-proyecto
+  (actualizarItemProyecto)="emitirActualizarItemProyecto($event)"
     *ngFor="let item of lista; let i = index"
     [item]="item"
     [i]="i"
@@ -12,6 +13,10 @@
 
   <!-- -------------------------------- Boton Edicion ------------------------------------- -->
   <div class="contenedor-botones-edicion" *ngIf="IsLogged">
-    <div class="icono-agregar"></div>
+    <button>
+      <a [routerLink]="['/editar-proyecto', 'Agregar Proyecto']">
+      <div class="icono-agregar" ></div>
+    </a>
+    </button>
   </div>
   <!-- ------------------------------ Fin Boton Edicion ------------------------------------- -->

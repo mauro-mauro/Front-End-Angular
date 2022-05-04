@@ -1,9 +1,9 @@
 <!-- --------------------------------------------Botones Edicion------------------------------------------------ -->
 <div class="contenedor-botones-edicion" *ngIf="IsLogged">
   <div class="botones-edicion">
-    <a routerLink="/editar-item-habilidad/Editar {{item.plataforma}}/{{item.id}}" >
+    <a routerLink="/editar-item-habilidad/Editar {{item.plataforma}}/{{item.id}}">
       <div class="icono-editar"></div>
-    <!-- <div class="icono-eliminar"></div> -->
+      <!-- <div class="icono-eliminar"></div> -->
     </a>
 
   </div>
@@ -18,14 +18,17 @@
   <div class="items-habilidad">
     <hr class="linea-separadora">
     <div *ngFor="let itemTemp of item.listaHabilidad">
-      <div>
-        <h5 class="habilidad">{{ itemTemp.habilidad }}</h5>
+      <div *ngIf="itemTemp.habilidad">
+        <div>
+          <h5 class="habilidad">{{ itemTemp.habilidad }}</h5>
+        </div>
+        <div>
+          <progress class="porcentaje" min="0" max="100" value="{{itemTemp.porcentaje}}"></progress>
+        </div>
+        <hr class="linea-separadora">
       </div>
-      <div>
-        <progress class="porcentaje" min="0" max="100" value="{{itemTemp.porcentaje}}"></progress>
-      </div>
-      <hr class="linea-separadora">
     </div>
+
   </div>
 </div>
 <hr>
