@@ -44,7 +44,7 @@ export class SubirImagenService {
 
     formData.append('imagen', imagen);
     formData.append('objeto', objetoPasadoATexto);
-    formData.append('imagenId', objeto.imagen.id);
+    // formData.append('imagenId', objeto.imagen.id);
     formData.append('quitarImagen', `${quitarImagen}`);
 
     return this.http.put<any>(`${this.apiUrl}/${apiUri}/editar`, formData);
@@ -62,13 +62,9 @@ export class SubirImagenService {
     if (imagenPerfil == undefined) imagenPerfil = new File([""], "vacio1");
     if (imagenPortada == undefined || imagenPortada == null) imagenPortada = new File([""], "vacio2");
 
-    console.log(objeto);
-
     formData.append('imagenPerfil', imagenPerfil);
     formData.append('imagenPortada', imagenPortada);
     formData.append('objeto', objetoPasadoATexto);
-    formData.append('imagenPerfilId', objeto.imagenPerfil.id);
-    formData.append('imagenPortadaId', objeto.imagenPortada.id);
     formData.append('quitarImagenPerfil', `${quitarImagenPerfil}`);
     formData.append('quitarImagenPortada', `${quitarImagenPortada}`);
 

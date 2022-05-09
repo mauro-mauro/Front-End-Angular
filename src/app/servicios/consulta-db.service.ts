@@ -52,6 +52,10 @@ export class ConsultaDBService {
     return this.http.delete<any>(`${this.apiUrl}/${item}/borrar/${id}`);
   }
 
+  public borrarPorNombre(item: string, nombre: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${item}/borrar/${nombre}`);
+  }
+
   // //-------------------------------Educacion---------------------------------------------
   // obtenerEducacion(): Observable<any[]> {
   //   let header = new HttpHeaders().set('Type-content', 'aplication/json')

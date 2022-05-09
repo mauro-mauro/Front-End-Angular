@@ -12,7 +12,7 @@
 
 
       <div *ngIf="habilidad">
-        <div *ngFor="let itemTemp of habilidad.listaHabilidad" class="contenedor-items">
+        <div *ngFor="let itemTemp of habilidad" class="contenedor-items">
           <div class="items">
             <h5 class="habilidad">{{ itemTemp.habilidad }}</h5>
             <!-- barra porcentaje -->
@@ -64,17 +64,17 @@
 
           <!-- ------------------------------  Editar nombre ------------------------------------- -->
           <div style="width:100%; display: block;">
-            <h3 style="margin-top: 8px;margin-bottom: 8px;">Editar plataforma</h3>
+            <h3 style="margin-top: 8px;margin-bottom: 8px;">Editar Grupo Habilidad</h3>
             <div>
               <label for="habilidad">Nombre:</label>
-              <input type="text" name="habilidad" id="habilidad" placeholder="Habilidad"
-                [(ngModel)]="habilidad.plataforma" />
+              <input type="text" name="habilidad" id="habilidad" placeholder="Grupo Habilidad"
+                [(ngModel)]="grupoHabilidad" />
             </div>
             <!--------------------- Botones ---------------------->
             <button type="button" class="boton-aceptar" style="background-color: #5a83a7; color:black;"
-              (click)="onEditarPlataforma()">Cambiar nombre</button>
+              (click)="onEditarGrupoHabilidad()">Cambiar nombre</button>
             <button type="button" class="boton-aceptar" style="background-color: #ad6258; color:black;"
-              (click)="onEliminarPlataforma()">Eliminar plataforma</button>
+              (click)="onEliminarGrupoHabilidad()">Eliminar grupo habilidad</button>
 
 
           </div>

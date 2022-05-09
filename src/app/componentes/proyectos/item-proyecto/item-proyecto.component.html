@@ -19,11 +19,9 @@
 <!-- -----------------------------------------Fin Botones Edicion------------------------------------------------ -->
 
 <div class="item-experiencia">
-  <div *ngIf="item.imagen">
-    <div *ngIf="item.imagen.imagenUrl !==''">
-      <div (click)="activarModal(item.imagen.imagenUrl)" class="logo-item-experiencia"
-        style="background-image: url('{{ item.imagen.imagenUrl }}');"></div>
-    </div>
+  <div *ngIf="item.imagenUrl !==''">
+    <div (click)="activarModal(item.imagenUrl)" class="logo-item-experiencia"
+      style="background-image: url('{{ item.imagenUrl }}');"></div>
   </div>
 
   <div class="contenido-item-experiencia">
@@ -43,10 +41,6 @@
       <p> Link repositorio GitHub: <a target="_blank" href="{{item.repositorioGit}}">{{item.repositorioGit}}</a></p>
       <hr class="linea-separadora">
     </div>
-
-    <p>{{ item.anio }}</p>
-
-    <hr class="linea-separadora">
 
     <p>{{ item.texto }}</p>
 

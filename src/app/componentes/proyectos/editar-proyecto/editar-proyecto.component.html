@@ -37,12 +37,12 @@
       <!--------------------- Agregar Imagen ---------------------->
       <div class="contenedor-input-file">
         <div *ngIf="imagenFile" style="background-image: url({{imgMiniatura}});" class="miniatura-imagen"></div>
-        <div *ngIf="!imagenFile && modoEdicion && imagen.imagenUrl !=''"
-          style="background-image: url({{imagen.imagenUrl}});" class="miniatura-imagen"></div>
+        <div *ngIf="!imagenFile && modoEdicion && imagenUrl !=''"
+          style="background-image: url({{imagenUrl}});" class="miniatura-imagen"></div>
         <div>
           <div>
             <div>
-              <label for="url" *ngIf="!imagenFile || imagen.imagenUrl ==''; else cambiarImagen">Agregar imagen</label>
+              <label for="url" *ngIf="!imagenFile || imagenUrl ==''; else cambiarImagen">Agregar imagen</label>
               <ng-template #cambiarImagen>
                 <label for="url">Cambiar imagen</label>
               </ng-template>
@@ -55,7 +55,7 @@
         </div>
       </div>
       <!------------ Boton quitar imagen ------------>
-      <div *ngIf="imagenFile || imagen.imagenUrl !=''">
+      <div *ngIf="imagenFile || imagenUrl !=''">
         <button class="btn-cancelar" style="margin-top: -20px;margin-bottom: 20px;" (click)="quitarImagen()">Quitar
           imagen</button>
       </div>

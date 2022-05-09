@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { GrupoHabilidad } from 'src/app/modelos/grupo-habilidad';
 import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 
 @Component({
@@ -15,9 +16,7 @@ export class EditarItemHabilidadComponent implements OnInit {
 
   habilidad: any;
 
-  plataforma: any = {
-    plataforma: ""
-  }
+  grupoHabilidad: string;
 
   bannerActivo: boolean = false;
 
@@ -30,25 +29,22 @@ export class EditarItemHabilidadComponent implements OnInit {
   datosAgregar: any = {
     habilidad: null,
     porcentaje: 50,
-    plataforma: {
-      id: null
-    }
-  }
-
-  editarPlataforma: any = {
-    plataforma: null
+    grupoHabilidad: null
   }
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private servicioDBConsulta: ConsultaDBService,
     private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params.id;
     this.accion = this.activatedRoute.snapshot.params.accion;
-    this.datosAgregar.plataforma.id = this.id;
+
+    this.grupoHabilidad = this.accion.substring(this.accion.length, this.accion.indexOf(' ') + 1);
+    this.datosAgregar.grupoHabilidad = this.grupoHabilidad;
     this.getHabilidades();
   }
 
@@ -57,10 +53,10 @@ export class EditarItemHabilidadComponent implements OnInit {
   }
 
   getHabilidades(): void {
-    this.servicioDBConsulta.buscarPorId('plataforma', this.id)
+    this.servicioDBConsulta.buscarPorId('habilidad/lista', this.id)
       .subscribe((habilidad: any) => {
         this.habilidad = habilidad;
-        this.plataforma.plataforma = habilidad.plataforma;
+        // this.plataforma.plataforma = habilidad.grupoHabilidad;
       });
   }
 
@@ -115,6 +111,7 @@ export class EditarItemHabilidadComponent implements OnInit {
           this.getHabilidades();
           this.datosAgregar.habilidad = "";
           this.datosAgregar.porcentaje = 50;
+          this.datosAgregar.grupoHabilidad =this.grupoHabilidad;
         },
         err => {
           this.toastr.error(err.error.mensaje, 'Fail', {
@@ -124,9 +121,8 @@ export class EditarItemHabilidadComponent implements OnInit {
       );
   }
 
-  onEditarPlataforma() {
-    this.editarPlataforma.plataforma = this.habilidad.plataforma;
-    this.servicioDBConsulta.editar('plataforma', this.editarPlataforma, this.id)
+  onEditarGrupoHabilidad() {
+    this.servicioDBConsulta.editar('grupo-habilidad', new GrupoHabilidad(this.grupoHabilidad), this.id)
       .subscribe(
         data => {
           this.toastr.success(`Actualizado correctamente`, 'OK', {
@@ -141,7 +137,20 @@ export class EditarItemHabilidadComponent implements OnInit {
       );
   }
 
-  onEliminarPlataforma() {
-
+  onEliminarGrupoHabilidad() {
+    this.servicioDBConsulta.borrarPorNombre('habilidad/con-grupo-habilidad',this.grupoHabilidad)
+    .subscribe(
+      data => {
+        this.toastr.success(`Borrado correctamente`, 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
+        this.router.navigate(['/']);
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
+      }
+    );
   }
 }

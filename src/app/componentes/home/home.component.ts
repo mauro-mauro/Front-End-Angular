@@ -39,7 +39,10 @@ export class HomeComponent implements OnInit {
 
   initItemsExperiencia() {
     this.servicioConsultaDB.listar("experiencia")
-      .subscribe((itemsExperiencia: any) => this.itemsExperiencia = itemsExperiencia);
+      .subscribe((itemsExperiencia: any) => {
+        this.itemsExperiencia = itemsExperiencia;
+      }
+      );
   }
 
   initItemsEducacion() {
@@ -53,11 +56,8 @@ export class HomeComponent implements OnInit {
   }
 
   initItemsHabilidad() {
-    this.servicioConsultaDB.listar("plataforma")
-      .subscribe((itemsHabilidad: any) => {
-        this.itemsHabilidad = itemsHabilidad;
-        //console.log(itemsHabilidad);
-      });
+    this.servicioConsultaDB.listar("habilidad")
+      .subscribe((itemsHabilidad: any) => this.itemsHabilidad = itemsHabilidad);
   }
 
   IsLogged(e) {
@@ -67,12 +67,12 @@ export class HomeComponent implements OnInit {
   actualizarItem(event) {
     if (event == 'experiencia') {
       this.initItemsExperiencia();
-    } else if(event=='educacion'){
+    } else if (event == 'educacion') {
       this.initItemsEducacion();
     }
   }
 
   actualizarItemProyecto(event) {
-      this.initItemsProyecto();
+    this.initItemsProyecto();
   }
 }

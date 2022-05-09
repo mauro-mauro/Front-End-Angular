@@ -23,6 +23,10 @@ import { EditarItemHabilidadComponent } from './componentes/habilidades/item-hab
 import { EditarCabeceraComponent } from './componentes/cabecera/editar-cabecera/editar-cabecera.component';
 import { NuevaPlataformaComponent } from './componentes/habilidades/nueva-plataforma/nueva-plataforma.component';
 import { EditarProyectoComponent } from './componentes/proyectos/editar-proyecto/editar-proyecto.component';
+import { CargandoComponent } from './componentes/cargando/cargando.component';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SpinnerInterceptorService } from './interceptors/spinner.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,8 @@ import { EditarProyectoComponent } from './componentes/proyectos/editar-proyecto
     EditarItemHabilidadComponent,
     EditarCabeceraComponent,
     NuevaPlataformaComponent,
-    EditarProyectoComponent
+    EditarProyectoComponent,
+    CargandoComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,10 @@ import { EditarProyectoComponent } from './componentes/proyectos/editar-proyecto
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [interceptorProvider],
+  providers: [
+    interceptorProvider,
+    {provide: HTTP_INTERCEPTORS, useClass:SpinnerInterceptorService, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

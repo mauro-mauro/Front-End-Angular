@@ -20,16 +20,11 @@ export class CabeceraComponent implements OnInit {
   texto: string = null;
   urlFacebook: string;
   urlGitHub: string;
-  imagenPerfil: any = {
-    id: null,
-    imagenUrl: "",
-    imagenId: ""
-  }
-  imagenPortada: any = {
-    id: null,
-    imagenUrl: "",
-    imagenId: ""
-  }
+  imagenPerfilId: string;
+  imagenPerfilUrl: string;
+
+  imagenPortadaId: string;
+  imagenPortadaUrl: string;
 
   isLogged: boolean = this.tokenService.isLogged();
   logInLogOut: string;
@@ -62,10 +57,15 @@ export class CabeceraComponent implements OnInit {
             this.texto = datos[0].texto;
             this.urlFacebook = datos[0].urlFacebook;
             this.urlGitHub = datos[0].urlGitHub;
-            this.imagenPerfil.imagenUrl = datos[0].imagenPerfil.imagenUrl;
-            this.imagenPortada.imagenUrl = datos[0].imagenPortada.imagenUrl;
-          }
 
+            if (this.imagenPerfilId != '') {
+              this.imagenPerfilUrl = datos[0].imagenPerfilUrl;
+            }
+
+            if (this.imagenPortadaId != '') {
+              this.imagenPortadaUrl = datos[0].imagenPortadaUrl;
+            }
+          }
         }
       );
   }

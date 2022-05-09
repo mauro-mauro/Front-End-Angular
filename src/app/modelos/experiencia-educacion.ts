@@ -4,17 +4,16 @@ export class ExperienciaEducacion {
   lugar: string;
   periodo: string;
   texto: string;
-  imagen: any = {
-    id:null,
-    imagenUrl: "",
-    imagenId: ""
-  }
+  imagenId: string;
+  imagenUrl: string;
 
-  constructor(titulo: string, lugar: string, periodo: string, texto: string) {
+  constructor(titulo: string, lugar: string, periodo: string, texto: string, imagenId: string, imagenUrl: string) {
     this.titulo = titulo;
     this.lugar = lugar;
     this.periodo = periodo;
     this.texto = texto;
+    this.imagenId = imagenId;
+    this.imagenUrl = imagenUrl;
   }
 
 }

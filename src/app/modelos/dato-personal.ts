@@ -5,16 +5,13 @@ export class DatoPersonal {
   texto: string;
   urlFacebook: string;
   urlGitHub: string;
-  imagenPerfil: any = {
-    id:null,
-    imagenUrl: "",
-    imagenId: ""
-  };
-  imagenPortada: any = {
-    id:null,
-    imagenUrl: "",
-    imagenId: ""
-  }
+
+  imagenPerfilId: string;
+  imagenPerfilUrl: string;
+
+  imagenPortadaId: string;
+  imagenPortadaUrl: string;
+
   constructor(nombre: string, profesion: string, texto: string, urlFacebook: string, urlGitHub: string) {
     this.nombre = nombre;
     this.profesion = profesion;

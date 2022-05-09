@@ -28,10 +28,8 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   lugar: string = "";
   periodo: string = "";
   texto: string = "";
-  imagen: any = {
-    imagenUrl: "",
-    imagenId: ""
-  }
+  imagenUrl: string = "";
+  imagenId: string = "";
 
   errorCampo: boolean = false;
   // sinImagen:string="../../../assets/imgPagina/sin-imagen.svg";
@@ -87,10 +85,9 @@ export class EditarExperienciaEducacionComponent implements OnInit {
         this.periodo = datos.periodo;
         this.texto = datos.texto;
 
-        if (datos.imagen.imagenId != null) {
-          this.imagen.id = datos.imagen.id;
-          this.imagen.imagenUrl = datos.imagen.imagenUrl;
-          this.imagen.imagenId = datos.imagen.imagenId;
+        if (datos.imagenId != null) {
+          this.imagenUrl = datos.imagenUrl;
+          this.imagenId = datos.imagenId;
         }
       },
       err => {
@@ -102,6 +99,7 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   }
 
   onSubmit() {
+
     const urlExperienciaEducacion = this.accion.split(' ')[1].toLowerCase();
     // let experienciaEducacion: ExperienciaEducacion;
 
@@ -120,7 +118,15 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   }
 
   nuevo() {
-    this.experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar, this.periodo, this.texto);
+    this.experienciaEducacion =
+      new ExperienciaEducacion(
+        this.titulo,
+        this.lugar,
+        this.periodo,
+        this.texto,
+        this.imagenId,
+        this.imagenUrl
+        );
     this.subirImagenService.subir(this.uriExperienciaEducacion, this.experienciaEducacion, this.imagenFile)
       .subscribe(
         data => {
@@ -138,10 +144,17 @@ export class EditarExperienciaEducacionComponent implements OnInit {
   }
 
   editar() {
-    this.experienciaEducacion = new ExperienciaEducacion(this.titulo, this.lugar, this.periodo, this.texto);
+    this.experienciaEducacion =
+      new ExperienciaEducacion(
+        this.titulo,
+        this.lugar,
+        this.periodo,
+        this.texto,
+        this.imagenId,
+        this.imagenUrl
+        );
     this.experienciaEducacion.id = this.id;
-    this.experienciaEducacion.imagen.id = this.imagen.id;
-    this.subirImagenService.editar(this.uriExperienciaEducacion, this.experienciaEducacion, this.imagenFile,this.quitarImagenEnDB)
+    this.subirImagenService.editar(this.uriExperienciaEducacion, this.experienciaEducacion, this.imagenFile, this.quitarImagenEnDB)
       .subscribe(
         data => {
           this.toastr.success(`${this.uriExperienciaEducacion} actualizado`, 'OK', {
@@ -186,8 +199,11 @@ export class EditarExperienciaEducacionComponent implements OnInit {
     this.imagenFile = undefined;
 
     this.quitarImagenEnDB = true;
-    this.imagen.imagenUrl = "";
-    //this.imagen.imagenId = "";
+    this.imagenUrl = "";
+  }
+
+  activarCargando(){
+
   }
 
 }

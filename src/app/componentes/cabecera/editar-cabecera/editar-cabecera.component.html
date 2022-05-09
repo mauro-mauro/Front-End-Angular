@@ -48,7 +48,8 @@
       <h3 style="margin-bottom: 5px;">Imagen Portada</h3>
 
       <div class="contenedor-input-file">
-        <div *ngIf="imagenPortadaFile" style="background-image: url({{imgMinPortada}});"
+        <div *ngIf="imagenPortadaFile" style="background-image: url({{imgMinPortada}});" class="miniatura-imagen"></div>
+        <div *ngIf="!imagenPortadaFile && imagenPortadaUrl !=''" style="background-image: url({{imagenPortadaUrl}});"
           class="miniatura-imagen"></div>
         <div>
           <div>
@@ -59,14 +60,14 @@
           </div>
 
           <input type="file" class="boton-url" name="boton-url" id="" placeholder="Url imagen"
-            (change)="onFileChange($event,'portada',inputUrlImgPortada.value)"
-            accept="image/png, image/jpeg, image/gif" #inputUrlImgPortada />
+            (change)="onFileChange($event,'portada',inputUrlImgPortada.value)" accept="image/png, image/jpeg, image/gif"
+            #inputUrlImgPortada />
 
           <p class="texto-input-file">(Tamaño maximo imagen: 1 MB)</p>
         </div>
       </div>
       <!-- boton quitar imagen portada -->
-      <div *ngIf="imagenPortadaFile">
+      <div *ngIf="imagenPortadaFile || imagenPortadaUrl !=''">
         <button class="btn-cancelar" style="margin-top: -20px;margin-bottom: 20px;"
           (click)="quitarImagenPortada()">Quitar
           imagen</button>
@@ -80,6 +81,8 @@
       <div class="contenedor-input-file">
         <div *ngIf="imagenPerfilFile" style="background-image: url({{imgMinPerfil}});" class="miniatura-imagen">
         </div>
+        <div *ngIf="!imagenPerfilFile && imagenPerfilUrl !=''" style="background-image: url({{imagenPerfilUrl}});"
+          class="miniatura-imagen"></div>
         <div>
           <div>
             <label for="urlImagenPerfil" *ngIf="!imagenPerfilFile; else cambiarImagenPerfil">Agregar imagen</label>
@@ -89,15 +92,15 @@
           </div>
 
           <input type="file" class="boton-url" name="boton-url-foto-perfil" id="" placeholder="Url imagen"
-            (change)="onFileChange($event,'perfil',inputUrlImgPerfil.value)"
-            accept="image/png, image/jpeg, image/gif" #inputUrlImgPerfil />
+            (change)="onFileChange($event,'perfil',inputUrlImgPerfil.value)" accept="image/png, image/jpeg, image/gif"
+            #inputUrlImgPerfil />
 
           <p class="texto-input-file">(Tamaño maximo imagen: 1 MB)</p>
         </div>
 
       </div>
       <!-- boton quitar imagen portada -->
-      <div *ngIf="imagenPerfilFile">
+      <div *ngIf="imagenPerfilFile || imagenPerfilUrl !=''">
         <button class="btn-cancelar" style="margin-top: -20px;margin-bottom: 20px;"
           (click)="quitarImagenPerfil()">Quitar
           imagen</button>

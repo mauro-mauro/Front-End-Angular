@@ -24,16 +24,12 @@ export class EditarCabeceraComponent implements OnInit {
   texto: string = "";
   urlFacebook: string = "";
   urlGitHub: string = "";
-  imagenPerfil: any = {
-    id: null,
-    imagenUrl: "",
-    imagenId: ""
-  }
-  imagenPortada: any = {
-    id: null,
-    imagenUrl: "",
-    imagenId: ""
-  }
+
+  imagenPerfilId: string = "";
+  imagenPerfilUrl: string = "";
+
+  imagenPortadaId: string = "";
+  imagenPortadaUrl: string = "";
 
   //File Input
   imagenPortadaFile: File;
@@ -71,18 +67,15 @@ export class EditarCabeceraComponent implements OnInit {
           if (datos.urlGitHub != null)
             this.urlGitHub = datos.urlGitHub;
 
-          if (datos.imagenPerfil.imagenId != null) {
-            this.imagenPerfil.id = datos.imagenPerfil.id;
-            this.imagenPerfil.imagenUrl = datos.imagenPerfil.imagenUrl;
-            this.imagenPerfil.imagenId = datos.imagenPerfil.imagenId;
+          if (datos.imagenPerfilId != null) {
+            this.imagenPerfilId = datos.imagenPerfilId;
+            this.imagenPerfilUrl = datos.imagenPerfilUrl;
           }
 
-          if (datos.imagenPortada.imagenId != null) {
-            this.imagenPortada.id = datos.imagenPortada.id;
-            this.imagenPortada.imagenUrl = datos.imagenPortada.imagenUrl;
-            this.imagenPortada.imagenId = datos.imagenPortada.imagenId;
+          if (datos.imagenPortadaId != null) {
+            this.imagenPortadaId = datos.imagenPortadaId;
+            this.imagenPortadaUrl = datos.imagenPortadaUrl;
           }
-          //console.log(datos);
         },
         err => {
           if (err.error.mensaje == "no existe") {
@@ -126,8 +119,8 @@ export class EditarCabeceraComponent implements OnInit {
     let datoPersonal: DatoPersonal;
     datoPersonal = new DatoPersonal(this.nombre, this.profesion, this.texto, this.urlFacebook, this.urlGitHub);
     datoPersonal.id = this.id;
-    datoPersonal.imagenPerfil.id = this.imagenPerfil.id;
-    datoPersonal.imagenPortada.id = this.imagenPortada.id;
+    datoPersonal.imagenPerfilId = this.imagenPerfilId;
+    datoPersonal.imagenPortadaId = this.imagenPortadaId;
     // console.log("datopersonal")
     // console.log(datoPersonal);
     this.subirArchivoService
@@ -198,7 +191,7 @@ export class EditarCabeceraComponent implements OnInit {
     this.imagenPortadaFile = undefined;
 
     this.quitarImagenPortadaEnDB = true;
-    this.imagenPortada.imagenUrl = "";
+    this.imagenPortadaUrl = "";
   }
 
   quitarImagenPerfil() {
@@ -206,7 +199,7 @@ export class EditarCabeceraComponent implements OnInit {
     this.imagenPerfilFile = undefined;
 
     this.quitarImagenPerfilEnDB = true;
-    this.imagenPerfil.imagenUrl = "";
+    this.imagenPerfilUrl = "";
   }
 
 }

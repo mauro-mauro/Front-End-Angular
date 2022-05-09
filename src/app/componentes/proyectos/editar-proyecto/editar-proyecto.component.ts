@@ -25,10 +25,8 @@ export class EditarProyectoComponent implements OnInit {
   repositorioGit: string = "";
   anio: string = "";
   texto: string = "";
-  imagen: any = {
-    imagenUrl: "",
-    imagenId: ""
-  }
+  imagenUrl: string = "";
+  imagenId: string = "";
 
   //File Input
   selectedFiles: FileList;
@@ -40,11 +38,16 @@ export class EditarProyectoComponent implements OnInit {
   imagenFile: File;
   imgMiniatura: File;
 
+  quitarImagenEnDB: boolean = false;
+
   //edicion
   modoEdicion: boolean = false;
 
   //objeto
   proyecto: Proyecto;
+
+  //uri
+  uriProyecto: string = "proyecto";
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -72,9 +75,9 @@ export class EditarProyectoComponent implements OnInit {
         this.anio = datos.anio;
         this.texto = datos.texto;
 
-        if (datos.imagen.imagenId != null) {
-          this.imagen.imagenUrl = datos.imagen.imagenUrl;
-          this.imagen.imagenId = datos.imagen.imagenId;
+        if (datos.imagenId != null) {
+          this.imagenUrl = datos.imagenUrl;
+          this.imagenId = datos.imagenId;
         }
       },
       err => {
@@ -89,11 +92,19 @@ export class EditarProyectoComponent implements OnInit {
     if (this.accion.split(' ')[0] === 'Agregar') {
       this.nuevo();
     } else if (this.accion.split(' ')[0] === 'Editar') {
+      this.editar();
     }
   }
 
   nuevo() {
-    this.proyecto = new Proyecto(this.nombreProyecto,this.programa,this.repositorioGit,this.anio,this.texto);
+    this.proyecto =
+      new Proyecto(this.nombreProyecto,
+        this.programa,
+        this.repositorioGit,
+        this.anio,
+        this.texto,
+        this.imagenId,
+        this.imagenUrl);
     this.subirImagenService.subir('proyecto', this.proyecto, this.imagenFile)
       .subscribe(
         data => {
@@ -109,6 +120,33 @@ export class EditarProyectoComponent implements OnInit {
           // this.router.navigate(['/']);
         }
       );
+  }
+
+  editar() {
+    this.proyecto =
+      new Proyecto(this.nombreProyecto,
+        this.programa,
+        this.repositorioGit,
+        this.anio,
+        this.texto,
+        this.imagenId,
+        this.imagenUrl);
+    this.proyecto.id = this.id;
+    this.subirImagenService.editar(this.uriProyecto, this.proyecto, this.imagenFile, this.quitarImagenEnDB)
+      .subscribe(
+        data => {
+          this.toastr.success(`${this.uriProyecto} actualizado`, 'OK', {
+            timeOut: 3000, positionClass: 'toast-top-center'
+          });
+          this.router.navigate(['/']);
+        },
+        err => {
+          this.toastr.error(err.error.mensaje, 'Fail', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+        }
+      );
+
   }
 
   onFileChange(event: any, inputUrl: string) {
@@ -127,9 +165,8 @@ export class EditarProyectoComponent implements OnInit {
     this.inputUrl.nativeElement.value = "";
     this.imagenFile = undefined;
 
-    this.imagen.imagenUrl = "";
-    this.imagen.imagenId = "";
-
+    this.quitarImagenEnDB = true;
+    this.imagenUrl = "";
   }
 
 }
