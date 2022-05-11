@@ -17,6 +17,7 @@ export class EditarItemHabilidadComponent implements OnInit {
   habilidad: any;
 
   grupoHabilidad: string;
+  grupoHabilidadDB: string;
 
   bannerActivo: boolean = false;
 
@@ -32,6 +33,8 @@ export class EditarItemHabilidadComponent implements OnInit {
     grupoHabilidad: null
   }
 
+  validEditarNombre:boolean = false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private servicioDBConsulta: ConsultaDBService,
@@ -44,6 +47,7 @@ export class EditarItemHabilidadComponent implements OnInit {
     this.accion = this.activatedRoute.snapshot.params.accion;
 
     this.grupoHabilidad = this.accion.substring(this.accion.length, this.accion.indexOf(' ') + 1);
+    this.grupoHabilidadDB = this.grupoHabilidad;
     this.datosAgregar.grupoHabilidad = this.grupoHabilidad;
     this.getHabilidades();
   }
@@ -152,5 +156,14 @@ export class EditarItemHabilidadComponent implements OnInit {
         });
       }
     );
+  }
+
+  onChangeNombre(){
+    if(this.grupoHabilidad == this.grupoHabilidadDB){
+      this.validEditarNombre = false;
+    } else {
+      this.validEditarNombre = true;
+    }
+
   }
 }

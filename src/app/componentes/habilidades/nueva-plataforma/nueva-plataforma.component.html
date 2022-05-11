@@ -14,7 +14,7 @@
 
       <div style="width:100%; display: block;">
         <div>
-          <label for="plataforma">Nuevo Grupo de Habilidad:</label>
+          <label for="plataforma">Nuevo Grupo de Habilidad*:</label>
           <input type="text" name="plataforma" id="plataforma" placeholder="Grupo de Habilidad" [(ngModel)]="nuevoGrupoHabilidad" required/>
         </div>
 
@@ -23,6 +23,7 @@
       </div>
 
       <!--------------------- Botones ---------------------->
+      <p *ngIf="!f.valid">(*) Campo oblitatorio</p>
       <button class="btn-enviar" [disabled]="!f.valid">Enviar</button>
       <hr class="linea-separadora" style="margin-top: 15px;">
       <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>

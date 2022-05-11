@@ -71,6 +71,7 @@
       </div>
 
       <!--------------------- Botones ---------------------->
+      <p *ngIf="!f.valid">(*) Campo oblitatorio</p>
       <button [disabled]="!f.valid">Enviar</button>
       <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>
 

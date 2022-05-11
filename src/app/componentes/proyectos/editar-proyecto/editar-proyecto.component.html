@@ -64,10 +64,11 @@
       <!--------------------- Descripcion ---------------------->
       <div>
         <label for="texto">Descripcion</label>
-        <input type="text" name="texto" id="" placeholder="Descripcion" [(ngModel)]="texto"/>
+        <textarea type="text" name="texto" rows="5" id="" placeholder="Descripcion" [(ngModel)]="texto"></textarea>
       </div>
 
       <!--------------------- Botones ---------------------->
+      <p *ngIf="!f.valid">(*) Campo oblitatorio</p>
       <button type="submit" [disabled]="!f.valid">Enviar</button>
       <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>
 
