@@ -16,6 +16,13 @@ export class ItemExperienciaEducacionComponent implements OnInit {
 
   @Output() actualizarItem = new EventEmitter<string>();
 
+  //--Modal Confirm
+  mensaje: string = "";
+  abrirModalConfirmar: boolean = false;
+  idModalConfirmar: number = null;
+  uri: string = "";
+
+  //--Modal Imagen
   verModal: boolean = false;
   urlImagenModal: String = "";
 
@@ -25,23 +32,14 @@ export class ItemExperienciaEducacionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   onEliminar(tituloBarra: string, id: number) {
-    this.consultaDBService.borrar(tituloBarra.toLowerCase(), id).subscribe(
-      data => {
-        this.toastr.success('Item Eliminado', 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.actualizarItem.emit(tituloBarra.toLowerCase());
-        //this.cargarProductos();
-      },
-      err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
-      }
-    );
+    this.mensaje="Está seguro que desea eliminar el item?";
+    this.abrirModalConfirmar = true;
+    this.uri = tituloBarra.toLowerCase();
+    this.idModalConfirmar = id;
   }
 
   activarModal(url: String) {
@@ -51,6 +49,30 @@ export class ItemExperienciaEducacionComponent implements OnInit {
 
   desactivarModal() {
     this.verModal = false;
+  }
+
+  cerrarModalConfirmar(event: any) {
+    this.abrirModalConfirmar = false;
+  }
+
+  eliminar() {
+    this.consultaDBService.borrar(this.uri, this.idModalConfirmar).subscribe(
+      data => {
+        this.toastr.success('Item Eliminado', 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        this.actualizarItem.emit(this.uri);
+      },
+      err => {
+        this.toastr.error(err.error.mensaje, 'Fail', {
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
+      }
+    );
+  }
+
+  emitEliminarItem(event){
+    this.eliminar();
   }
 
 }

@@ -22,6 +22,7 @@ export class EditarProyectoComponent implements OnInit {
   //propiedades
   nombreProyecto: string = "";
   programa: string = "";
+  paginaWeb: string = "";
   repositorioGit: string = "";
   anio: string = "";
   texto: string = "";
@@ -71,6 +72,7 @@ export class EditarProyectoComponent implements OnInit {
       datos => {
         this.nombreProyecto = datos.nombreProyecto;
         this.programa = datos.programa;
+        this.paginaWeb = datos.paginaWeb;
         this.repositorioGit = datos.repositorioGit;
         this.anio = datos.anio;
         this.texto = datos.texto;
@@ -100,6 +102,7 @@ export class EditarProyectoComponent implements OnInit {
     this.proyecto =
       new Proyecto(this.nombreProyecto,
         this.programa,
+        this.paginaWeb,
         this.repositorioGit,
         this.anio,
         this.texto,
@@ -126,6 +129,7 @@ export class EditarProyectoComponent implements OnInit {
     this.proyecto =
       new Proyecto(this.nombreProyecto,
         this.programa,
+        this.paginaWeb,
         this.repositorioGit,
         this.anio,
         this.texto,
@@ -141,7 +145,9 @@ export class EditarProyectoComponent implements OnInit {
           this.router.navigate(['/']);
         },
         err => {
-          this.toastr.error(err.error.mensaje, 'Fail', {
+          let mensajeError;
+          err.error.mensaje === undefined ? mensajeError = err.error.message : mensajeError = err.error.mensaje;
+          this.toastr.error(mensajeError, 'Fail', {
             timeOut: 3000, positionClass: 'toast-top-center',
           });
         }

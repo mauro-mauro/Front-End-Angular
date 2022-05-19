@@ -27,6 +27,7 @@ import { CargandoComponent } from './componentes/cargando/cargando.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SpinnerInterceptorService } from './interceptors/spinner.interceptor';
+import { BannerConfirmComponent } from './componentes/banner-confirm/banner-confirm.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { SpinnerInterceptorService } from './interceptors/spinner.interceptor';
     EditarCabeceraComponent,
     NuevaPlataformaComponent,
     EditarProyectoComponent,
-    CargandoComponent
+    CargandoComponent,
+    BannerConfirmComponent
   ],
   imports: [
     BrowserModule,

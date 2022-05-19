@@ -67,7 +67,8 @@
         <label for="texto">
           <p>Descripcion</p>
         </label>
-        <textarea name="texto" rows="5" id="" placeholder="Descripcion" [(ngModel)]="texto"></textarea>
+        <textarea name="texto" rows="5" id="" placeholder="Descripcion" [(ngModel)]="texto" maxlength="500"></textarea>
+        <p *ngIf="texto.length > 0">Caracteres: {{ texto.length }} (Maximo: 500)</p>
       </div>
 
       <!--------------------- Botones ---------------------->

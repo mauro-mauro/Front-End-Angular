@@ -37,6 +37,11 @@
 
     <hr class="linea-separadora">
 
+    <div *ngIf="item.paginaWeb != ''">
+      <p> Link pagina web del proyecto: <a target="_blank" href="{{item.paginaWeb}}">{{item.paginaWeb}}</a></p>
+      <hr class="linea-separadora">
+    </div>
+
     <div *ngIf="item.repositorioGit != ''">
       <p> Link repositorio GitHub: <a target="_blank" href="{{item.repositorioGit}}">{{item.repositorioGit}}</a></p>
       <hr class="linea-separadora">
@@ -51,7 +56,7 @@
   <hr>
 </div>
 
-<!------------------------ Modal -------------------------------->
+<!------------------------ Modal imagen-------------------------------->
 <div class="modal" (click)="desactivarModal()" *ngIf="verModal">
   <div class="modal-content">
     <!-- <span class="close">&times;</span> -->
@@ -59,4 +64,13 @@
     <img src="{{ urlImagenModal }}" class="imagen" height="80%">
   </div>
 </div>
-<!---------------------- Fin modal -------------------------------->
+<!---------------------- Fin modal imagen-------------------------------->
+
+<!------------------------ Modal Confirmacion -------------------------------->
+<app-banner-confirm
+  *ngIf="abrirModalConfirmar"
+  (cerrarModalConfirmar)="cerrarModalConfirmar($event)"
+  (emitEliminarItem)="emitEliminarItem($event)"
+  [mensaje]="mensaje"
+></app-banner-confirm>
+<!---------------------- Fin modal Confirmacion-------------------------------->

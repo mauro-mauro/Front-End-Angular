@@ -12,13 +12,13 @@
 
       <!--------------------- Nombre y Apellido ---------------------->
       <div>
-        <label for="nombre">Nombre y apellido</label>
+        <label for="nombre">Nombre y apellido*</label>
         <input type="text" name="nombre" id="" placeholder="Nombre y apellido" [(ngModel)]="nombre" required />
       </div>
 
       <!--------------------- Profesion ---------------------->
       <div>
-        <label for="profesion">Profesión</label>
+        <label for="profesion">Profesión*</label>
         <input type="text" name="profesion" id="" placeholder="Profesión" [(ngModel)]="profesion" required />
       </div>
 
@@ -45,7 +45,7 @@
       <hr class="linea-separadora">
 
       <!--------------------- Agregar imagen portada ---------------------->
-      <h3 style="margin-bottom: 5px;">Imagen Portada</h3>
+      <label style="margin-bottom: 5px;">Imagen Portada</label>
 
       <div class="contenedor-input-file">
         <div *ngIf="imagenPortadaFile" style="background-image: url({{imgMinPortada}});" class="miniatura-imagen"></div>
@@ -76,7 +76,7 @@
       <hr class="linea-separadora">
 
       <!--------------------- Agregar imagen perfil ---------------------->
-      <h3 style="margin-bottom: 5px;">Imagen Perfil</h3>
+      <label style="margin-bottom: 5px;">Imagen Perfil</label>
 
       <div class="contenedor-input-file">
         <div *ngIf="imagenPerfilFile" style="background-image: url({{imgMinPerfil}});" class="miniatura-imagen">
@@ -107,6 +107,14 @@
       </div>
 
       <hr class="linea-separadora">
+
+      <!--------------------- Descripcion ---------------------->
+      <div>
+        <label for="texto">
+          <p>Acerca de</p>
+        </label>
+        <textarea name="texto" rows="5" id="" placeholder="Descripcion" [(ngModel)]="texto"></textarea>
+      </div>
 
       <!--------------------- Botones ---------------------->
       <p *ngIf="!f.valid">(*) Campo oblitatorio</p>

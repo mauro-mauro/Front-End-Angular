@@ -33,7 +33,16 @@ export class EditarItemHabilidadComponent implements OnInit {
     grupoHabilidad: null
   }
 
-  validEditarNombre:boolean = false;
+  validEditarNombre: boolean = false;
+
+  //--Modal Confirm grupo habilidad
+  mensaje: string = "";
+  abrirModalConfirmar: boolean = false;
+
+  //--Modal confirm habilidad
+  idHabilidadEliminar = null;
+  mensajeHabilidad: string = "";
+  abrirModalConfirmarEliminarHabilidad: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -65,7 +74,13 @@ export class EditarItemHabilidadComponent implements OnInit {
   }
 
   onEliminar(id: number) {
-    this.servicioDBConsulta.borrar('habilidad', id).subscribe(
+    this.idHabilidadEliminar = id;
+    this.mensajeHabilidad = "Esta seguro que desea eliminar el item?";
+    this.abrirModalConfirmarEliminarHabilidad = true;
+  }
+
+  eliminarHabilidad() {
+    this.servicioDBConsulta.borrar('habilidad', this.idHabilidadEliminar).subscribe(
       data => {
         this.toastr.success(`Eliminado correctamente`, 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
@@ -77,8 +92,8 @@ export class EditarItemHabilidadComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
       }
-
     );
+    this.abrirModalConfirmarEliminarHabilidad = false;
   }
 
   onEditar(id: number, habilidad: string, porcentaje: number) {
@@ -115,7 +130,7 @@ export class EditarItemHabilidadComponent implements OnInit {
           this.getHabilidades();
           this.datosAgregar.habilidad = "";
           this.datosAgregar.porcentaje = 50;
-          this.datosAgregar.grupoHabilidad =this.grupoHabilidad;
+          this.datosAgregar.grupoHabilidad = this.grupoHabilidad;
         },
         err => {
           this.toastr.error(err.error.mensaje, 'Fail', {
@@ -142,28 +157,50 @@ export class EditarItemHabilidadComponent implements OnInit {
   }
 
   onEliminarGrupoHabilidad() {
-    this.servicioDBConsulta.borrarPorNombre('habilidad/con-grupo-habilidad',this.grupoHabilidad)
-    .subscribe(
-      data => {
-        this.toastr.success(`Borrado correctamente`, 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
-        this.router.navigate(['/']);
-      },
-      err => {
-        this.toastr.error(err.error.mensaje, 'Fail', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
-      }
-    );
+    this.mensaje = "Está seguro que desea eliminar el item?";
+    this.abrirModalConfirmar = true;
   }
 
-  onChangeNombre(){
-    if(this.grupoHabilidad == this.grupoHabilidadDB){
+  eliminarGrupoHabilidad() {
+    this.servicioDBConsulta.borrarPorNombre('habilidad/con-grupo-habilidad', this.grupoHabilidad)
+      .subscribe(
+        data => {
+          this.toastr.success(`Borrado correctamente`, 'OK', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+          this.router.navigate(['/']);
+        },
+        err => {
+          this.toastr.error(err.error.mensaje, 'Fail', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+        }
+      );
+  }
+
+  onChangeNombre() {
+    if (this.grupoHabilidad == this.grupoHabilidadDB) {
       this.validEditarNombre = false;
     } else {
       this.validEditarNombre = true;
     }
 
   }
+
+  emitEliminarItem(event) {
+    this.eliminarGrupoHabilidad();
+  }
+
+  cerrarModalConfirmar(event: any) {
+    this.abrirModalConfirmar = false;
+  }
+
+  emitEliminarHabilidad(event) {
+    this.eliminarHabilidad();
+  }
+
+  cerrarModalConfirmarEliminarHabilidad(event: any) {
+    this.abrirModalConfirmarEliminarHabilidad = false;
+  }
+
 }

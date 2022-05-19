@@ -5,7 +5,7 @@
     <!------------------------- Cabecera arriba izquierda --------------------------------->
     <!------------------------- Logo Argentina Programa --------------------------------->
     <div class="header-arriba-izquierda">
-      <a href="https://www.argentina.gob.ar/produccion/argentina-programa/segunda-etapa">
+      <a href="https://www.argentina.gob.ar/produccion/argentina-programa/segunda-etapa" target="_blank">
         <div class="contenedorArgProg">
           <img height="50px" src="../../../assets/imgCabecera/argProg.svg" alt="">
         </div>
@@ -75,13 +75,22 @@
       </div>
     </div>
 
-    <!------------------------------ Acerca de --------------------------------->
-    <div class="contenedor-acerca-de">
-      <div class="acerca-de">
+    <!------------------------------ Nombre y profesion --------------------------------->
+    <div class="contenedor-nombre-profesion">
+      <div class="nombre-profesion">
         <h2>{{ nombre }}</h2>
         <h2>{{ profesion }}</h2>
       </div>
     </div>
+  </div>
+
+  <!------------------------------ Acerca de --------------------------------->
+  <div *ngIf="texto !== ''" class="contenedor-acerca-de">
+
+    <div class="contenedor-texto-acerca-de">
+      <span class="acerca-de">Acerca de: </span>{{ texto }}
+    </div>
+
   </div>
 
 </header>

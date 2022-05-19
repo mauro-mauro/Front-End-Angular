@@ -1,0 +1,18 @@
+<!------------------------ Modal Confirmacion -------------------------------->
+<div class="modal" #modal>
+  <div class="modal-content">
+    <div class="contenedor-ventana">
+      <div class="contenedor-mensaje">
+        <div class="icono-advertencia"></div>
+        <div class="mensaje">{{ mensaje }}</div>
+      </div>
+
+      <div class="contenedor-botones">
+        <hr class="linea-separadora">
+        <button class="btn-cerrar" (click)="closeModal()">Cancelar</button>
+        <button class="btn-eliminar" (click)="onEliminar()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!---------------------- Fin modal Confirmacion-------------------------------->

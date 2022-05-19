@@ -8,16 +8,23 @@ import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
   styleUrls: ['./item-proyecto.component.css']
 })
 export class ItemProyectoComponent implements OnInit {
-  @Input() item:any;
-  @Input() lista:any;
-  @Input() i :any;
+  @Input() item: any;
+  @Input() lista: any;
+  @Input() i: any;
 
   @Input() IsLogged;
 
   @Output() actualizarItemProyecto = new EventEmitter<any>();
 
-  verModal:boolean=false;
-  urlImagenModal:String="";
+  //--Modal Confirm
+  mensaje: string = "";
+  abrirModalConfirmar: boolean = false;
+  idModalConfirmar: number = null;
+  uri: string = "";
+
+  //--Modal Imagen
+  verModal: boolean = false;
+  urlImagenModal: String = "";
 
   constructor(
     private consultaDBService: ConsultaDBService,
@@ -27,14 +34,19 @@ export class ItemProyectoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onEliminar(id:number){
-    this.consultaDBService.borrar('proyecto', id).subscribe(
+  onEliminar(id: number) {
+    this.mensaje="Está seguro que desea eliminar el item?";
+    this.abrirModalConfirmar = true;
+    this.idModalConfirmar = id;
+  }
+
+  eliminar() {
+    this.consultaDBService.borrar('proyecto', this.idModalConfirmar).subscribe(
       data => {
         this.toastr.success('Item Eliminado', 'OK', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         this.actualizarItemProyecto.emit();
-        //this.cargarProductos();
       },
       err => {
         this.toastr.error(err.error.mensaje, 'Fail', {
@@ -44,13 +56,21 @@ export class ItemProyectoComponent implements OnInit {
     );
   }
 
-  activarModal(url:String){
+  activarModal(url: String) {
     this.verModal = true;
     this.urlImagenModal = url;
   }
 
-  desactivarModal(){
+  cerrarModalConfirmar(event: any) {
+    this.abrirModalConfirmar = false;
+  }
+
+  desactivarModal() {
     this.verModal = false;
+  }
+
+  emitEliminarItem(event) {
+    this.eliminar();
   }
 
 }

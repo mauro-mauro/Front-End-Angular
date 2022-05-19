@@ -66,6 +66,7 @@ export class CabeceraComponent implements OnInit {
               this.imagenPortadaUrl = datos[0].imagenPortadaUrl;
             }
           }
+
         }
       );
   }

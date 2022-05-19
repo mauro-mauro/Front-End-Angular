@@ -100,10 +100,10 @@ header{
 }
 
 /*  ------------------ Acerca de -------------------- */
-.contenedor-acerca-de{
+.contenedor-nombre-profesion{
   flex-grow: 3;
 }
-.acerca-de{
+.nombre-profesion{
   padding: 15px;
   /* width: 639px; */
 }
@@ -142,7 +142,7 @@ header{
     flex-direction: column-reverse;
   }
 
-  .contenedor-acerca-de{
+  .contenedor-nombre-profesion{
     text-align: center;
   }
 }
@@ -165,4 +165,17 @@ button {
    -webkit-appearance: button; /* for input */
      -moz-user-select: none;
       -ms-user-select: none;
+}
+
+.contenedor-acerca-de{
+  padding: 20px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.acerca-de{
+  /* writing-mode: sideways-lr; */
+  font-weight: bold;
+  font-size: larger;
 }

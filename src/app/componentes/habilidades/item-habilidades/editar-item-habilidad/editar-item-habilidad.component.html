@@ -36,7 +36,6 @@
               <div class="icono-eliminar" (click)="onEliminar(itemTemp.id)"></div>
             </button>
           </div>
-
         </div>
 
         <!-- ------------------------------  Agregar ------------------------------------- -->
@@ -79,7 +78,7 @@
               <p *ngIf="!f2.valid">(*) Campo oblitatorio</p>
               <button class="boton-aceptar" [disabled]="!f2.valid || !validEditarNombre">Cambiar nombre</button>
               <button type="button" class="boton-eliminar" style="background-color: #ad6258;"
-                (click)="onEliminarGrupoHabilidad()" [disabled]="!f2.valid || !validEditarNombre">Eliminar grupo
+                (click)="onEliminarGrupoHabilidad()" [disabled]="!f2.valid">Eliminar grupo
                 habilidad</button>
             </div>
           </form>
@@ -130,3 +129,22 @@
     </form>
 
   </div>
+</div>
+
+<!------- Banner confirmar eliminar grupo habilidad ------>
+<app-banner-confirm
+  *ngIf="abrirModalConfirmar"
+  (cerrarModalConfirmar)="cerrarModalConfirmar($event)"
+  (emitEliminarItem)="emitEliminarItem($event)"
+  [mensaje]="mensaje"
+></app-banner-confirm>
+<!------- Fin Banner confirmar eliminar habilidad ------>
+
+<!------- Banner confirmar eliminar habilidad ------>
+<app-banner-confirm
+  *ngIf="abrirModalConfirmarEliminarHabilidad"
+  (cerrarModalConfirmar)="cerrarModalConfirmarEliminarHabilidad($event)"
+  (emitEliminarItem)="emitEliminarHabilidad($event)"
+  [mensaje]="mensajeHabilidad"
+></app-banner-confirm>
+<!------- Fin Banner confirmar eliminar habilidad ------>

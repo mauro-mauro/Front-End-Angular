@@ -46,7 +46,7 @@
   <hr>
 </div>
 
-<!------------------------ Modal -------------------------------->
+<!------------------------ Modal Imagen-------------------------------->
 <div class="modal" (click)="desactivarModal()" *ngIf="verModal">
   <div class="modal-content">
     <div class="boton-cerrar"></div>
@@ -55,3 +55,13 @@
   </div>
 </div>
 <!---------------------- Fin modal -------------------------------->
+
+
+<!------------------------ Modal Confirmacion -------------------------------->
+<app-banner-confirm
+  *ngIf="abrirModalConfirmar"
+  (cerrarModalConfirmar)="cerrarModalConfirmar($event)"
+  (emitEliminarItem)="emitEliminarItem($event)"
+  [mensaje]="mensaje"
+></app-banner-confirm>
+<!---------------------- Fin modal Confirmacion-------------------------------->

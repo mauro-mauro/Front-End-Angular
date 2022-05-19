@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ConsultaDBService } from 'src/app/servicios/consulta-db.service';
 
 @Component({
@@ -28,7 +28,9 @@ export class HomeComponent implements OnInit {
 
   isLogged: boolean;
 
-  constructor(private servicioConsultaDB: ConsultaDBService) { }
+  constructor(
+    private servicioConsultaDB: ConsultaDBService
+  ) { }
 
   ngOnInit(): void {
     this.initItemsExperiencia();
@@ -74,5 +76,9 @@ export class HomeComponent implements OnInit {
 
   actualizarItemProyecto(event) {
     this.initItemsProyecto();
+  }
+
+  verModalConfirmacion(event){
+    console.log("event");
   }
 }
