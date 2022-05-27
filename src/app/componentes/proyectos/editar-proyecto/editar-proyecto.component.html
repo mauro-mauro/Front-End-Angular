@@ -48,9 +48,9 @@
         <div>
           <div>
             <div>
-              <label for="url" *ngIf="!imagenFile || imagenUrl ==''; else cambiarImagen">Agregar imagen</label>
-              <ng-template #cambiarImagen>
-                <label for="url">Cambiar imagen</label>
+              <label for="url" *ngIf="imagenFile || imagenUrl !==''; else agregarImagen">Cambiar imagen</label>
+              <ng-template #agregarImagen>
+                <label for="url">Agregar imagen</label>
               </ng-template>
             </div>
 

@@ -21,7 +21,7 @@ export class BannerLoginComponent implements OnInit {
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
-    private toastr:ToastrService
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -32,14 +32,17 @@ export class BannerLoginComponent implements OnInit {
     //console.log(this.loginUsuario);
     this.authService.login(this.loginUsuario).subscribe(
       data => {
+        this.toastr.success('Logueado correctamente', 'Ok', {
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
         this.tokenService.setToken(data.token);
         this.router.navigate(['/']);
       },
       err => {
         this.errMsj = err.error.message;
         console.log("errMsj: Mensaje de error: " + err.error.message);
-        this.toastr.error(this.errMsj,'Fail',{
-          timeOut:3000, positionClass:'toast-top-center',
+        this.toastr.error(this.errMsj, 'Fail', {
+          timeOut: 3000, positionClass: 'toast-top-center',
         });
       }
     );

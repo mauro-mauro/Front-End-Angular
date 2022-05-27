@@ -3,9 +3,9 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HTTP_INTERCEPTORS
 import { Observable, throwError } from 'rxjs';
 import { TokenService } from '../servicios/token.service';
 import { catchError, concatMap } from 'rxjs/operators';
-import { ToastrService } from 'ngx-toastr';
 import { JwtDto } from '../modelos/jwt-dto';
 import { AuthService } from '../servicios/auth.service';
+import { Router } from '@angular/router';
 
 const AUTHORIZATION = 'Authorization';
 
@@ -16,7 +16,8 @@ export class InterceptorService {
 
   constructor(
     private tokenService: TokenService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -30,7 +31,7 @@ export class InterceptorService {
     intReq = this.addToken(req, token);
 
     return next.handle(intReq).pipe(catchError((err: HttpErrorResponse) => {
-      if (err.status === 401) {
+      if (err.status === 401 || err.status === 409 || err.error.path === "/auth/cambiar-contrasena") {
         const dto: JwtDto = new JwtDto(this.tokenService.getToken());
         return this.authService.refresh(dto).pipe(concatMap((data: any) => {
           console.log('refreshing....');
@@ -40,6 +41,7 @@ export class InterceptorService {
           return next.handle(intReq);
         }));
       } else {
+        this.router.navigate(['/']);
         this.tokenService.logOut();
         return throwError(err);
       }

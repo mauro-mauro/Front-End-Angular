@@ -2,6 +2,11 @@
 /*div{
   border: 1px solid white;
 }*/
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 header{
   display: flex;
   flex-wrap: wrap;
@@ -25,21 +30,27 @@ header{
   display: none;
 }
 
-.botonLogin{
+.botonLogin,
+.botonCambiarContrasena{
   height: 50px;
-  width: 90px;
+  width: 120px;
   border: 0;
   background: transparent;
   color: rgb(199, 199, 199);
   font-weight: bold;
-  font-size: large;
+  font-size: small;
 
   text-align: center;
   vertical-align: middle;
 
   cursor: pointer;
 }
-.botonLogin:hover{
+/* .botonCambiarContrasena{
+  font-size: small;
+} */
+
+.botonLogin:hover,
+.botonCambiarContrasena:hover{
   background: #554e4e;
   transition: 1s;
 }
@@ -126,9 +137,10 @@ header{
 
   .contenedor-boton-gitHub,
   .contenedor-boton-face,
-  .botonLogin{
+  .botonLogin,
+  .botonCambiarContrasena{
     height: 50px;
-    width: 90px;
+    width: 100px;
     background: black;
 
     display: flex;

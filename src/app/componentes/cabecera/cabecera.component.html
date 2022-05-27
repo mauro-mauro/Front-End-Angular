@@ -21,6 +21,10 @@
           <a (click)="onLoginPress()">{{ logInLogOut }}</a>
         </button>
 
+        <button *ngIf="isLogged" class="botonCambiarContrasena">
+          <a routerLink="/cambiar-contrasena" >Cambiar contraseña</a>
+        </button>
+
         <!------------------------- Boton Facebook --------------------------------->
         <button>
           <a href="{{urlFacebook}}" target="_blank">

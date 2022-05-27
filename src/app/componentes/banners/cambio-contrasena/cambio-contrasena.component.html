@@ -1,0 +1,44 @@
+<div class="contenedor-login">
+  <div class="contenedor-cabecera-login">
+    <img height="50px" src="../../../assets/imgCabecera/argProg.svg" alt="">
+  </div>
+
+  <div>
+    <form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <div>
+        <label for="contrasenaActual">Contraseña actual*</label>
+        <input type="password" name="contrasenaActual" id="" placeholder="Contraseña Actual"
+        [(ngModel)]="oldPassword" autofocus required />
+      </div>
+
+      <div>
+        <label for="nuevaContrasena">Nueva contraseña*</label>
+        <input type="password" name="nuevaContrasena" id="" placeholder="Nueva contraseña"
+        [(ngModel)]="newPassword" required />
+      </div>
+
+      <div>
+        <label for="repetirNuevaContrasena">Repetir nueva contraseña*</label>
+        <input type="password" name="repetirNuevaContrasena" id="" placeholder="Repetir nueva contraseña"
+        [(ngModel)]="confirmarContrasena" required />
+      </div>
+
+      <p *ngIf="!f.valid">(*) Campo oblitatorio</p>
+      <button [disabled]="!f.valid">Enviar</button>
+
+      <button type="button" name="cancelar" class="btn-cancelar" routerLink="/">Cancelar</button>
+    </form>
+
+
+  </div>
+
+</div>
+
+<!------------------------ Modal Confirmacion -------------------------------->
+<app-informacion
+  *ngIf="abrirModalInformacion"
+  (cerrarModalInformacion)="cerrarModalInformacion($event)"
+  [mensaje]="mensaje"
+></app-informacion>
+<!---------------------- Fin modal Confirmacion-------------------------------->

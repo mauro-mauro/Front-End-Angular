@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CambioContrasena } from '../modelos/cambio-contrasena';
 import { JwtDto } from '../modelos/jwt-dto';
 import { LoginUsuario } from '../modelos/login-usuario';
 import { NuevoUsuario } from '../modelos/nuevo-usuario';
@@ -21,6 +22,10 @@ export class AuthService {
 
   public login(loginUsuario: LoginUsuario):Observable<JwtDto>{
     return this.httpClient.post<JwtDto>(this.authURL + 'login', loginUsuario);
+  }
+
+  public cambioContrasena(cambioContra:CambioContrasena):Observable<CambioContrasena>{
+    return this.httpClient.put<CambioContrasena>(this.authURL + 'cambiar-contrasena', cambioContra);
   }
 
   public refresh(dto: JwtDto):Observable<JwtDto>{

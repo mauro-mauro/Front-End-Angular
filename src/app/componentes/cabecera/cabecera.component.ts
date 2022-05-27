@@ -42,7 +42,7 @@ export class CabeceraComponent implements OnInit {
 
   ngOnInit(): void {
     this.IsLogged.emit(this.isLogged);
-    this.logInLogOut = this.isLogged ? "Log Out" : "Login";
+    this.logInLogOut = this.isLogged ? "Desloguearse" : "Iniciar sesión";
 
     this.cargarDatos();
   }
@@ -75,7 +75,7 @@ export class CabeceraComponent implements OnInit {
 
   onLoginPress() {
     if (this.tokenService.isLogged()) {
-      this.logInLogOut = "Login";
+      this.logInLogOut = "Iniciar sesión";
       this.isLogged = false;
       this.IsLogged.emit(this.isLogged);
       this.tokenService.logOut();

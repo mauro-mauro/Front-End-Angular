@@ -3,7 +3,7 @@
   width: 80px;
   height: 80px;
 
-  background-image: url('../../../assets/imgPagina/cargando.gif');
+  background-image: url('src/assets/imgPagina/cargando.gif');
   background-size: cover;
 
   border: 0px;

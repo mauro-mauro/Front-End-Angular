@@ -1,0 +1,46 @@
+.linea-separadora {
+  color: rgb(75, 74, 74);
+  width: 98%;
+  border: 1.8px solid rgb(75, 74, 74);
+}
+
+.contenedor-ventana{
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  min-width: 400px;
+  height: 150px;
+  padding: 15px;
+  background: #343434;
+  color: #ccc;
+}
+
+.contenedor-mensaje{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mensaje{
+  padding: 8px;
+}
+
+.contenedor-botones{
+  height: 40px;
+}
+
+button{
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-cerrar{
+  color:white;
+  background: #304784;
+}

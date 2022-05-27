@@ -13,7 +13,7 @@ import { ProyectosComponent } from './componentes/proyectos/proyectos.component'
 import { ItemHabilidadesComponent } from './componentes/habilidades/item-habilidades/item-habilidades.component';
 import { ItemProyectoComponent } from './componentes/proyectos/item-proyecto/item-proyecto.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BannerLoginComponent } from './componentes/banner-login/banner-login.component';
+import { BannerLoginComponent } from './componentes/banners/login/banner-login.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { FormsModule } from '@angular/forms';
 import { EditarExperienciaEducacionComponent } from './componentes/experiencia-educacion/editar-experiencia-educacion/editar-experiencia-educacion.component';
@@ -23,11 +23,13 @@ import { EditarItemHabilidadComponent } from './componentes/habilidades/item-hab
 import { EditarCabeceraComponent } from './componentes/cabecera/editar-cabecera/editar-cabecera.component';
 import { NuevaPlataformaComponent } from './componentes/habilidades/nueva-plataforma/nueva-plataforma.component';
 import { EditarProyectoComponent } from './componentes/proyectos/editar-proyecto/editar-proyecto.component';
-import { CargandoComponent } from './componentes/cargando/cargando.component';
+import { CargandoComponent } from './componentes/banners/cargando/cargando.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SpinnerInterceptorService } from './interceptors/spinner.interceptor';
-import { BannerConfirmComponent } from './componentes/banner-confirm/banner-confirm.component';
+import { BannerConfirmComponent } from './componentes/banners/confirm/banner-confirm.component';
+import { CambioContrasenaComponent } from './componentes/banners/cambio-contrasena/cambio-contrasena.component';
+import { InformacionComponent } from './componentes/banners/informacion/informacion.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { BannerConfirmComponent } from './componentes/banner-confirm/banner-conf
     NuevaPlataformaComponent,
     EditarProyectoComponent,
     CargandoComponent,
-    BannerConfirmComponent
+    BannerConfirmComponent,
+    CambioContrasenaComponent,
+    InformacionComponent
   ],
   imports: [
     BrowserModule,

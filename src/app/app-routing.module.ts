@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BannerLoginComponent } from './componentes/banner-login/banner-login.component';
+import { CambioContrasenaComponent } from './componentes/banners/cambio-contrasena/cambio-contrasena.component';
+import { BannerLoginComponent } from './componentes/banners/login/banner-login.component';
 import { EditarCabeceraComponent } from './componentes/cabecera/editar-cabecera/editar-cabecera.component';
 import { EditarExperienciaEducacionComponent } from './componentes/experiencia-educacion/editar-experiencia-educacion/editar-experiencia-educacion.component';
 import { EditarItemHabilidadComponent } from './componentes/habilidades/item-habilidades/editar-item-habilidad/editar-item-habilidad.component';
@@ -18,46 +19,36 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
-    path: 'editar-experiencia-educacion/:accion/:id',
-    component: EditarExperienciaEducacionComponent,
-    canActivate: [ComponentGuard],
-    data: { expectedRol: ['admin', 'user'] }
+    path: 'cambiar-contrasena', component: CambioContrasenaComponent,
+    canActivate: [ComponentGuard], data: { expectedRol: ['admin', 'user'] }
+  },
+  {
+    path: 'editar-experiencia-educacion/:accion/:id', component: EditarExperienciaEducacionComponent,
+    canActivate: [ComponentGuard], data: { expectedRol: ['admin', 'user'] }
   }, //editar
   {
-    path: 'editar-experiencia-educacion/:accion',
-    component: EditarExperienciaEducacionComponent,
-    canActivate: [ComponentGuard],
-    data: { expectedRol: ['admin', 'user'] }
+    path: 'editar-experiencia-educacion/:accion', component: EditarExperienciaEducacionComponent,
+    canActivate: [ComponentGuard], data: { expectedRol: ['admin', 'user'] }
   }, //agregar
   {
-    path: 'nueva-plataforma',
-    component: NuevaPlataformaComponent,
-    canActivate: [ComponentGuard],
-    data: { expectedRol: ['admin', 'user'] }
+    path: 'nueva-plataforma', component: NuevaPlataformaComponent,
+    canActivate: [ComponentGuard], data: { expectedRol: ['admin', 'user'] }
   },
   {
-    path: 'editar-item-habilidad/:accion/:id',
-    component: EditarItemHabilidadComponent,
-    canActivate: [ComponentGuard],
-    data: { expectedRol: ['admin', 'user'] }
+    path: 'editar-item-habilidad/:accion/:id', component: EditarItemHabilidadComponent,
+    canActivate: [ComponentGuard], data: { expectedRol: ['admin', 'user'] }
   },
   {
-    path: 'editar-cabecera',
-    component: EditarCabeceraComponent,
-    canActivate: [ComponentGuard],
-    data: { expectedRol: ['admin', 'user'] }
+    path: 'editar-cabecera', component: EditarCabeceraComponent,
+    canActivate: [ComponentGuard], data: { expectedRol: ['admin', 'user'] }
   },
   {
-    path: 'editar-proyecto/:accion/:id',
-    component: EditarProyectoComponent,
-    canActivate: [ComponentGuard],
-    data: { expectedRol: ['admin', 'user'] }
+    path: 'editar-proyecto/:accion/:id', component: EditarProyectoComponent,
+    canActivate: [ComponentGuard], data: { expectedRol: ['admin', 'user'] }
   }, //editar
   {
-    path: 'editar-proyecto/:accion',
-    component: EditarProyectoComponent,
-    canActivate: [ComponentGuard],
-    data: { expectedRol: ['admin', 'user'] }
+    path: 'editar-proyecto/:accion', component: EditarProyectoComponent,
+    canActivate: [ComponentGuard], data: { expectedRol: ['admin', 'user'] }
   } //agregar
 ];
 
