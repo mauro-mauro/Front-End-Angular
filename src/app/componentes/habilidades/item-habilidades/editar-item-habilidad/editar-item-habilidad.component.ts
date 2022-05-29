@@ -157,7 +157,7 @@ export class EditarItemHabilidadComponent implements OnInit {
   }
 
   onEliminarGrupoHabilidad() {
-    this.mensaje = "Está seguro que desea eliminar el item?";
+    this.mensaje = "Está seguro que desea eliminar el grupo de habilidad y todos sus items?";
     this.abrirModalConfirmar = true;
   }
 

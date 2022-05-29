@@ -1,38 +1,40 @@
-*{
+* {
   margin: 0px;
   padding: 0px;
 }
-div{
+
+div {
   /* border: 1px solid white; */
   color: white;
 }
 
-.centrar-contenido{
+.centrar-contenido {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-body{
+body {
   display: flex;
   justify-content: center;
   background: black;
   font-family: 'Source Sans Pro', sans-serif;
 }
-.hoja{
+
+.hoja {
   width: 100%;
   max-width: 900px;
   background: #212121;
 }
 
 /*------ Botones ------*/
-.contenedor-botones-edicion{
-  position:relative;
+.contenedor-botones-edicion {
+  position: relative;
   width: 100%;
   height: 100%;
 }
 
-.botones-edicion{
+.botones-edicion {
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -43,7 +45,7 @@ body{
 .icono-editar,
 .icono-agregar,
 .icono-eliminar,
-.icono-advertencia{
+.icono-advertencia {
   cursor: pointer;
   opacity: 0.8;
   width: 60px;
@@ -52,36 +54,36 @@ body{
   background-size: 60px;
 }
 
-.icono-advertencia{
+.icono-advertencia {
   cursor: auto;
   background-image: url("assets/imgPagina/icono-advertencia.svg");
 }
 
-.icono-editar{
+.icono-editar {
   background-image: url("assets/imgPagina/icono-editar.svg");
   top: 20px;
 }
 
-.icono-editar:hover{
+.icono-editar:hover {
   background-image: url("assets/imgPagina/icono-editar-hover.svg");
 }
 
-.icono-eliminar{
+.icono-eliminar {
   top: 20px;
   background-image: url("assets/imgPagina/icono-eliminar.svg");
 }
 
-.icono-eliminar:hover{
+.icono-eliminar:hover {
   background-image: url("assets/imgPagina/icono-eliminar-hover.svg");
 }
 
-.icono-agregar{
+.icono-agregar {
   position: absolute;
   background-image: url("assets/imgPagina/icono-agregar.svg");
   bottom: 5px;
 }
 
-.icono-agregar:hover{
+.icono-agregar:hover {
   background-image: url("assets/imgPagina/icono-agregar-hover.svg");
 }
 
@@ -116,4 +118,22 @@ body{
   align-content: center;
   height: 100%;
   width: 100%;
+}
+
+/* efecto texto parpadeo */
+.texto-parpadeante {
+  color: rgb(196, 89, 89);
+  font-weight: bold;
+  animation: efecto-parpadeo 0.7s alternate infinite;
+}
+
+@keyframes efecto-parpadeo {
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+
+  }
 }
