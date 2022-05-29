@@ -55,8 +55,4 @@ export class CambioContrasenaComponent implements OnInit {
     }
   }
 
-  onEnviarMouseOver(){
-    console.log("mouse over");
-  }
-
 }
